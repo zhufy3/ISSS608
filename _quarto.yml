@@ -10,7 +10,9 @@ website:
           - text: Hands-on Exercise 1
             href: Hands_on_Ex1/Hands_on_Ex1.qmd
       - text: In-class Exercise
+        menu: 
       - text: Take-home Exercise
+        menu:
 
     right:
       - href: index.qmd
