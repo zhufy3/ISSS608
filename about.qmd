@@ -4,4 +4,4 @@ title: "About"
 
 About this site
 
-This website is where Fangyuan publishes the results of her studies.
+This website is where the author publishes the results of her studies about Visual Analytics and Applications!
