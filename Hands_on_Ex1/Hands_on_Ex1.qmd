@@ -169,7 +169,10 @@ Now let's plot point graph to show correlation between *MATHS* scores and *ENGLI
 ggplot(data=exam_data, 
        aes(x= MATHS, 
            y=ENGLISH)) +
-  geom_point()            
+  geom_point() +
+  coord_cartesian(xlim = c(0,100),
+                  ylim = c(0,100)) +
+  theme_classic()
 ```
 
 The interpretability of this graph can be improved by adding a best fit curve.
@@ -178,7 +181,10 @@ The interpretability of this graph can be improved by adding a best fit curve.
 ggplot(data=exam_data, 
        aes(x= MATHS, y=ENGLISH)) +
   geom_point() +
-  geom_smooth(size=0.5)
+  geom_smooth(size=0.5) +
+  coord_cartesian(xlim = c(0,100),
+                  ylim = c(0,100)) +
+  theme_dark()
 ```
 
 Noted an obvious **poisitive linear correlation** between Maths score and English score.
@@ -191,7 +197,10 @@ ggplot(data=exam_data,
            y=ENGLISH)) +
   geom_point() +
   geom_smooth(method=lm, 
-              size=0.5)
+              size=0.5) +
+  coord_cartesian(xlim = c(0,100),
+                  ylim = c(0,100)) +
+  theme_minimal()
 ```
 
 ## 7 Faceting
@@ -242,4 +251,33 @@ ggplot(data = exam_data,
   facet_wrap(~GENDER+CLASS,
              nrow = 2,
              drop = FALSE)
+```
+
+## 8 Bar charts
+
+Now let us plot bar charts using functions in *ggplot2* package.
+
+```{r}
+ggplot(data = exam_data,
+       aes(x = RACE)) +
+  geom_bar() +
+  coord_flip() +
+  theme(panel.background = element_rect(fill = "light blue", colour = "white"))
+```
+
+```{r}
+ggplot(data = exam_data,
+       aes(x = fct_infreq(RACE))) +
+  geom_bar() +
+  xlab("Race") +
+  ylab("No. of Pupils") +
+  geom_text(stat = "count", aes(label = ..count..),vjust = -1) +
+  coord_cartesian(ylim = c(0,210))
+```
+
+```{r}
+ggplot(data = exam_data,
+       aes(x = ENGLISH)) +
+  geom_bar() +
+  facet_wrap(~GENDER)
 ```
