@@ -1,0 +1,12 @@
+---
+title: "In-class Exercise 1"
+author: "Fangyuan Zhu"
+execute: 
+  warning: false
+  message: false
+format: html
+sideNavigator: true
+editor: visual
+---
+
+-   [In-class Exercise 1](https://public.tableau.com/app/profile/fangyuan.zhu/viz/Inclass_Ex1/Dashboard1)
