@@ -271,14 +271,3 @@ ggplot(data = exam_data,
   geom_text(stat = "count", aes(label = ..count..),vjust = -1) +
   coord_cartesian(ylim = c(0,210))
 ```
-
-```{r}
-d_g<-exam_data[,-3]
-ggplot(data = exam_data,
-       aes(x = ENGLISH ,fill = GENDER)) +
-  geom_histogram(d_g, fill = "grey", alpha = .5) +
-  geom_histogram(color = "black") +
-  facet_wrap(~GENDER) +
-  guides(fill = FALSE) +
-  theme_bw()
-```
