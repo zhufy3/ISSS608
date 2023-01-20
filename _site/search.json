@@ -32,6 +32,20 @@
     "href": "Takd-home_Ex1/Take-home_Ex1.html",
     "title": "Take-home Exercise 1",
     "section": "",
-    "text": "2 The Visualising Tool\nTableau Desktop\n\n\n3 Step-by-step Guide\n\nProcedures to designing visualisation\n\n\nProcedure\nScreenshot\nNote\n\n\n\n\nStep1\nDownload the csv file from Singstat\n\nFor files with the same content but differed forms, we should choose csv file for its smaller size and friendly readability to Tableau\n\n\nStep 2"
+    "text": "In this take-home exercise 1, we will use the Age-sex pyramid through Tableau Desktop to visualise demographic structure of population of Singapore. And we will display nine selected planning areas on a single view by using trellis display."
+  },
+  {
+    "objectID": "Takd-home_Ex1/Take-home_Ex1.html#the-visualising-tool",
+    "href": "Takd-home_Ex1/Take-home_Ex1.html#the-visualising-tool",
+    "title": "Take-home Exercise 1",
+    "section": "2 The Visualising Tool",
+    "text": "2 The Visualising Tool\nTableau Desktop"
+  },
+  {
+    "objectID": "Takd-home_Ex1/Take-home_Ex1.html#step-by-step-guide",
+    "href": "Takd-home_Ex1/Take-home_Ex1.html#step-by-step-guide",
+    "title": "Take-home Exercise 1",
+    "section": "3 Step-by-step Guide",
+    "text": "3 Step-by-step Guide\n\nProcedures to designing visualisation\n\n\nProcedure\nScreenshot\nNote\n\n\n\n\nStep1\nDownload the csv file from Singstat\n\nFor files with the same content but differed forms, we should choose csv file for its smaller size and friendly readability to Tableau\n\n\nStep 2"
   }
 ]
