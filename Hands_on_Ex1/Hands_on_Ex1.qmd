@@ -239,8 +239,7 @@ ggplot(data = exam_data,
        aes(y = MATHS,
            x = CLASS)) +
   geom_boxplot() +
-  facet_wrap(~ GENDER,
-             dir = "v")
+  facet_grid(GENDER~.)
 ```
 
 ```{r}
@@ -248,9 +247,7 @@ ggplot(data = exam_data,
        aes(y = MATHS,
            x = GENDER)) +
   geom_boxplot() +
-  facet_wrap(~GENDER+CLASS,
-             nrow = 2,
-             drop = FALSE)
+  facet_grid(GENDER~CLASS)
 ```
 
 ## 8 Bar charts
@@ -276,8 +273,12 @@ ggplot(data = exam_data,
 ```
 
 ```{r}
+d_g<-exam_data[,-3]
 ggplot(data = exam_data,
-       aes(x = ENGLISH)) +
-  geom_bar() +
-  facet_wrap(~GENDER)
+       aes(x = ENGLISH ,fill = GENDER)) +
+  geom_histogram(d_g, fill = "grey", alpha = .5) +
+  geom_histogram(color = "black") +
+  facet_wrap(~GENDER) +
+  guides(fill = FALSE) +
+  theme_bw()
 ```
