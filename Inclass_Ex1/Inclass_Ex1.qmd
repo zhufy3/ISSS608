@@ -9,4 +9,6 @@ sideNavigator: true
 editor: visual
 ---
 
+Please see the Tableau page from the link below.
+
 -   [In-class Exercise 1](https://public.tableau.com/app/profile/fangyuan.zhu/viz/Inclass_Ex1/Dashboard1)
