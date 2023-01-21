@@ -1,0 +1,13 @@
+---
+title: "In-class Exercise 2"
+author: "Fangyuan Zhu"
+editor: visual
+---
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+```{r}
+read_csv('')
+```
