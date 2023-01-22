@@ -190,7 +190,7 @@ Type I structure has a *cone shaped* age-sex pyramid.
 
 ##### 5.1.1 Population structure of Ang Mo Kio
 
-![](images/paste-9CAD48C4.png)
+![](images/paste-9CAD48C4.png){width="800"}
 
 -   It is obvious that population structure in Ang Mo Kio area belongs to ***Negative Growth*** with a ***kiteshape,*** which also means **low birth rate** in this area*.*
 
@@ -202,7 +202,7 @@ Type I structure has a *cone shaped* age-sex pyramid.
 
 ##### 5.1.2 Population structure of Queenstown
 
-![](images/paste-8FE5FEAA.png)
+![](images/paste-8FE5FEAA.png){width="800"}
 
 -   Similar to population structure in Ang Mo Kio, the one in Queenstown area also belongs to ***Negative Growth,*** but the total population is much less than that in Ang Mo Kio area.
 
@@ -210,7 +210,7 @@ Type I structure has a *cone shaped* age-sex pyramid.
 
 ##### 5.1.3 Population structure of Jurong West
 
-![](images/paste-EACCC929.png)
+![](images/paste-EACCC929.png){width="800"}
 
 -   Also noted as ***Negative Growth,*** population in this area has a huge number of **middle aged** citizens.
 
@@ -218,7 +218,7 @@ Type I structure has a *cone shaped* age-sex pyramid.
 
 ##### 5.1.4 Population structure of Toa Payoh
 
-![](images/paste-5F439BF0.png)
+![](images/paste-5F439BF0.png){width="800"}
 
 -   With small base and large size in the middle, population structure in this area is also ***Negative Growth.***
 
@@ -232,7 +232,7 @@ Type II structure has a ***notch*** in the middle area.
 
 ##### 5.2.1 Population structure of Choa Chu Kang
 
-![](images/paste-34255575.png)
+![](images/paste-34255575.png){width="800"}
 
 -   The largest population belongs to 50-64 years old and 20-34 years old, seemingly that the fertility rate of the current generation is much lower than that of previous generations in this area, but this conclusion needs more evidence to prove it.
 
@@ -242,7 +242,7 @@ Type II structure has a ***notch*** in the middle area.
 
 ##### 5.2.2 Population structure of Yishun
 
-![](images/paste-67EA9DE5.png)
+![](images/paste-67EA9DE5.png){width="800"}
 
 -   Population structure in this area is also ***Negative Growth*** structure with adults take the most part of the population and the small base.
 
@@ -250,7 +250,7 @@ Type II structure has a ***notch*** in the middle area.
 
 ##### 5.2.3 Population structure of Pasir Ris
 
-![](images/paste-DAA66F88.png)
+![](images/paste-DAA66F88.png){width="800"}
 
 -   ***Negative Growth*** structure with adults take the most part of the population and the small base.
 
@@ -262,7 +262,7 @@ Type II structure has a ***notch*** in the middle area.
 
 ##### 5.2.3 Population structure of Novena
 
-![](images/paste-00BA5BFB.png)
+![](images/paste-00BA5BFB.png){width="800"}
 
 -   ***Negative Growth*** structure with adults take the most part of the population and the small base.
 
@@ -278,7 +278,7 @@ This type of population structure is based on a few population compared to other
 
 ##### 5.3.1 Population structure of Changi
 
-![](images/paste-F5FCA3E5.png)
+![](images/paste-F5FCA3E5.png){width="800"}
 
 -   Noted a quite asymmetrical shape between left and right parts due to the small total number of the population. The Changi area is around the Changi Airport so that the residency is quite few compared to other areas.
 
@@ -310,7 +310,7 @@ This type of population structure is based on a few population compared to other
 | Changi        | Negative Growth                           | 10-14, 45-49      |
 +---------------+-------------------------------------------+-------------------+
 
-All the population structures in these 9 areas are ***Negative Growth*** which generally means a low fertility rate. And all are of ***low dependency rate*** because of their small base for young residents and skinny top for elder ones.
+All the population structures in these 9 areas are ***Negative Growth*** which generally means a low fertility rate. And all are of ***low dependency rate*** because of their small base for young residents and skinny top for elder ones. And according to the mode of the age group, we see most population in **Ang Mo Kio** is the **oldest**, followed by Pasir Ris. Most of the population in **Novena** and **Chou Chu Kang** are **young adults.**
 
 ![](images/paste-49CDAB6F.png)
 
