@@ -19,11 +19,13 @@ pacman::p_load(ggiraph,plotly,gganimate,DT,tidyverse,patchwork)
 
 ## Data used
 
-Exam_data.csv will be used in this hands-on exercise 2.
+Exam_data.csv will be used in this in-class exercise 3.
 
 ```{r}
 exam_data<-read_csv('data/Exam_data.csv')
 ```
+
+We then use function *girafe* of *ggiraph* to plot an interactive chart.
 
 ```{r}
 p <- ggplot(data=exam_data, 
