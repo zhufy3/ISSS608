@@ -5,3 +5,5 @@ title: "ISSS608-Visual Analytics and Applications"
 This is a study journey about Visual Analytics and Applications.
 
 Let us get started with the author!!
+
+![](images/image1-22.jpg)
