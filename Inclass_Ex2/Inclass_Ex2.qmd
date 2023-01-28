@@ -1,6 +1,13 @@
 ---
 title: "In-class Exercise 2"
 author: "Fangyuan Zhu"
+date: 21 January 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
 editor: visual
 ---
 
@@ -67,7 +74,7 @@ ggplot(data=exam_data,
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
 
-### 2.3
+### 2.3 Adding ggplot2 themes
 
 ```{r}
 ggplot(data=exam_data, 
@@ -91,6 +98,10 @@ ggplot(data=exam_data,
   theme_economist()
 ```
 
+### 2.4 Using *hrbrthemes* package
+
+#### 2.4.1 Background with vertical and horizontal grid
+
 ```{r}
 ggplot(data=exam_data, 
              aes(x = MATHS)) +
@@ -101,6 +112,8 @@ ggplot(data=exam_data,
   ggtitle("Distribution of Maths scores") +
   theme_ipsum()
 ```
+
+#### 2.4.2 Background with only vertical grid
 
 ```{r}
 ggplot(data=exam_data, 
@@ -114,6 +127,8 @@ ggplot(data=exam_data,
               base_size = 15, 
               grid = "Y") 
 ```
+
+### 3 Deploy multiple plots with *patchwork* package
 
 ```{r}
 p1 <- ggplot(data=exam_data, 
