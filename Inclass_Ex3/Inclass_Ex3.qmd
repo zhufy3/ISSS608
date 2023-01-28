@@ -1,5 +1,5 @@
 ---
-title: "Inclass Exercise 3"
+title: "In-class Exercise 3"
 author: "Fangyuan Zhu"
 date: 28 January 2023
 date-modified: "`r Sys.Date()`"
