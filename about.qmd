@@ -8,3 +8,7 @@ comments:
 This website is where the author publishes the results of her studies about Visual Analytics and Applications!
 
 **Welcome** to leave your comments below if you have any questions or suggestions!
+
+|                              |                          |
+|------------------------------|--------------------------|
+| ![](images/image1-9a-01.jpg) | ![](images/image1-9.jpg) |
