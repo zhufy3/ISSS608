@@ -13,6 +13,10 @@ website:
         menu: 
           - text: In-class Excercise 1
             href: Inclass_Ex1/Inclass_Ex1.qmd
+          - text: In-class Excercise 2
+            href: Inclass_Ex2/Inclass_Ex2.qmd
+          - text: In-class Excercise 3
+            href: Inclass_Ex3/Inclass_Ex3.qmd
       - text: Take-home Exercise
         menu:
           - text: Take-home Exercise 1

@@ -67,7 +67,7 @@ ggplot(data=exam_data,
   ggtitle("English scores versus Maths scores for Primary 3")
 ```
 
-### 2.3 
+### 2.3
 
 ```{r}
 ggplot(data=exam_data, 

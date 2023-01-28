@@ -1,0 +1,43 @@
+---
+title: "Inclass Exercise 3"
+author: "Fangyuan Zhu"
+date: 28 January 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+## Packages
+
+```{r}
+pacman::p_load(ggiraph,plotly,gganimate,DT,tidyverse,patchwork)
+```
+
+## Data used
+
+Exam_data.csv will be used in this hands-on exercise 2.
+
+```{r}
+exam_data<-read_csv('data/Exam_data.csv')
+```
+
+```{r}
+p <- ggplot(data=exam_data, 
+       aes(x = MATHS)) +
+  geom_dotplot_interactive(
+    aes(tooltip = ID),
+    stackgroups = TRUE, 
+    binwidth = 1, 
+    method = "histodot") +
+  scale_y_continuous(NULL, 
+                     breaks = NULL)
+girafe(
+  ggobj = p,
+  width_svg = 6,
+  height_svg = 6*0.618
+)
+```
