@@ -60,7 +60,7 @@
     "href": "Inclass_Ex3/Inclass_Ex3.html#data-used",
     "title": "In-class Exercise 3",
     "section": "Data used",
-    "text": "Data used\nExam_data.csv will be used in this hands-on exercise 2.\n\nexam_data<-read_csv('data/Exam_data.csv')\n\n\np <- ggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot_interactive(\n    aes(tooltip = ID),\n    stackgroups = TRUE, \n    binwidth = 1, \n    method = \"histodot\") +\n  scale_y_continuous(NULL, \n                     breaks = NULL)\ngirafe(\n  ggobj = p,\n  width_svg = 6,\n  height_svg = 6*0.618\n)"
+    "text": "Data used\nExam_data.csv will be used in this in-class exercise 3.\n\nexam_data<-read_csv('data/Exam_data.csv')\n\nWe then use function girafe of ggiraph to plot an interactive chart.\n\np <- ggplot(data=exam_data, \n       aes(x = MATHS)) +\n  geom_dotplot_interactive(\n    aes(tooltip = ID),\n    stackgroups = TRUE, \n    binwidth = 1, \n    method = \"histodot\") +\n  scale_y_continuous(NULL, \n                     breaks = NULL)\ngirafe(\n  ggobj = p,\n  width_svg = 6,\n  height_svg = 6*0.618\n)"
   },
   {
     "objectID": "index.html",
