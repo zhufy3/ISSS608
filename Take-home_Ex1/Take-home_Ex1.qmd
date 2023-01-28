@@ -314,4 +314,4 @@ All the population structures in these 9 areas are ***Negative Growth*** which g
 
 ![](images/paste-49CDAB6F.png)
 
-As shown in a same x-axis scale, we can clearly see the total population size of each area. In our chosen areas, *Jurong West* has the largest size of population among others, followed by Yishun. *Changi* area has the smallest size of population.
+As shown in a same x-axis scale, we can clearly see the total population size of each area. In our chosen areas, *Jurong West* has the **largest** size of population among others, followed by Yishun. *Changi* area has the **smallest** size of population.
