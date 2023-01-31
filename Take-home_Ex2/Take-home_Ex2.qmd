@@ -27,10 +27,173 @@ Our tasks in this exercise is to:
 
 Our task of take-home exercise 1 is to plot age-sex pyramid for 9 planning areas. The guide of the task is to plot an audience-friendly and subject focused charts. Therefore, we can critique and improve our peer's preparation from perspectives like **clarity** and **aesthetics**.
 
+Therefore, in this exercise, 3 codes below can serve as our references:
+
+-   **Definition**
+
+-   **Amplification**
+
+-   **Simplicity**
+
 ## 3 Original Design
 
 ![](images/Dashboard%201.png)
 
-## 4 Critique 1
+## 4 Critiques
 
-### 4.1 
+### 4.1 Critiques on definition
+
+The definition of the chart is very clear as the title shows - '*Demographic structure of Singapore at top 9 population planning areas in June 2022*'.
+
+| Status | Issues                                                                                                                                                                                                                                                                                                                      | Screenshot                                  |
+|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| 🌟     | The author chose the areas in purpose instead of randomly. That means the author is showing the patterns of population structure with a clear objective.                                                                                                                                                                    | ![](images/paste-4B4889B2.png)              |
+| 🌟     | The title shows clearly the chart type, which is *Demographic structure.*                                                                                                                                                                                                                                                   | ![](images/paste-AE5ED1DB.png)              |
+| 🌟     | The title shows the time of the data collection, which is June 2022.                                                                                                                                                                                                                                                        | ![](images/paste-EF0764C7.png)              |
+| ❎     | The standard population structure chart contains x-axis of *Male population* and *Female population*, and y-axis of *age group.* Normally, *Female population* is on the right side and *Male's* on the left side. The author puts the structure chart in a reverse direction, which is okay but against the rule of thumb. | ![](images/paste-8F83A03F.png){width="222"} |
+| ❎     | The range of each age group is normally 5, such as 0-4, 5-9 and so on. Otherwise, the shape of the population structure may miss some important information. The range of group in the chart above is 10 years. Maybe better to switch to 5 years as the same as the raw data.                                              | ![](images/paste-983B8D0A.png)              |
+
+### 4.2 Critiques on Amplification
+
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Status | Issue                                                                                                                                                                                                                                                                               | Screenshot                     |
++========+=====================================================================================================================================================================================================================================================================================+================================+
+| 🌟     | It's good that the author brings the audience's focus just on the **shape** of each chart under a same range of x-axis, which is -40k to 40k, by not showing the exact number of population of each age group.                                                                      |                                |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| 🌟     | It is very clear to draw the bar chart for different genders in different **colors**, red for female and blue for male.                                                                                                                                                             |                                |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎     | However, the range of x-axis is too large so that the shape is contacted.                                                                                                                                                                                                           | ![](images/paste-1A5FAEEB.png) |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎     | There is a ***Column*** on top of the chart, and as well ***Female population*** and ***Male population***as x-label at the bottom of the chart. So it is a little confusing.                                                                                                       | ![](images/paste-B9130EAD.png) |
+|        |                                                                                                                                                                                                                                                                                     |                                |
+|        |                                                                                                                                                                                                                                                                                     | ![](images/paste-1A5FAEEB.png) |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎     | For each small chart, the author puts the **name** of the planning area **beside the bar of the age group with the** **most population**. There may be some information the author intends to deliver like the age group with the most population, but it appears not very obvious. | ![](images/paste-D4DAE5C3.png) |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎     | The y-label retains the column name, *AG,* of the raw data frame, which is the short of age but no explanation here.                                                                                                                                                                | ![](images/paste-869A1352.png) |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+
+### 4.3 Critiques on Simplification
+
+| Status | Issue                                                                                                                                                      | Screenshot                     |
+|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| 🌟     | It is good to configure the chart as 3\*3 rows and columns. A visually comfortable and tidy deployment.                                                    |                                |
+| ❎     | The **aliases** of the y-axis are a little tedious, which contains ***number, string*** and ***special character.*** It is better to simplify the aliases. | ![](images/paste-983B8D0A.png) |
+| ❎     | There are column numbers for the whole chart, which is tedious.                                                                                            | ![](images/paste-7E4C5FBB.png) |
+
+## 5 Remake of the Chart
+
+In accordance to issues we come up above, we are going to remake the chart to improve step by step.
+
+### 5.1 Importing the packages
+
+In the exercise, we will mainly use packages as below:
+
+-   *ggplot2*
+
+-   *tidyverse*
+
+-   *dplyr*
+
+-   *readr*
+
+-   *ggrepel*
+
+-   *ggthemes*
+
+-   *hrbrthemes*
+
+-   *patchwork*
+
+```{r}
+pacman::p_load(ggplot2,tidyverse,readr,ggrepel,ggthemes,hrbrthemes,patchwork,dplyr)
+```
+
+### 5.2 Importing the data
+
+First let us import the data of population in Singapore extracted from the Singstat. We will use the *read_csv*
+
+```{r eval=FALSE}
+pop<-read_csv("data/population.csv")
+```
+
+Noted from the information above, we have 100928 rows and 7 columns in this data frame. See the 7 columns are *PA, SA, AG, Sex, TOD, Pop* and *Time*, among which ***PA, SZ, AG, Sex*** **and *TOD***are ***character*** datatype and ***Pop*** and ***Time*** are double-precision floating-point format (**dbl**) data type.
+
+### 5.3 Glimpse the data
+
+Let us take a look at the data we imported to use later using code chunk below.
+
+```{r}
+head(pop,10)
+```
+
+Okay we see values of each column, like *Ang Mo Kio* in column Planning area*, 0_to_4* in column AG, etc.
+
+### 5.4 Explanation of each column
+
+-   *PA*: Planning area
+
+-   *SZ*: Subzone
+
+-   *AG*: Age
+
+-   *Sex*: Sex
+
+-   *TOD*: Type of dwelling
+
+-   *Pop*: Population
+
+-   *Time*: Time, each value = June 2022
+
+### 5.5 Cleaning the data
+
+#### 5.5.1 Extracting columns used
+
+As we see from the data frame, there are 7 columns. Most of them won't be used in this exercise. We need to therefore extract only columns of **Planning area, Age, Sex** and **Pop**, and write this new data table as ***ppl.*** And rename the *Sex* and *Pop* as *SX* and *PP* for more convenience.
+
+```{r}
+ppl<-pop%>%
+  select(PA,AG,Sex,Pop)%>%
+  rename(SX = `Sex`)%>%
+  rename(PP = `Pop`)
+
+write_csv(ppl,"data/population.csv")
+```
+
+#### 5.5.2 Create new columns
+
+In order to show the percentage of amount of each age group among the whole population, we need to create new columns, such as percentage of 0-4 and so on. We can create the new column named *PCT* using code chunk below.
+
+```{r}
+ppl<-ppl%>%
+  mutate(`total` = group_by(AG)
+```
+
+![![](images/paste-6F3BD705.png)](images/paste-24D08BA6.png)
+
+We see that the new
+
+#### 5.3.2 Checking of data issues
+
+Before we use the data to visualize, we should first check the
+
+```{r}
+summary(pop[rowSums(is.na(pop))!=0,])
+```
+
+From the information above, we see no missing values in this data table.
+
+### 5.6 Plotting age-sex pyramid
+
+```{r}
+ppl%>%mutate(
+  PP = ifelse(SX == "Males", PP*-1, PP*1)%>%
+    ggplot(aes(x = AG, y = PP, fill = SX)) +
+    geom_bar(stat = "identity") +
+    coord_flip() +
+    scale_y_continuous(limits = c(-4, 4),
+                       breaks = seq(-4, 4, by = 2)) +
+    labs(title = "Population Structure Pyramid of SG (JUNE 2022)",
+         y = "Population in millions")
+)
+```
