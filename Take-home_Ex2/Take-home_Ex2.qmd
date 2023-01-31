@@ -45,13 +45,19 @@ Therefore, in this exercise, 3 codes below can serve as our references:
 
 The definition of the chart is very clear as the title shows - '*Demographic structure of Singapore at top 9 population planning areas in June 2022*'.
 
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | Status | Issues                                                                                                                                                                                                                                                                                                                      | Screenshot                                  |
-|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
++========+=============================================================================================================================================================================================================================================================================================================================+=============================================+
 | 🌟     | The author chose the areas in purpose instead of randomly. That means the author is showing the patterns of population structure with a clear objective.                                                                                                                                                                    | ![](images/paste-4B4889B2.png)              |
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | 🌟     | The title shows clearly the chart type, which is *Demographic structure.*                                                                                                                                                                                                                                                   | ![](images/paste-AE5ED1DB.png)              |
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | 🌟     | The title shows the time of the data collection, which is June 2022.                                                                                                                                                                                                                                                        | ![](images/paste-EF0764C7.png)              |
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | ❎     | The standard population structure chart contains x-axis of *Male population* and *Female population*, and y-axis of *age group.* Normally, *Female population* is on the right side and *Male's* on the left side. The author puts the structure chart in a reverse direction, which is okay but against the rule of thumb. | ![](images/paste-8F83A03F.png){width="222"} |
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 | ❎     | The range of each age group is normally 5, such as 0-4, 5-9 and so on. Otherwise, the shape of the population structure may miss some important information. The range of group in the chart above is 10 years. Maybe better to switch to 5 years as the same as the raw data.                                              | ![](images/paste-983B8D0A.png)              |
++--------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------+
 
 ### 4.2 Critiques on Amplification
 
@@ -75,11 +81,15 @@ The definition of the chart is very clear as the title shows - '*Demographic str
 
 ### 4.3 Critiques on Simplification
 
-| Status | Issue                                                                                                                                                      | Screenshot                     |
-|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| 🌟     | It is good to configure the chart as 3\*3 rows and columns. A visually comfortable and tidy deployment.                                                    |                                |
-| ❎     | The **aliases** of the y-axis are a little tedious, which contains ***number, string*** and ***special character.*** It is better to simplify the aliases. | ![](images/paste-983B8D0A.png) |
-| ❎     | There are column numbers for the whole chart, which is tedious.                                                                                            | ![](images/paste-7E4C5FBB.png) |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| Status  | Issue                                                                                                                                                      | Screenshot                     |
++=========+============================================================================================================================================================+================================+
+| 🌟      | It is good to configure the chart as 3\*3 rows and columns. A visually comfortable and tidy deployment.                                                    |                                |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎      | The **aliases** of the y-axis are a little tedious, which contains ***number, string*** and ***special character.*** It is better to simplify the aliases. | ![](images/paste-983B8D0A.png) |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
+| ❎      | There are column numbers for the whole chart, which is tedious.                                                                                            | ![](images/paste-7E4C5FBB.png) |
++---------+------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+
 
 ## 5 Remake of the Chart
 
@@ -123,7 +133,7 @@ Noted from the information above, we have 100928 rows and 7 columns in this data
 
 Let us take a look at the data we imported to use later using code chunk below.
 
-```{r}
+```{r eval=FALSE}
 head(pop,10)
 ```
 
@@ -151,7 +161,7 @@ Okay we see values of each column, like *Ang Mo Kio* in column Planning area*, 0
 
 As we see from the data frame, there are 7 columns. Most of them won't be used in this exercise. We need to therefore extract only columns of **Planning area, Age, Sex** and **Pop**, and write this new data table as ***ppl.*** And rename the *Sex* and *Pop* as *SX* and *PP* for more convenience.
 
-```{r}
+```{r eval=FALSE}
 ppl<-pop%>%
   select(PA,AG,Sex,Pop)%>%
   rename(SX = `Sex`)%>%
@@ -160,7 +170,22 @@ ppl<-pop%>%
 write_csv(ppl,"data/population.csv")
 ```
 
-#### 5.5.2 Create new columns
+![![](images/paste-6F3BD705.png)](images/paste-24D08BA6.png)
+
+From the screenshot above, we see it is important to clean our data table.
+
+#### 5.5.2 Checking missing values
+
+Before we use the data, we should first check if there are any missing values using codes below.
+
+```{r}
+ppl<-read_csv("data/population.csv")
+summary(ppl[rowSums(is.na(ppl))!=0,])
+```
+
+From the information above, we see no missing values in this data table.
+
+#### 5.5.3 Create new columns
 
 In order to show the percentage of amount of each age group among the whole population, we need to create new columns, such as percentage of 0-4 and so on. We can create the new column named *PCT* using code chunk below.
 
@@ -169,31 +194,48 @@ ppl<-ppl%>%
   mutate(`total` = group_by(AG)
 ```
 
-![![](images/paste-6F3BD705.png)](images/paste-24D08BA6.png)
-
 We see that the new
-
-#### 5.3.2 Checking of data issues
-
-Before we use the data to visualize, we should first check the
-
-```{r}
-summary(pop[rowSums(is.na(pop))!=0,])
-```
-
-From the information above, we see no missing values in this data table.
 
 ### 5.6 Plotting age-sex pyramid
 
+#### 5.6.1 Extracting top 9 population planning areas 
+
+In accordance to the author's intention, we need to find out the **top 9** population planning areas. Code chunk below will help us achieve this.
+
 ```{r}
-ppl%>%mutate(
-  PP = ifelse(SX == "Males", PP*-1, PP*1)%>%
+tail(
+  ppl%>%
+  group_by(PA)%>%
+    summarise("Population"=sum(PP))%>%
+  arrange(Population,FALSE),
+  9)
+```
+
+As shown in chart above, **Bedok, Tampines, Jurong West, Sengkang, Woodlands, Hougang, Yishun, Choa Chu Kang** and **Punggol** are the top 9 planning areas.
+
+#### 5.6.2 Recoding of column AG
+
+In order to better sort the y-axis, we recode the values in column *AG* as the cutting years, 0, 5, 10, ..., 90 using below codes.
+
+```{r}
+ppl<-ppl%>%
+  mutate(AG = recode(AG, "0_to_4" = 0, "5_to_9" = 5, "10_to_14" = 10, "15_to_19" = 15, "20_to_24" = 20, "25_to_29" = 25, "30_to_34" = 30, "35_to_39" = 35, "40_to_44" = 40, "45_to_49" = 45, "50_to_54" = 50, "55_to_59" = 55, "60_to_64" = 60, "65_to_69" = 65, "70_to_74" = 70, "75_to_79" = 75, "80_to_84" = 80, "85_to_89" = 85,"90_and_over" = 90))
+```
+
+```{r}
+ppl%>%
+  filter(`PA` %in%
+           c("Bedok","Tampines", "Jurong West", "Sengkang", "Woodlands", "Hougang", "Yishun", "Choa Chu Kang", "Punggol"))%>%
+  mutate(PP = ifelse(SX == "Males", PP*(-1), PP*1))%>%
     ggplot(aes(x = AG, y = PP, fill = SX)) +
     geom_bar(stat = "identity") +
+  facet_wrap(~ PA) +
     coord_flip() +
-    scale_y_continuous(limits = c(-4, 4),
-                       breaks = seq(-4, 4, by = 2)) +
-    labs(title = "Population Structure Pyramid of SG (JUNE 2022)",
-         y = "Population in millions")
-)
+  geom_text(stat="identity", 
+      aes(label=paste0(..PP.., ", ", 
+      round(..PP../sum(..PP..)*100,
+            1), "%")),
+      vjust=-1) +
+    labs(title = "Demographic Pyramid of Top 9 Population Planning Areas in SG (June 2023)",
+         y = "Population in millions") 
 ```
