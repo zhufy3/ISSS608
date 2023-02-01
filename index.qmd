@@ -6,4 +6,8 @@ This is a study journey about Visual Analytics and Applications.
 
 Let us get started with the author!!
 
+![](images/unemployment-rate.jpg)
+
+Visualisation History
+
 ![](images/image1-19.png)
