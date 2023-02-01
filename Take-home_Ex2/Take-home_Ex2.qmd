@@ -272,15 +272,15 @@ In our revised plot, we need to fix issues we found before step by step.
 
 From the foundation of the author's plot, we can add new more functions to the plot, such as **interaction**, **background** and **legend**.
 
--   To make the plot more amplified, we don't put the exact number of population to the bar chart. We can add an **interactive labels** showing instead of the number, but the **percentage** of the population for each age group among the total when putting the tick on a specific bar.
+🎁 To make the plot more amplified, we don't put the exact number of population to the bar chart. We can add an **interactive labels** showing instead of the number, but the **percentage** of the population for each age group among the total when putting the tick on a specific bar.
 
--   Adding a grey background with x-y grid as **reference** **lines.**
+🎁 Adding a grey background with x-y grid as **reference** **lines.**
 
--   Offering a **legend** showing colors denoting Female and Male.
+🎁 Offering a **legend** showing colors denoting Female and Male.
 
--   Adding a **note** for the audience to explore the interactive function
+🎁 Adding a **note** for the audience to explore the **interactive** function.
 
--   Adding a **subtitle** to shorten the main title
+🎁 Adding a **subtitle** to **shorten** the main title.
 
 ### 6 Plotting age-sex pyramid
 
