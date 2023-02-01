@@ -294,7 +294,7 @@ p<-pct%>%
   filter(`PA` %in%
            c("Bedok","Tampines", "Jurong West", "Sengkang", "Woodlands", "Hougang", "Yishun", "Choa Chu Kang", "Punggol"))%>%
   mutate(Subsum = ifelse(SX == "Males", Subsum*(-1), Subsum*1))%>%
-    ggplot(aes(x = AG, y = Subsum, fill = SX)) +
+    ggplot(aes(x = factor(AG), y = Subsum, fill = SX)) +
     geom_bar_interactive(
       aes(tooltip = PCT),
       stat = "identity") +
@@ -307,7 +307,8 @@ p<-pct%>%
          caption = "Note: \n Put your mouse on the bar to see the No. of population as percentage of the total population within a gender",
          x = "Age \n Group",
          y = "No. of Population")+
-    theme_gray()+
+    theme_grey()+
+  theme(panel.grid.major = element_blank()) +
     guides(fill=guide_legend(title = ""),
            shape=guide_legend(override.aes = list(size=0.5)))+
     theme(plot.title = element_text(size=13, face = "bold"),
@@ -317,6 +318,8 @@ p<-pct%>%
           axis.title.y=element_text(angle=0, size = 7),
           axis.title.y.left = element_text(vjust = 0.5),
           axis.title.x.bottom = element_text(size = 7),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.ticks.y = element_line(size = 0.5, color = "grey"),
           plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
 
 
@@ -329,7 +332,3 @@ girafe(
       css = tooltip_css)))
 
 ```
-
-[^1]
-
-[^1]: Put your mouse on the bar to see the No. of population as percentage the total population within its gender
