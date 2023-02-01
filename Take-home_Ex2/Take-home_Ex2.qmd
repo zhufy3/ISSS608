@@ -196,7 +196,9 @@ We see that the size of the new data table is much smaller than the raw data.
 
 #### 5.5.4 Create new columns
 
-Then we need to create a new column which shows percentage of population belonging to each age group for male and female in each planning area. First, we need to use codes below to compute the sum of population of each gender in each planning area.
+Then we can create a new column which shows percentage of population belonging to each age group for male and female in each planning area, instead of only the exact number of the population.
+
+First, we need to use codes below to compute the sum of population of each gender in a spacific planning area.
 
 ```{r}
 prop<-read_csv("data/prop.csv")
@@ -205,13 +207,13 @@ ppsum<-prop%>%
   summarise("SUM" = sum(Subsum))
 ```
 
-Then let us just **combine** the new data table named ***ppsum*** with data table named ***prop*** by planning area and sex using code chunk below.
+Then let us just **combine** the new data table named ***ppsum*** with data table named ***prop*** by **planning area** and **sex** using code chunk below.
 
 ```{r}
 pct<-merge(prop, ppsum, by = c("PA", "SX"))
 ```
 
-We can create now the new column named *PCT* using code chunk below and have a look at the new data table.
+We can noe create the new column named *PCT* using code chunk below and have a look at the new data table.
 
 ```{r}
 pct<-pct%>%
@@ -220,7 +222,7 @@ pct<-pct%>%
 head(pct,10)
 ```
 
-We see that we have new column named *PCT* in the most right of the data table, there are percentage of population from each age group of female or male in each planning area.
+We see that we have new column named *PCT* in the most right of the data table, which shows the percentage of population from each age group of female or male in a planning area.
 
 ### 5.6 Plotting age-sex pyramid
 
@@ -237,20 +239,18 @@ tail(
   9)
 ```
 
-As shown in chart above, **Bedok, Tampines, Jurong West, Sengkang, Woodlands, Hougang, Yishun, Choa Chu Kang** and **Punggol** are the top 9 planning areas.
+As shown in chart above, **Bedok, Tampines, Jurong West, Sengkang, Woodlands, Hougang, Yishun, Choa Chu Kang** and **Punggol** are the top 9 population planning areas.
 
-#### 5.6.2 Recoding of column AG
+#### 5.6.2 Recoding of the column AG
 
-In order to better sort the y-axis, we recode the values in column *AG* as the cutting years, 0, 5, 10, ..., 90 using below codes.
+In order to better sort the x-axis, we recode the values in column *AG* as the cutting years, 0, 5, 10, ..., 90 using below codes.
 
 ```{r}
 pct<-pct%>%
   mutate(AG = recode(AG, "0_to_4" = 0, "5_to_9" = 5, "10_to_14" = 10, "15_to_19" = 15, "20_to_24" = 20, "25_to_29" = 25, "30_to_34" = 30, "35_to_39" = 35, "40_to_44" = 40, "45_to_49" = 45, "50_to_54" = 50, "55_to_59" = 55, "60_to_64" = 60, "65_to_69" = 65, "70_to_74" = 70, "75_to_79" = 75, "80_to_84" = 80, "85_to_89" = 85,"90_and_over" = 90))
 ```
 
-#### 5.6.3 Plotting population structure pyramid
-
-##### 5.6.3.1 Review and improvement of the issues
+#### 5.6.3 Review and improvement of the issues
 
 In our revised plot, we need to fix issues we found before step by step.
 
@@ -260,15 +260,27 @@ In our revised plot, we need to fix issues we found before step by step.
 
 -   Change the **range** of **y-axis** from 0 - 4k to **0 - 2k.**
 
--   Delete tedious labels like *column* and *Female population* and *Male population.*
+-   **Delete** tedious **labels** like *column* and *Female population* and *Male population.*
 
 -   Put the **name of each planning area** on the **top** of the chart.
 
--   Switch the x-label from *AG* to *Age Group.*
+-   Switch the x-label from *AG* to ***Age Group**.*
 
--   Recode the age group **aliases** to the **cut** of years.
+-   Recode the age group **aliases** to the **cutting** of years.
 
-##### 5.6.3.2 Adding new 
+#### 5.6.4 Adding new functions
+
+From the foundation of the author's plot, we can add new more functions to the plot, such as **interaction**, **background** and **legend**.
+
+-   To make the plot more amplified, we don't put the exact number of population to the bar chart. We can add an **interactive labels** showing instead of the number, but the **percentage** of the population for each age group among the total when putting the tick on a specific bar.
+
+-   Adding a grey background with x-y grid as **reference** **lines.**
+
+-   Offering a **legend** showing colors denoting Female and Male.
+
+#### 5.6.5 Plotting age-sex pyramid
+
+Now we can plot the chart using code chunk below.
 
 ```{r}
 tooltip_css <- "background-color:white; #<<
@@ -286,19 +298,18 @@ p<-pct%>%
   scale_y_continuous(labels = paste0(as.character(c(seq(3, 0, -1), seq(1, 3, 1))), "k")) +
     coord_flip() +
   theme(axis.text.x=element_text(angle=0))+
-    xlab("Age Group")+
-    ylab("No. of \n Population")+
+    xlab("Age \n Group")+
+    ylab("No. of Population")+
     ggtitle("Demographic structure pyramid of top 9 population planning areas in SG (June 2023)")+
     theme_gray()+
-    guides(fill=guide_legend(title="Gender"),
+    guides(fill=guide_legend(title = ""),
            shape=guide_legend(override.aes = list(size=0.5)))+
-    theme(plot.title = element_text(hjust=0.5, size=13),
+    theme(plot.title = element_text(hjust=0.5, size=10),
           legend.title = element_text(size=7),
           legend.text = element_text(size=5),
-          axis.text = element_text(face="bold"),
-          axis.ticks.x=element_blank(),
-          axis.title.y=element_text(angle=0),
-          axis.title.y.left = element_text(vjust = 0.5))
+          axis.title.y=element_text(angle=0, size = 7),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text(size = 7))
 
 girafe(                                  
   ggobj = p,                             
@@ -308,5 +319,3 @@ girafe(
     opts_tooltip(
       css = tooltip_css)))
 ```
-
-In the plot,
