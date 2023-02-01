@@ -1,0 +1,2091 @@
+PA,SX,AG,Subsum
+Ang Mo Kio,Females,0_to_4,2480
+Ang Mo Kio,Females,10_to_14,3320
+Ang Mo Kio,Females,15_to_19,3620
+Ang Mo Kio,Females,20_to_24,4030
+Ang Mo Kio,Females,25_to_29,5020
+Ang Mo Kio,Females,30_to_34,5650
+Ang Mo Kio,Females,35_to_39,5120
+Ang Mo Kio,Females,40_to_44,5970
+Ang Mo Kio,Females,45_to_49,6350
+Ang Mo Kio,Females,5_to_9,3120
+Ang Mo Kio,Females,50_to_54,5970
+Ang Mo Kio,Females,55_to_59,6260
+Ang Mo Kio,Females,60_to_64,6240
+Ang Mo Kio,Females,65_to_69,6590
+Ang Mo Kio,Females,70_to_74,5780
+Ang Mo Kio,Females,75_to_79,3700
+Ang Mo Kio,Females,80_to_84,2840
+Ang Mo Kio,Females,85_to_89,1410
+Ang Mo Kio,Females,90_and_over,940
+Ang Mo Kio,Males,0_to_4,2530
+Ang Mo Kio,Males,10_to_14,3350
+Ang Mo Kio,Males,15_to_19,3780
+Ang Mo Kio,Males,20_to_24,4250
+Ang Mo Kio,Males,25_to_29,4960
+Ang Mo Kio,Males,30_to_34,5330
+Ang Mo Kio,Males,35_to_39,4550
+Ang Mo Kio,Males,40_to_44,5180
+Ang Mo Kio,Males,45_to_49,5520
+Ang Mo Kio,Males,5_to_9,3020
+Ang Mo Kio,Males,50_to_54,5630
+Ang Mo Kio,Males,55_to_59,6040
+Ang Mo Kio,Males,60_to_64,6210
+Ang Mo Kio,Males,65_to_69,5510
+Ang Mo Kio,Males,70_to_74,4930
+Ang Mo Kio,Males,75_to_79,2970
+Ang Mo Kio,Males,80_to_84,2030
+Ang Mo Kio,Males,85_to_89,960
+Ang Mo Kio,Males,90_and_over,410
+Bedok,Females,0_to_4,4970
+Bedok,Females,10_to_14,6220
+Bedok,Females,15_to_19,6660
+Bedok,Females,20_to_24,7310
+Bedok,Females,25_to_29,8820
+Bedok,Females,30_to_34,10050
+Bedok,Females,35_to_39,9380
+Bedok,Females,40_to_44,10330
+Bedok,Females,45_to_49,10850
+Bedok,Females,5_to_9,5700
+Bedok,Females,50_to_54,10170
+Bedok,Females,55_to_59,10570
+Bedok,Females,60_to_64,11070
+Bedok,Females,65_to_69,10300
+Bedok,Females,70_to_74,8710
+Bedok,Females,75_to_79,5180
+Bedok,Females,80_to_84,3750
+Bedok,Females,85_to_89,2140
+Bedok,Females,90_and_over,1440
+Bedok,Males,0_to_4,5090
+Bedok,Males,10_to_14,6440
+Bedok,Males,15_to_19,6770
+Bedok,Males,20_to_24,7860
+Bedok,Males,25_to_29,9060
+Bedok,Males,30_to_34,9750
+Bedok,Males,35_to_39,8250
+Bedok,Males,40_to_44,8860
+Bedok,Males,45_to_49,9880
+Bedok,Males,5_to_9,5960
+Bedok,Males,50_to_54,9880
+Bedok,Males,55_to_59,10080
+Bedok,Males,60_to_64,10580
+Bedok,Males,65_to_69,9470
+Bedok,Males,70_to_74,7920
+Bedok,Males,75_to_79,4470
+Bedok,Males,80_to_84,2740
+Bedok,Males,85_to_89,1300
+Bedok,Males,90_and_over,660
+Bishan,Females,0_to_4,1320
+Bishan,Females,10_to_14,1870
+Bishan,Females,15_to_19,2150
+Bishan,Females,20_to_24,2270
+Bishan,Females,25_to_29,3080
+Bishan,Females,30_to_34,3200
+Bishan,Females,35_to_39,2600
+Bishan,Females,40_to_44,2960
+Bishan,Females,45_to_49,3200
+Bishan,Females,5_to_9,1650
+Bishan,Females,50_to_54,3230
+Bishan,Females,55_to_59,3550
+Bishan,Females,60_to_64,3600
+Bishan,Females,65_to_69,3250
+Bishan,Females,70_to_74,2510
+Bishan,Females,75_to_79,1520
+Bishan,Females,80_to_84,1160
+Bishan,Females,85_to_89,670
+Bishan,Females,90_and_over,500
+Bishan,Males,0_to_4,1400
+Bishan,Males,10_to_14,2140
+Bishan,Males,15_to_19,2320
+Bishan,Males,20_to_24,2470
+Bishan,Males,25_to_29,3210
+Bishan,Males,30_to_34,3270
+Bishan,Males,35_to_39,2250
+Bishan,Males,40_to_44,2480
+Bishan,Males,45_to_49,2830
+Bishan,Males,5_to_9,2000
+Bishan,Males,50_to_54,2940
+Bishan,Males,55_to_59,2870
+Bishan,Males,60_to_64,3290
+Bishan,Males,65_to_69,3010
+Bishan,Males,70_to_74,2340
+Bishan,Males,75_to_79,1230
+Bishan,Males,80_to_84,840
+Bishan,Males,85_to_89,380
+Bishan,Males,90_and_over,190
+Boon Lay,Females,0_to_4,0
+Boon Lay,Females,10_to_14,0
+Boon Lay,Females,15_to_19,0
+Boon Lay,Females,20_to_24,0
+Boon Lay,Females,25_to_29,0
+Boon Lay,Females,30_to_34,0
+Boon Lay,Females,35_to_39,0
+Boon Lay,Females,40_to_44,0
+Boon Lay,Females,45_to_49,0
+Boon Lay,Females,5_to_9,0
+Boon Lay,Females,50_to_54,0
+Boon Lay,Females,55_to_59,0
+Boon Lay,Females,60_to_64,0
+Boon Lay,Females,65_to_69,0
+Boon Lay,Females,70_to_74,0
+Boon Lay,Females,75_to_79,0
+Boon Lay,Females,80_to_84,0
+Boon Lay,Females,85_to_89,0
+Boon Lay,Females,90_and_over,0
+Boon Lay,Males,0_to_4,0
+Boon Lay,Males,10_to_14,0
+Boon Lay,Males,15_to_19,0
+Boon Lay,Males,20_to_24,0
+Boon Lay,Males,25_to_29,0
+Boon Lay,Males,30_to_34,0
+Boon Lay,Males,35_to_39,0
+Boon Lay,Males,40_to_44,0
+Boon Lay,Males,45_to_49,0
+Boon Lay,Males,5_to_9,0
+Boon Lay,Males,50_to_54,0
+Boon Lay,Males,55_to_59,0
+Boon Lay,Males,60_to_64,0
+Boon Lay,Males,65_to_69,0
+Boon Lay,Males,70_to_74,0
+Boon Lay,Males,75_to_79,0
+Boon Lay,Males,80_to_84,0
+Boon Lay,Males,85_to_89,0
+Boon Lay,Males,90_and_over,0
+Bukit Batok,Females,0_to_4,4400
+Bukit Batok,Females,10_to_14,3820
+Bukit Batok,Females,15_to_19,4100
+Bukit Batok,Females,20_to_24,4740
+Bukit Batok,Females,25_to_29,5900
+Bukit Batok,Females,30_to_34,7910
+Bukit Batok,Females,35_to_39,6120
+Bukit Batok,Females,40_to_44,5800
+Bukit Batok,Females,45_to_49,6020
+Bukit Batok,Females,5_to_9,3740
+Bukit Batok,Females,50_to_54,6080
+Bukit Batok,Females,55_to_59,6120
+Bukit Batok,Females,60_to_64,6240
+Bukit Batok,Females,65_to_69,5230
+Bukit Batok,Females,70_to_74,3620
+Bukit Batok,Females,75_to_79,1890
+Bukit Batok,Females,80_to_84,1310
+Bukit Batok,Females,85_to_89,690
+Bukit Batok,Females,90_and_over,500
+Bukit Batok,Males,0_to_4,4590
+Bukit Batok,Males,10_to_14,3760
+Bukit Batok,Males,15_to_19,4220
+Bukit Batok,Males,20_to_24,4910
+Bukit Batok,Males,25_to_29,5590
+Bukit Batok,Males,30_to_34,7310
+Bukit Batok,Males,35_to_39,5740
+Bukit Batok,Males,40_to_44,5240
+Bukit Batok,Males,45_to_49,5550
+Bukit Batok,Males,5_to_9,3990
+Bukit Batok,Males,50_to_54,5670
+Bukit Batok,Males,55_to_59,6270
+Bukit Batok,Males,60_to_64,5890
+Bukit Batok,Males,65_to_69,5280
+Bukit Batok,Males,70_to_74,3480
+Bukit Batok,Males,75_to_79,1710
+Bukit Batok,Males,80_to_84,1090
+Bukit Batok,Males,85_to_89,420
+Bukit Batok,Males,90_and_over,220
+Bukit Merah,Females,0_to_4,2800
+Bukit Merah,Females,10_to_14,3220
+Bukit Merah,Females,15_to_19,2960
+Bukit Merah,Females,20_to_24,3180
+Bukit Merah,Females,25_to_29,4470
+Bukit Merah,Females,30_to_34,5700
+Bukit Merah,Females,35_to_39,5340
+Bukit Merah,Females,40_to_44,5880
+Bukit Merah,Females,45_to_49,5980
+Bukit Merah,Females,5_to_9,3000
+Bukit Merah,Females,50_to_54,5340
+Bukit Merah,Females,55_to_59,5130
+Bukit Merah,Females,60_to_64,5170
+Bukit Merah,Females,65_to_69,5280
+Bukit Merah,Females,70_to_74,5260
+Bukit Merah,Females,75_to_79,3460
+Bukit Merah,Females,80_to_84,2940
+Bukit Merah,Females,85_to_89,1570
+Bukit Merah,Females,90_and_over,1090
+Bukit Merah,Males,0_to_4,2940
+Bukit Merah,Males,10_to_14,3210
+Bukit Merah,Males,15_to_19,3080
+Bukit Merah,Males,20_to_24,3360
+Bukit Merah,Males,25_to_29,3970
+Bukit Merah,Males,30_to_34,5100
+Bukit Merah,Males,35_to_39,4760
+Bukit Merah,Males,40_to_44,5270
+Bukit Merah,Males,45_to_49,5630
+Bukit Merah,Males,5_to_9,3220
+Bukit Merah,Males,50_to_54,5260
+Bukit Merah,Males,55_to_59,5280
+Bukit Merah,Males,60_to_64,5440
+Bukit Merah,Males,65_to_69,4970
+Bukit Merah,Males,70_to_74,4340
+Bukit Merah,Males,75_to_79,2660
+Bukit Merah,Males,80_to_84,1960
+Bukit Merah,Males,85_to_89,930
+Bukit Merah,Males,90_and_over,480
+Bukit Panjang,Females,0_to_4,2730
+Bukit Panjang,Females,10_to_14,3560
+Bukit Panjang,Females,15_to_19,3700
+Bukit Panjang,Females,20_to_24,4320
+Bukit Panjang,Females,25_to_29,5090
+Bukit Panjang,Females,30_to_34,5580
+Bukit Panjang,Females,35_to_39,5030
+Bukit Panjang,Females,40_to_44,4820
+Bukit Panjang,Females,45_to_49,5190
+Bukit Panjang,Females,5_to_9,3300
+Bukit Panjang,Females,50_to_54,5110
+Bukit Panjang,Females,55_to_59,5470
+Bukit Panjang,Females,60_to_64,5270
+Bukit Panjang,Females,65_to_69,4140
+Bukit Panjang,Females,70_to_74,2730
+Bukit Panjang,Females,75_to_79,1570
+Bukit Panjang,Females,80_to_84,1150
+Bukit Panjang,Females,85_to_89,640
+Bukit Panjang,Females,90_and_over,390
+Bukit Panjang,Males,0_to_4,2900
+Bukit Panjang,Males,10_to_14,3540
+Bukit Panjang,Males,15_to_19,3790
+Bukit Panjang,Males,20_to_24,4530
+Bukit Panjang,Males,25_to_29,5190
+Bukit Panjang,Males,30_to_34,5310
+Bukit Panjang,Males,35_to_39,4580
+Bukit Panjang,Males,40_to_44,4470
+Bukit Panjang,Males,45_to_49,4680
+Bukit Panjang,Males,5_to_9,3540
+Bukit Panjang,Males,50_to_54,4850
+Bukit Panjang,Males,55_to_59,5120
+Bukit Panjang,Males,60_to_64,5390
+Bukit Panjang,Males,65_to_69,4250
+Bukit Panjang,Males,70_to_74,2800
+Bukit Panjang,Males,75_to_79,1420
+Bukit Panjang,Males,80_to_84,740
+Bukit Panjang,Males,85_to_89,340
+Bukit Panjang,Males,90_and_over,160
+Bukit Timah,Females,0_to_4,1750
+Bukit Timah,Females,10_to_14,2800
+Bukit Timah,Females,15_to_19,2600
+Bukit Timah,Females,20_to_24,2360
+Bukit Timah,Females,25_to_29,2260
+Bukit Timah,Females,30_to_34,2490
+Bukit Timah,Females,35_to_39,2800
+Bukit Timah,Females,40_to_44,3160
+Bukit Timah,Females,45_to_49,3440
+Bukit Timah,Females,5_to_9,3050
+Bukit Timah,Females,50_to_54,3250
+Bukit Timah,Females,55_to_59,2690
+Bukit Timah,Females,60_to_64,2510
+Bukit Timah,Females,65_to_69,2200
+Bukit Timah,Females,70_to_74,2000
+Bukit Timah,Females,75_to_79,1260
+Bukit Timah,Females,80_to_84,980
+Bukit Timah,Females,85_to_89,570
+Bukit Timah,Females,90_and_over,410
+Bukit Timah,Males,0_to_4,1550
+Bukit Timah,Males,10_to_14,2260
+Bukit Timah,Males,15_to_19,2210
+Bukit Timah,Males,20_to_24,2070
+Bukit Timah,Males,25_to_29,2140
+Bukit Timah,Males,30_to_34,2010
+Bukit Timah,Males,35_to_39,2100
+Bukit Timah,Males,40_to_44,2720
+Bukit Timah,Males,45_to_49,3030
+Bukit Timah,Males,5_to_9,2310
+Bukit Timah,Males,50_to_54,3000
+Bukit Timah,Males,55_to_59,2610
+Bukit Timah,Males,60_to_64,2250
+Bukit Timah,Males,65_to_69,2140
+Bukit Timah,Males,70_to_74,1690
+Bukit Timah,Males,75_to_79,1180
+Bukit Timah,Males,80_to_84,770
+Bukit Timah,Males,85_to_89,410
+Bukit Timah,Males,90_and_over,210
+Central Water Catchment,Females,0_to_4,0
+Central Water Catchment,Females,10_to_14,0
+Central Water Catchment,Females,15_to_19,0
+Central Water Catchment,Females,20_to_24,0
+Central Water Catchment,Females,25_to_29,0
+Central Water Catchment,Females,30_to_34,0
+Central Water Catchment,Females,35_to_39,0
+Central Water Catchment,Females,40_to_44,0
+Central Water Catchment,Females,45_to_49,0
+Central Water Catchment,Females,5_to_9,0
+Central Water Catchment,Females,50_to_54,0
+Central Water Catchment,Females,55_to_59,0
+Central Water Catchment,Females,60_to_64,0
+Central Water Catchment,Females,65_to_69,0
+Central Water Catchment,Females,70_to_74,0
+Central Water Catchment,Females,75_to_79,0
+Central Water Catchment,Females,80_to_84,0
+Central Water Catchment,Females,85_to_89,0
+Central Water Catchment,Females,90_and_over,0
+Central Water Catchment,Males,0_to_4,0
+Central Water Catchment,Males,10_to_14,0
+Central Water Catchment,Males,15_to_19,0
+Central Water Catchment,Males,20_to_24,0
+Central Water Catchment,Males,25_to_29,0
+Central Water Catchment,Males,30_to_34,0
+Central Water Catchment,Males,35_to_39,0
+Central Water Catchment,Males,40_to_44,0
+Central Water Catchment,Males,45_to_49,0
+Central Water Catchment,Males,5_to_9,0
+Central Water Catchment,Males,50_to_54,0
+Central Water Catchment,Males,55_to_59,0
+Central Water Catchment,Males,60_to_64,0
+Central Water Catchment,Males,65_to_69,0
+Central Water Catchment,Males,70_to_74,0
+Central Water Catchment,Males,75_to_79,0
+Central Water Catchment,Males,80_to_84,0
+Central Water Catchment,Males,85_to_89,0
+Central Water Catchment,Males,90_and_over,0
+Changi,Females,0_to_4,60
+Changi,Females,10_to_14,70
+Changi,Females,15_to_19,50
+Changi,Females,20_to_24,30
+Changi,Females,25_to_29,60
+Changi,Females,30_to_34,70
+Changi,Females,35_to_39,70
+Changi,Females,40_to_44,70
+Changi,Females,45_to_49,80
+Changi,Females,5_to_9,90
+Changi,Females,50_to_54,60
+Changi,Females,55_to_59,50
+Changi,Females,60_to_64,50
+Changi,Females,65_to_69,20
+Changi,Females,70_to_74,40
+Changi,Females,75_to_79,0
+Changi,Females,80_to_84,30
+Changi,Females,85_to_89,10
+Changi,Females,90_and_over,0
+Changi,Males,0_to_4,50
+Changi,Males,10_to_14,80
+Changi,Males,15_to_19,60
+Changi,Males,20_to_24,50
+Changi,Males,25_to_29,50
+Changi,Males,30_to_34,60
+Changi,Males,35_to_39,60
+Changi,Males,40_to_44,90
+Changi,Males,45_to_49,90
+Changi,Males,5_to_9,40
+Changi,Males,50_to_54,80
+Changi,Males,55_to_59,50
+Changi,Males,60_to_64,60
+Changi,Males,65_to_69,30
+Changi,Males,70_to_74,30
+Changi,Males,75_to_79,20
+Changi,Males,80_to_84,10
+Changi,Males,85_to_89,10
+Changi,Males,90_and_over,0
+Changi Bay,Females,0_to_4,0
+Changi Bay,Females,10_to_14,0
+Changi Bay,Females,15_to_19,0
+Changi Bay,Females,20_to_24,0
+Changi Bay,Females,25_to_29,0
+Changi Bay,Females,30_to_34,0
+Changi Bay,Females,35_to_39,0
+Changi Bay,Females,40_to_44,0
+Changi Bay,Females,45_to_49,0
+Changi Bay,Females,5_to_9,0
+Changi Bay,Females,50_to_54,0
+Changi Bay,Females,55_to_59,0
+Changi Bay,Females,60_to_64,0
+Changi Bay,Females,65_to_69,0
+Changi Bay,Females,70_to_74,0
+Changi Bay,Females,75_to_79,0
+Changi Bay,Females,80_to_84,0
+Changi Bay,Females,85_to_89,0
+Changi Bay,Females,90_and_over,0
+Changi Bay,Males,0_to_4,0
+Changi Bay,Males,10_to_14,0
+Changi Bay,Males,15_to_19,0
+Changi Bay,Males,20_to_24,0
+Changi Bay,Males,25_to_29,0
+Changi Bay,Males,30_to_34,0
+Changi Bay,Males,35_to_39,0
+Changi Bay,Males,40_to_44,0
+Changi Bay,Males,45_to_49,0
+Changi Bay,Males,5_to_9,0
+Changi Bay,Males,50_to_54,0
+Changi Bay,Males,55_to_59,0
+Changi Bay,Males,60_to_64,0
+Changi Bay,Males,65_to_69,0
+Changi Bay,Males,70_to_74,0
+Changi Bay,Males,75_to_79,0
+Changi Bay,Males,80_to_84,0
+Changi Bay,Males,85_to_89,0
+Changi Bay,Males,90_and_over,0
+Choa Chu Kang,Females,0_to_4,4080
+Choa Chu Kang,Females,10_to_14,4670
+Choa Chu Kang,Females,15_to_19,5310
+Choa Chu Kang,Females,20_to_24,6820
+Choa Chu Kang,Females,25_to_29,8250
+Choa Chu Kang,Females,30_to_34,7550
+Choa Chu Kang,Females,35_to_39,6530
+Choa Chu Kang,Females,40_to_44,6550
+Choa Chu Kang,Females,45_to_49,6760
+Choa Chu Kang,Females,5_to_9,4510
+Choa Chu Kang,Females,50_to_54,7900
+Choa Chu Kang,Females,55_to_59,8270
+Choa Chu Kang,Females,60_to_64,6480
+Choa Chu Kang,Females,65_to_69,4780
+Choa Chu Kang,Females,70_to_74,3140
+Choa Chu Kang,Females,75_to_79,1690
+Choa Chu Kang,Females,80_to_84,1250
+Choa Chu Kang,Females,85_to_89,710
+Choa Chu Kang,Females,90_and_over,430
+Choa Chu Kang,Males,0_to_4,4260
+Choa Chu Kang,Males,10_to_14,4880
+Choa Chu Kang,Males,15_to_19,5590
+Choa Chu Kang,Males,20_to_24,7270
+Choa Chu Kang,Males,25_to_29,8700
+Choa Chu Kang,Males,30_to_34,7390
+Choa Chu Kang,Males,35_to_39,6200
+Choa Chu Kang,Males,40_to_44,5920
+Choa Chu Kang,Males,45_to_49,6250
+Choa Chu Kang,Males,5_to_9,4690
+Choa Chu Kang,Males,50_to_54,6860
+Choa Chu Kang,Males,55_to_59,8340
+Choa Chu Kang,Males,60_to_64,7120
+Choa Chu Kang,Males,65_to_69,5200
+Choa Chu Kang,Males,70_to_74,3170
+Choa Chu Kang,Males,75_to_79,1480
+Choa Chu Kang,Males,80_to_84,800
+Choa Chu Kang,Males,85_to_89,380
+Choa Chu Kang,Males,90_and_over,150
+Clementi,Females,0_to_4,1740
+Clementi,Females,10_to_14,2430
+Clementi,Females,15_to_19,2260
+Clementi,Females,20_to_24,2330
+Clementi,Females,25_to_29,2540
+Clementi,Females,30_to_34,3240
+Clementi,Females,35_to_39,3510
+Clementi,Females,40_to_44,4040
+Clementi,Females,45_to_49,3960
+Clementi,Females,5_to_9,2340
+Clementi,Females,50_to_54,3510
+Clementi,Females,55_to_59,3350
+Clementi,Females,60_to_64,3050
+Clementi,Females,65_to_69,3540
+Clementi,Females,70_to_74,3260
+Clementi,Females,75_to_79,1910
+Clementi,Females,80_to_84,1400
+Clementi,Females,85_to_89,720
+Clementi,Females,90_and_over,460
+Clementi,Males,0_to_4,1820
+Clementi,Males,10_to_14,2400
+Clementi,Males,15_to_19,2320
+Clementi,Males,20_to_24,2330
+Clementi,Males,25_to_29,2570
+Clementi,Males,30_to_34,2860
+Clementi,Males,35_to_39,3010
+Clementi,Males,40_to_44,3460
+Clementi,Males,45_to_49,3620
+Clementi,Males,5_to_9,2340
+Clementi,Males,50_to_54,3210
+Clementi,Males,55_to_59,3230
+Clementi,Males,60_to_64,2770
+Clementi,Males,65_to_69,2620
+Clementi,Males,70_to_74,2670
+Clementi,Males,75_to_79,1600
+Clementi,Males,80_to_84,1070
+Clementi,Males,85_to_89,460
+Clementi,Males,90_and_over,180
+Downtown Core,Females,0_to_4,100
+Downtown Core,Females,10_to_14,50
+Downtown Core,Females,15_to_19,80
+Downtown Core,Females,20_to_24,60
+Downtown Core,Females,25_to_29,170
+Downtown Core,Females,30_to_34,280
+Downtown Core,Females,35_to_39,260
+Downtown Core,Females,40_to_44,230
+Downtown Core,Females,45_to_49,180
+Downtown Core,Females,5_to_9,50
+Downtown Core,Females,50_to_54,140
+Downtown Core,Females,55_to_59,120
+Downtown Core,Females,60_to_64,80
+Downtown Core,Females,65_to_69,70
+Downtown Core,Females,70_to_74,50
+Downtown Core,Females,75_to_79,40
+Downtown Core,Females,80_to_84,20
+Downtown Core,Females,85_to_89,10
+Downtown Core,Females,90_and_over,10
+Downtown Core,Males,0_to_4,60
+Downtown Core,Males,10_to_14,60
+Downtown Core,Males,15_to_19,30
+Downtown Core,Males,20_to_24,60
+Downtown Core,Males,25_to_29,140
+Downtown Core,Males,30_to_34,240
+Downtown Core,Males,35_to_39,230
+Downtown Core,Males,40_to_44,220
+Downtown Core,Males,45_to_49,190
+Downtown Core,Males,5_to_9,60
+Downtown Core,Males,50_to_54,160
+Downtown Core,Males,55_to_59,110
+Downtown Core,Males,60_to_64,100
+Downtown Core,Males,65_to_69,70
+Downtown Core,Males,70_to_74,50
+Downtown Core,Males,75_to_79,30
+Downtown Core,Males,80_to_84,10
+Downtown Core,Males,85_to_89,10
+Downtown Core,Males,90_and_over,40
+Geylang,Females,0_to_4,1850
+Geylang,Females,10_to_14,2120
+Geylang,Females,15_to_19,2140
+Geylang,Females,20_to_24,2590
+Geylang,Females,25_to_29,3800
+Geylang,Females,30_to_34,4610
+Geylang,Females,35_to_39,4020
+Geylang,Females,40_to_44,4020
+Geylang,Females,45_to_49,4110
+Geylang,Females,5_to_9,2080
+Geylang,Females,50_to_54,3720
+Geylang,Females,55_to_59,3880
+Geylang,Females,60_to_64,4150
+Geylang,Females,65_to_69,3950
+Geylang,Females,70_to_74,3250
+Geylang,Females,75_to_79,2030
+Geylang,Females,80_to_84,1650
+Geylang,Females,85_to_89,950
+Geylang,Females,90_and_over,690
+Geylang,Males,0_to_4,1990
+Geylang,Males,10_to_14,2280
+Geylang,Males,15_to_19,2410
+Geylang,Males,20_to_24,2630
+Geylang,Males,25_to_29,3820
+Geylang,Males,30_to_34,4480
+Geylang,Males,35_to_39,3740
+Geylang,Males,40_to_44,3670
+Geylang,Males,45_to_49,3910
+Geylang,Males,5_to_9,2160
+Geylang,Males,50_to_54,3900
+Geylang,Males,55_to_59,4100
+Geylang,Males,60_to_64,4370
+Geylang,Males,65_to_69,3940
+Geylang,Males,70_to_74,2920
+Geylang,Males,75_to_79,1640
+Geylang,Males,80_to_84,1160
+Geylang,Males,85_to_89,530
+Geylang,Males,90_and_over,320
+Hougang,Females,0_to_4,4430
+Hougang,Females,10_to_14,4920
+Hougang,Females,15_to_19,5190
+Hougang,Females,20_to_24,6330
+Hougang,Females,25_to_29,8220
+Hougang,Females,30_to_34,9290
+Hougang,Females,35_to_39,8170
+Hougang,Females,40_to_44,7940
+Hougang,Females,45_to_49,8100
+Hougang,Females,5_to_9,4960
+Hougang,Females,50_to_54,8280
+Hougang,Females,55_to_59,9170
+Hougang,Females,60_to_64,9350
+Hougang,Females,65_to_69,8040
+Hougang,Females,70_to_74,5860
+Hougang,Females,75_to_79,3320
+Hougang,Females,80_to_84,2470
+Hougang,Females,85_to_89,1340
+Hougang,Females,90_and_over,900
+Hougang,Males,0_to_4,4520
+Hougang,Males,10_to_14,4910
+Hougang,Males,15_to_19,5410
+Hougang,Males,20_to_24,6740
+Hougang,Males,25_to_29,8460
+Hougang,Males,30_to_34,8990
+Hougang,Males,35_to_39,7390
+Hougang,Males,40_to_44,7180
+Hougang,Males,45_to_49,7680
+Hougang,Males,5_to_9,4880
+Hougang,Males,50_to_54,7480
+Hougang,Males,55_to_59,8940
+Hougang,Males,60_to_64,9400
+Hougang,Males,65_to_69,7990
+Hougang,Males,70_to_74,5510
+Hougang,Males,75_to_79,2900
+Hougang,Males,80_to_84,1770
+Hougang,Males,85_to_89,780
+Hougang,Males,90_and_over,330
+Jurong East,Females,0_to_4,1130
+Jurong East,Females,10_to_14,1580
+Jurong East,Females,15_to_19,1820
+Jurong East,Females,20_to_24,2170
+Jurong East,Females,25_to_29,2610
+Jurong East,Females,30_to_34,2680
+Jurong East,Females,35_to_39,2490
+Jurong East,Females,40_to_44,2610
+Jurong East,Females,45_to_49,2860
+Jurong East,Females,5_to_9,1280
+Jurong East,Females,50_to_54,2770
+Jurong East,Females,55_to_59,2880
+Jurong East,Females,60_to_64,3230
+Jurong East,Females,65_to_69,3100
+Jurong East,Females,70_to_74,2550
+Jurong East,Females,75_to_79,1270
+Jurong East,Females,80_to_84,900
+Jurong East,Females,85_to_89,470
+Jurong East,Females,90_and_over,290
+Jurong East,Males,0_to_4,1230
+Jurong East,Males,10_to_14,1650
+Jurong East,Males,15_to_19,1910
+Jurong East,Males,20_to_24,2380
+Jurong East,Males,25_to_29,2770
+Jurong East,Males,30_to_34,2790
+Jurong East,Males,35_to_39,2220
+Jurong East,Males,40_to_44,2330
+Jurong East,Males,45_to_49,2630
+Jurong East,Males,5_to_9,1400
+Jurong East,Males,50_to_54,2670
+Jurong East,Males,55_to_59,2940
+Jurong East,Males,60_to_64,3050
+Jurong East,Males,65_to_69,3060
+Jurong East,Males,70_to_74,2410
+Jurong East,Males,75_to_79,1250
+Jurong East,Males,80_to_84,750
+Jurong East,Males,85_to_89,300
+Jurong East,Males,90_and_over,130
+Jurong West,Females,0_to_4,4820
+Jurong West,Females,10_to_14,6980
+Jurong West,Females,15_to_19,7400
+Jurong West,Females,20_to_24,8030
+Jurong West,Females,25_to_29,9290
+Jurong West,Females,30_to_34,9450
+Jurong West,Females,35_to_39,9360
+Jurong West,Females,40_to_44,10500
+Jurong West,Females,45_to_49,9990
+Jurong West,Females,5_to_9,5930
+Jurong West,Females,50_to_54,9560
+Jurong West,Females,55_to_59,9320
+Jurong West,Females,60_to_64,8650
+Jurong West,Females,65_to_69,7770
+Jurong West,Females,70_to_74,5520
+Jurong West,Females,75_to_79,2890
+Jurong West,Females,80_to_84,1870
+Jurong West,Females,85_to_89,900
+Jurong West,Females,90_and_over,610
+Jurong West,Males,0_to_4,5010
+Jurong West,Males,10_to_14,7210
+Jurong West,Males,15_to_19,7860
+Jurong West,Males,20_to_24,8640
+Jurong West,Males,25_to_29,9590
+Jurong West,Males,30_to_34,9320
+Jurong West,Males,35_to_39,8370
+Jurong West,Males,40_to_44,9610
+Jurong West,Males,45_to_49,10260
+Jurong West,Males,5_to_9,6230
+Jurong West,Males,50_to_54,10060
+Jurong West,Males,55_to_59,9990
+Jurong West,Males,60_to_64,9110
+Jurong West,Males,65_to_69,7830
+Jurong West,Males,70_to_74,5660
+Jurong West,Males,75_to_79,2670
+Jurong West,Males,80_to_84,1470
+Jurong West,Males,85_to_89,610
+Jurong West,Males,90_and_over,200
+Kallang,Females,0_to_4,1810
+Kallang,Females,10_to_14,1930
+Kallang,Females,15_to_19,2060
+Kallang,Females,20_to_24,2240
+Kallang,Females,25_to_29,3000
+Kallang,Females,30_to_34,3940
+Kallang,Females,35_to_39,3660
+Kallang,Females,40_to_44,3860
+Kallang,Females,45_to_49,4010
+Kallang,Females,5_to_9,1910
+Kallang,Females,50_to_54,3670
+Kallang,Females,55_to_59,3380
+Kallang,Females,60_to_64,3620
+Kallang,Females,65_to_69,3460
+Kallang,Females,70_to_74,3260
+Kallang,Females,75_to_79,2010
+Kallang,Females,80_to_84,1710
+Kallang,Females,85_to_89,910
+Kallang,Females,90_and_over,730
+Kallang,Males,0_to_4,1950
+Kallang,Males,10_to_14,2100
+Kallang,Males,15_to_19,2080
+Kallang,Males,20_to_24,2310
+Kallang,Males,25_to_29,2850
+Kallang,Males,30_to_34,3570
+Kallang,Males,35_to_39,3420
+Kallang,Males,40_to_44,3680
+Kallang,Males,45_to_49,3830
+Kallang,Males,5_to_9,2110
+Kallang,Males,50_to_54,3770
+Kallang,Males,55_to_59,3840
+Kallang,Males,60_to_64,3950
+Kallang,Males,65_to_69,3570
+Kallang,Males,70_to_74,2980
+Kallang,Males,75_to_79,1730
+Kallang,Males,80_to_84,1290
+Kallang,Males,85_to_89,520
+Kallang,Males,90_and_over,320
+Lim Chu Kang,Females,0_to_4,0
+Lim Chu Kang,Females,10_to_14,0
+Lim Chu Kang,Females,15_to_19,0
+Lim Chu Kang,Females,20_to_24,0
+Lim Chu Kang,Females,25_to_29,0
+Lim Chu Kang,Females,30_to_34,0
+Lim Chu Kang,Females,35_to_39,0
+Lim Chu Kang,Females,40_to_44,0
+Lim Chu Kang,Females,45_to_49,0
+Lim Chu Kang,Females,5_to_9,0
+Lim Chu Kang,Females,50_to_54,0
+Lim Chu Kang,Females,55_to_59,0
+Lim Chu Kang,Females,60_to_64,0
+Lim Chu Kang,Females,65_to_69,0
+Lim Chu Kang,Females,70_to_74,0
+Lim Chu Kang,Females,75_to_79,0
+Lim Chu Kang,Females,80_to_84,0
+Lim Chu Kang,Females,85_to_89,0
+Lim Chu Kang,Females,90_and_over,0
+Lim Chu Kang,Males,0_to_4,0
+Lim Chu Kang,Males,10_to_14,0
+Lim Chu Kang,Males,15_to_19,0
+Lim Chu Kang,Males,20_to_24,0
+Lim Chu Kang,Males,25_to_29,0
+Lim Chu Kang,Males,30_to_34,0
+Lim Chu Kang,Males,35_to_39,0
+Lim Chu Kang,Males,40_to_44,0
+Lim Chu Kang,Males,45_to_49,0
+Lim Chu Kang,Males,5_to_9,0
+Lim Chu Kang,Males,50_to_54,0
+Lim Chu Kang,Males,55_to_59,0
+Lim Chu Kang,Males,60_to_64,0
+Lim Chu Kang,Males,65_to_69,0
+Lim Chu Kang,Males,70_to_74,0
+Lim Chu Kang,Males,75_to_79,0
+Lim Chu Kang,Males,80_to_84,0
+Lim Chu Kang,Males,85_to_89,0
+Lim Chu Kang,Males,90_and_over,0
+Mandai,Females,0_to_4,40
+Mandai,Females,10_to_14,60
+Mandai,Females,15_to_19,70
+Mandai,Females,20_to_24,70
+Mandai,Females,25_to_29,100
+Mandai,Females,30_to_34,70
+Mandai,Females,35_to_39,70
+Mandai,Females,40_to_44,50
+Mandai,Females,45_to_49,110
+Mandai,Females,5_to_9,40
+Mandai,Females,50_to_54,90
+Mandai,Females,55_to_59,90
+Mandai,Females,60_to_64,80
+Mandai,Females,65_to_69,40
+Mandai,Females,70_to_74,40
+Mandai,Females,75_to_79,20
+Mandai,Females,80_to_84,20
+Mandai,Females,85_to_89,10
+Mandai,Females,90_and_over,10
+Mandai,Males,0_to_4,30
+Mandai,Males,10_to_14,50
+Mandai,Males,15_to_19,70
+Mandai,Males,20_to_24,90
+Mandai,Males,25_to_29,70
+Mandai,Males,30_to_34,70
+Mandai,Males,35_to_39,60
+Mandai,Males,40_to_44,60
+Mandai,Males,45_to_49,90
+Mandai,Males,5_to_9,50
+Mandai,Males,50_to_54,70
+Mandai,Males,55_to_59,90
+Mandai,Males,60_to_64,70
+Mandai,Males,65_to_69,60
+Mandai,Males,70_to_74,40
+Mandai,Males,75_to_79,20
+Mandai,Males,80_to_84,10
+Mandai,Males,85_to_89,10
+Mandai,Males,90_and_over,0
+Marina East,Females,0_to_4,0
+Marina East,Females,10_to_14,0
+Marina East,Females,15_to_19,0
+Marina East,Females,20_to_24,0
+Marina East,Females,25_to_29,0
+Marina East,Females,30_to_34,0
+Marina East,Females,35_to_39,0
+Marina East,Females,40_to_44,0
+Marina East,Females,45_to_49,0
+Marina East,Females,5_to_9,0
+Marina East,Females,50_to_54,0
+Marina East,Females,55_to_59,0
+Marina East,Females,60_to_64,0
+Marina East,Females,65_to_69,0
+Marina East,Females,70_to_74,0
+Marina East,Females,75_to_79,0
+Marina East,Females,80_to_84,0
+Marina East,Females,85_to_89,0
+Marina East,Females,90_and_over,0
+Marina East,Males,0_to_4,0
+Marina East,Males,10_to_14,0
+Marina East,Males,15_to_19,0
+Marina East,Males,20_to_24,0
+Marina East,Males,25_to_29,0
+Marina East,Males,30_to_34,0
+Marina East,Males,35_to_39,0
+Marina East,Males,40_to_44,0
+Marina East,Males,45_to_49,0
+Marina East,Males,5_to_9,0
+Marina East,Males,50_to_54,0
+Marina East,Males,55_to_59,0
+Marina East,Males,60_to_64,0
+Marina East,Males,65_to_69,0
+Marina East,Males,70_to_74,0
+Marina East,Males,75_to_79,0
+Marina East,Males,80_to_84,0
+Marina East,Males,85_to_89,0
+Marina East,Males,90_and_over,0
+Marina South,Females,0_to_4,0
+Marina South,Females,10_to_14,0
+Marina South,Females,15_to_19,0
+Marina South,Females,20_to_24,0
+Marina South,Females,25_to_29,0
+Marina South,Females,30_to_34,0
+Marina South,Females,35_to_39,0
+Marina South,Females,40_to_44,0
+Marina South,Females,45_to_49,0
+Marina South,Females,5_to_9,0
+Marina South,Females,50_to_54,0
+Marina South,Females,55_to_59,0
+Marina South,Females,60_to_64,0
+Marina South,Females,65_to_69,0
+Marina South,Females,70_to_74,0
+Marina South,Females,75_to_79,0
+Marina South,Females,80_to_84,0
+Marina South,Females,85_to_89,0
+Marina South,Females,90_and_over,0
+Marina South,Males,0_to_4,0
+Marina South,Males,10_to_14,0
+Marina South,Males,15_to_19,0
+Marina South,Males,20_to_24,0
+Marina South,Males,25_to_29,0
+Marina South,Males,30_to_34,0
+Marina South,Males,35_to_39,0
+Marina South,Males,40_to_44,0
+Marina South,Males,45_to_49,0
+Marina South,Males,5_to_9,0
+Marina South,Males,50_to_54,0
+Marina South,Males,55_to_59,0
+Marina South,Males,60_to_64,0
+Marina South,Males,65_to_69,0
+Marina South,Males,70_to_74,0
+Marina South,Males,75_to_79,0
+Marina South,Males,80_to_84,0
+Marina South,Males,85_to_89,0
+Marina South,Males,90_and_over,0
+Marine Parade,Females,0_to_4,910
+Marine Parade,Females,10_to_14,1230
+Marine Parade,Females,15_to_19,1140
+Marine Parade,Females,20_to_24,1160
+Marine Parade,Females,25_to_29,1240
+Marine Parade,Females,30_to_34,1420
+Marine Parade,Females,35_to_39,1650
+Marine Parade,Females,40_to_44,2040
+Marine Parade,Females,45_to_49,2080
+Marine Parade,Females,5_to_9,1270
+Marine Parade,Females,50_to_54,1830
+Marine Parade,Females,55_to_59,1580
+Marine Parade,Females,60_to_64,1570
+Marine Parade,Females,65_to_69,1410
+Marine Parade,Females,70_to_74,1370
+Marine Parade,Females,75_to_79,970
+Marine Parade,Females,80_to_84,810
+Marine Parade,Females,85_to_89,510
+Marine Parade,Females,90_and_over,350
+Marine Parade,Males,0_to_4,880
+Marine Parade,Males,10_to_14,1210
+Marine Parade,Males,15_to_19,1070
+Marine Parade,Males,20_to_24,1170
+Marine Parade,Males,25_to_29,1170
+Marine Parade,Males,30_to_34,1170
+Marine Parade,Males,35_to_39,1280
+Marine Parade,Males,40_to_44,1680
+Marine Parade,Males,45_to_49,1810
+Marine Parade,Males,5_to_9,1270
+Marine Parade,Males,50_to_54,1750
+Marine Parade,Males,55_to_59,1520
+Marine Parade,Males,60_to_64,1420
+Marine Parade,Males,65_to_69,1260
+Marine Parade,Males,70_to_74,1070
+Marine Parade,Males,75_to_79,710
+Marine Parade,Males,80_to_84,570
+Marine Parade,Males,85_to_89,290
+Marine Parade,Males,90_and_over,180
+Museum,Females,0_to_4,10
+Museum,Females,10_to_14,10
+Museum,Females,15_to_19,20
+Museum,Females,20_to_24,10
+Museum,Females,25_to_29,30
+Museum,Females,30_to_34,30
+Museum,Females,35_to_39,30
+Museum,Females,40_to_44,40
+Museum,Females,45_to_49,30
+Museum,Females,5_to_9,20
+Museum,Females,50_to_54,30
+Museum,Females,55_to_59,20
+Museum,Females,60_to_64,20
+Museum,Females,65_to_69,20
+Museum,Females,70_to_74,10
+Museum,Females,75_to_79,0
+Museum,Females,80_to_84,0
+Museum,Females,85_to_89,0
+Museum,Females,90_and_over,0
+Museum,Males,0_to_4,10
+Museum,Males,10_to_14,20
+Museum,Males,15_to_19,0
+Museum,Males,20_to_24,10
+Museum,Males,25_to_29,10
+Museum,Males,30_to_34,30
+Museum,Males,35_to_39,20
+Museum,Males,40_to_44,40
+Museum,Males,45_to_49,40
+Museum,Males,5_to_9,10
+Museum,Males,50_to_54,40
+Museum,Males,55_to_59,20
+Museum,Males,60_to_64,20
+Museum,Males,65_to_69,10
+Museum,Males,70_to_74,10
+Museum,Males,75_to_79,0
+Museum,Males,80_to_84,0
+Museum,Males,85_to_89,0
+Museum,Males,90_and_over,0
+Newton,Females,0_to_4,200
+Newton,Females,10_to_14,280
+Newton,Females,15_to_19,260
+Newton,Females,20_to_24,180
+Newton,Females,25_to_29,240
+Newton,Females,30_to_34,330
+Newton,Females,35_to_39,410
+Newton,Females,40_to_44,460
+Newton,Females,45_to_49,470
+Newton,Females,5_to_9,280
+Newton,Females,50_to_54,370
+Newton,Females,55_to_59,310
+Newton,Females,60_to_64,240
+Newton,Females,65_to_69,210
+Newton,Females,70_to_74,180
+Newton,Females,75_to_79,110
+Newton,Females,80_to_84,70
+Newton,Females,85_to_89,40
+Newton,Females,90_and_over,40
+Newton,Males,0_to_4,230
+Newton,Males,10_to_14,270
+Newton,Males,15_to_19,190
+Newton,Males,20_to_24,170
+Newton,Males,25_to_29,170
+Newton,Males,30_to_34,240
+Newton,Males,35_to_39,290
+Newton,Males,40_to_44,360
+Newton,Males,45_to_49,400
+Newton,Males,5_to_9,380
+Newton,Males,50_to_54,370
+Newton,Males,55_to_59,340
+Newton,Males,60_to_64,270
+Newton,Males,65_to_69,190
+Newton,Males,70_to_74,190
+Newton,Males,75_to_79,110
+Newton,Males,80_to_84,70
+Newton,Males,85_to_89,20
+Newton,Males,90_and_over,40
+North-Eastern Islands,Females,0_to_4,0
+North-Eastern Islands,Females,10_to_14,0
+North-Eastern Islands,Females,15_to_19,0
+North-Eastern Islands,Females,20_to_24,0
+North-Eastern Islands,Females,25_to_29,0
+North-Eastern Islands,Females,30_to_34,0
+North-Eastern Islands,Females,35_to_39,0
+North-Eastern Islands,Females,40_to_44,0
+North-Eastern Islands,Females,45_to_49,0
+North-Eastern Islands,Females,5_to_9,0
+North-Eastern Islands,Females,50_to_54,0
+North-Eastern Islands,Females,55_to_59,0
+North-Eastern Islands,Females,60_to_64,0
+North-Eastern Islands,Females,65_to_69,0
+North-Eastern Islands,Females,70_to_74,0
+North-Eastern Islands,Females,75_to_79,0
+North-Eastern Islands,Females,80_to_84,0
+North-Eastern Islands,Females,85_to_89,0
+North-Eastern Islands,Females,90_and_over,0
+North-Eastern Islands,Males,0_to_4,0
+North-Eastern Islands,Males,10_to_14,0
+North-Eastern Islands,Males,15_to_19,0
+North-Eastern Islands,Males,20_to_24,0
+North-Eastern Islands,Males,25_to_29,0
+North-Eastern Islands,Males,30_to_34,0
+North-Eastern Islands,Males,35_to_39,0
+North-Eastern Islands,Males,40_to_44,0
+North-Eastern Islands,Males,45_to_49,0
+North-Eastern Islands,Males,5_to_9,0
+North-Eastern Islands,Males,50_to_54,0
+North-Eastern Islands,Males,55_to_59,0
+North-Eastern Islands,Males,60_to_64,0
+North-Eastern Islands,Males,65_to_69,0
+North-Eastern Islands,Males,70_to_74,0
+North-Eastern Islands,Males,75_to_79,0
+North-Eastern Islands,Males,80_to_84,0
+North-Eastern Islands,Males,85_to_89,0
+North-Eastern Islands,Males,90_and_over,0
+Novena,Females,0_to_4,1030
+Novena,Females,10_to_14,1250
+Novena,Females,15_to_19,1120
+Novena,Females,20_to_24,1130
+Novena,Females,25_to_29,1470
+Novena,Females,30_to_34,1910
+Novena,Females,35_to_39,1990
+Novena,Females,40_to_44,2340
+Novena,Females,45_to_49,2220
+Novena,Females,5_to_9,1230
+Novena,Females,50_to_54,1910
+Novena,Females,55_to_59,1720
+Novena,Females,60_to_64,1570
+Novena,Females,65_to_69,1470
+Novena,Females,70_to_74,1240
+Novena,Females,75_to_79,860
+Novena,Females,80_to_84,770
+Novena,Females,85_to_89,490
+Novena,Females,90_and_over,310
+Novena,Males,0_to_4,1180
+Novena,Males,10_to_14,1480
+Novena,Males,15_to_19,1260
+Novena,Males,20_to_24,1160
+Novena,Males,25_to_29,1370
+Novena,Males,30_to_34,1650
+Novena,Males,35_to_39,1680
+Novena,Males,40_to_44,1880
+Novena,Males,45_to_49,2140
+Novena,Males,5_to_9,1770
+Novena,Males,50_to_54,1920
+Novena,Males,55_to_59,1730
+Novena,Males,60_to_64,1530
+Novena,Males,65_to_69,1310
+Novena,Males,70_to_74,1050
+Novena,Males,75_to_79,700
+Novena,Males,80_to_84,520
+Novena,Males,85_to_89,280
+Novena,Males,90_and_over,150
+Orchard,Females,0_to_4,20
+Orchard,Females,10_to_14,50
+Orchard,Females,15_to_19,30
+Orchard,Females,20_to_24,20
+Orchard,Females,25_to_29,30
+Orchard,Females,30_to_34,50
+Orchard,Females,35_to_39,50
+Orchard,Females,40_to_44,50
+Orchard,Females,45_to_49,70
+Orchard,Females,5_to_9,20
+Orchard,Females,50_to_54,40
+Orchard,Females,55_to_59,20
+Orchard,Females,60_to_64,40
+Orchard,Females,65_to_69,30
+Orchard,Females,70_to_74,20
+Orchard,Females,75_to_79,20
+Orchard,Females,80_to_84,0
+Orchard,Females,85_to_89,0
+Orchard,Females,90_and_over,0
+Orchard,Males,0_to_4,20
+Orchard,Males,10_to_14,40
+Orchard,Males,15_to_19,20
+Orchard,Males,20_to_24,10
+Orchard,Males,25_to_29,20
+Orchard,Males,30_to_34,60
+Orchard,Males,35_to_39,20
+Orchard,Males,40_to_44,50
+Orchard,Males,45_to_49,60
+Orchard,Males,5_to_9,20
+Orchard,Males,50_to_54,50
+Orchard,Males,55_to_59,20
+Orchard,Males,60_to_64,60
+Orchard,Males,65_to_69,20
+Orchard,Males,70_to_74,20
+Orchard,Males,75_to_79,10
+Orchard,Males,80_to_84,10
+Orchard,Males,85_to_89,0
+Orchard,Males,90_and_over,0
+Outram,Females,0_to_4,270
+Outram,Females,10_to_14,370
+Outram,Females,15_to_19,290
+Outram,Females,20_to_24,290
+Outram,Females,25_to_29,440
+Outram,Females,30_to_34,550
+Outram,Females,35_to_39,530
+Outram,Females,40_to_44,760
+Outram,Females,45_to_49,650
+Outram,Females,5_to_9,310
+Outram,Females,50_to_54,570
+Outram,Females,55_to_59,610
+Outram,Females,60_to_64,580
+Outram,Females,65_to_69,600
+Outram,Females,70_to_74,670
+Outram,Females,75_to_79,440
+Outram,Females,80_to_84,340
+Outram,Females,85_to_89,190
+Outram,Females,90_and_over,240
+Outram,Males,0_to_4,250
+Outram,Males,10_to_14,360
+Outram,Males,15_to_19,290
+Outram,Males,20_to_24,260
+Outram,Males,25_to_29,460
+Outram,Males,30_to_34,560
+Outram,Males,35_to_39,520
+Outram,Males,40_to_44,630
+Outram,Males,45_to_49,700
+Outram,Males,5_to_9,300
+Outram,Males,50_to_54,600
+Outram,Males,55_to_59,720
+Outram,Males,60_to_64,820
+Outram,Males,65_to_69,730
+Outram,Males,70_to_74,660
+Outram,Males,75_to_79,370
+Outram,Males,80_to_84,300
+Outram,Males,85_to_89,130
+Outram,Males,90_and_over,110
+Pasir Ris,Females,0_to_4,2730
+Pasir Ris,Females,10_to_14,3540
+Pasir Ris,Females,15_to_19,4000
+Pasir Ris,Females,20_to_24,5330
+Pasir Ris,Females,25_to_29,6550
+Pasir Ris,Females,30_to_34,5170
+Pasir Ris,Females,35_to_39,4570
+Pasir Ris,Females,40_to_44,4940
+Pasir Ris,Females,45_to_49,5450
+Pasir Ris,Females,5_to_9,3100
+Pasir Ris,Females,50_to_54,6210
+Pasir Ris,Females,55_to_59,7260
+Pasir Ris,Females,60_to_64,5410
+Pasir Ris,Females,65_to_69,3720
+Pasir Ris,Females,70_to_74,2520
+Pasir Ris,Females,75_to_79,1420
+Pasir Ris,Females,80_to_84,1100
+Pasir Ris,Females,85_to_89,620
+Pasir Ris,Females,90_and_over,390
+Pasir Ris,Males,0_to_4,2820
+Pasir Ris,Males,10_to_14,3720
+Pasir Ris,Males,15_to_19,4340
+Pasir Ris,Males,20_to_24,5690
+Pasir Ris,Males,25_to_29,7110
+Pasir Ris,Males,30_to_34,5140
+Pasir Ris,Males,35_to_39,4020
+Pasir Ris,Males,40_to_44,4430
+Pasir Ris,Males,45_to_49,4810
+Pasir Ris,Males,5_to_9,3430
+Pasir Ris,Males,50_to_54,5180
+Pasir Ris,Males,55_to_59,6800
+Pasir Ris,Males,60_to_64,5890
+Pasir Ris,Males,65_to_69,4000
+Pasir Ris,Males,70_to_74,2490
+Pasir Ris,Males,75_to_79,1180
+Pasir Ris,Males,80_to_84,670
+Pasir Ris,Males,85_to_89,330
+Pasir Ris,Males,90_and_over,180
+Paya Lebar,Females,0_to_4,0
+Paya Lebar,Females,10_to_14,0
+Paya Lebar,Females,15_to_19,0
+Paya Lebar,Females,20_to_24,0
+Paya Lebar,Females,25_to_29,0
+Paya Lebar,Females,30_to_34,0
+Paya Lebar,Females,35_to_39,0
+Paya Lebar,Females,40_to_44,0
+Paya Lebar,Females,45_to_49,0
+Paya Lebar,Females,5_to_9,0
+Paya Lebar,Females,50_to_54,0
+Paya Lebar,Females,55_to_59,0
+Paya Lebar,Females,60_to_64,0
+Paya Lebar,Females,65_to_69,0
+Paya Lebar,Females,70_to_74,0
+Paya Lebar,Females,75_to_79,0
+Paya Lebar,Females,80_to_84,0
+Paya Lebar,Females,85_to_89,0
+Paya Lebar,Females,90_and_over,0
+Paya Lebar,Males,0_to_4,0
+Paya Lebar,Males,10_to_14,0
+Paya Lebar,Males,15_to_19,0
+Paya Lebar,Males,20_to_24,0
+Paya Lebar,Males,25_to_29,0
+Paya Lebar,Males,30_to_34,0
+Paya Lebar,Males,35_to_39,0
+Paya Lebar,Males,40_to_44,0
+Paya Lebar,Males,45_to_49,0
+Paya Lebar,Males,5_to_9,0
+Paya Lebar,Males,50_to_54,0
+Paya Lebar,Males,55_to_59,0
+Paya Lebar,Males,60_to_64,0
+Paya Lebar,Males,65_to_69,0
+Paya Lebar,Males,70_to_74,0
+Paya Lebar,Males,75_to_79,0
+Paya Lebar,Males,80_to_84,0
+Paya Lebar,Males,85_to_89,0
+Paya Lebar,Males,90_and_over,0
+Pioneer,Females,0_to_4,0
+Pioneer,Females,10_to_14,0
+Pioneer,Females,15_to_19,0
+Pioneer,Females,20_to_24,0
+Pioneer,Females,25_to_29,0
+Pioneer,Females,30_to_34,0
+Pioneer,Females,35_to_39,0
+Pioneer,Females,40_to_44,0
+Pioneer,Females,45_to_49,0
+Pioneer,Females,5_to_9,0
+Pioneer,Females,50_to_54,0
+Pioneer,Females,55_to_59,0
+Pioneer,Females,60_to_64,0
+Pioneer,Females,65_to_69,0
+Pioneer,Females,70_to_74,0
+Pioneer,Females,75_to_79,0
+Pioneer,Females,80_to_84,0
+Pioneer,Females,85_to_89,0
+Pioneer,Females,90_and_over,0
+Pioneer,Males,0_to_4,0
+Pioneer,Males,10_to_14,0
+Pioneer,Males,15_to_19,0
+Pioneer,Males,20_to_24,0
+Pioneer,Males,25_to_29,0
+Pioneer,Males,30_to_34,0
+Pioneer,Males,35_to_39,0
+Pioneer,Males,40_to_44,0
+Pioneer,Males,45_to_49,0
+Pioneer,Males,5_to_9,0
+Pioneer,Males,50_to_54,0
+Pioneer,Males,55_to_59,0
+Pioneer,Males,60_to_64,0
+Pioneer,Males,65_to_69,0
+Pioneer,Males,70_to_74,0
+Pioneer,Males,75_to_79,0
+Pioneer,Males,80_to_84,0
+Pioneer,Males,85_to_89,0
+Pioneer,Males,90_and_over,0
+Punggol,Females,0_to_4,6940
+Punggol,Females,10_to_14,6070
+Punggol,Females,15_to_19,4860
+Punggol,Females,20_to_24,3900
+Punggol,Females,25_to_29,4890
+Punggol,Females,30_to_34,9370
+Punggol,Females,35_to_39,11140
+Punggol,Females,40_to_44,9820
+Punggol,Females,45_to_49,7770
+Punggol,Females,5_to_9,7660
+Punggol,Females,50_to_54,5370
+Punggol,Females,55_to_59,4340
+Punggol,Females,60_to_64,3680
+Punggol,Females,65_to_69,3260
+Punggol,Females,70_to_74,2660
+Punggol,Females,75_to_79,1370
+Punggol,Females,80_to_84,880
+Punggol,Females,85_to_89,420
+Punggol,Females,90_and_over,270
+Punggol,Males,0_to_4,7090
+Punggol,Males,10_to_14,6700
+Punggol,Males,15_to_19,4950
+Punggol,Males,20_to_24,4170
+Punggol,Males,25_to_29,4110
+Punggol,Males,30_to_34,7330
+Punggol,Males,35_to_39,9640
+Punggol,Males,40_to_44,9630
+Punggol,Males,45_to_49,8380
+Punggol,Males,5_to_9,8240
+Punggol,Males,50_to_54,5890
+Punggol,Males,55_to_59,4700
+Punggol,Males,60_to_64,3570
+Punggol,Males,65_to_69,2880
+Punggol,Males,70_to_74,2190
+Punggol,Males,75_to_79,1140
+Punggol,Males,80_to_84,670
+Punggol,Males,85_to_89,240
+Punggol,Males,90_and_over,80
+Queenstown,Females,0_to_4,1810
+Queenstown,Females,10_to_14,2030
+Queenstown,Females,15_to_19,1930
+Queenstown,Females,20_to_24,2390
+Queenstown,Females,25_to_29,2960
+Queenstown,Females,30_to_34,3760
+Queenstown,Females,35_to_39,3620
+Queenstown,Females,40_to_44,3910
+Queenstown,Females,45_to_49,3910
+Queenstown,Females,5_to_9,1990
+Queenstown,Females,50_to_54,3650
+Queenstown,Females,55_to_59,3470
+Queenstown,Females,60_to_64,3260
+Queenstown,Females,65_to_69,3230
+Queenstown,Females,70_to_74,3260
+Queenstown,Females,75_to_79,2220
+Queenstown,Females,80_to_84,2040
+Queenstown,Females,85_to_89,1210
+Queenstown,Females,90_and_over,740
+Queenstown,Males,0_to_4,1870
+Queenstown,Males,10_to_14,2090
+Queenstown,Males,15_to_19,2110
+Queenstown,Males,20_to_24,2190
+Queenstown,Males,25_to_29,2910
+Queenstown,Males,30_to_34,3410
+Queenstown,Males,35_to_39,3160
+Queenstown,Males,40_to_44,3370
+Queenstown,Males,45_to_49,3480
+Queenstown,Males,5_to_9,2180
+Queenstown,Males,50_to_54,3400
+Queenstown,Males,55_to_59,3330
+Queenstown,Males,60_to_64,3030
+Queenstown,Males,65_to_69,2690
+Queenstown,Males,70_to_74,2390
+Queenstown,Males,75_to_79,1570
+Queenstown,Males,80_to_84,1260
+Queenstown,Males,85_to_89,670
+Queenstown,Males,90_and_over,370
+River Valley,Females,0_to_4,250
+River Valley,Females,10_to_14,340
+River Valley,Females,15_to_19,330
+River Valley,Females,20_to_24,300
+River Valley,Females,25_to_29,330
+River Valley,Females,30_to_34,420
+River Valley,Females,35_to_39,500
+River Valley,Females,40_to_44,630
+River Valley,Females,45_to_49,580
+River Valley,Females,5_to_9,390
+River Valley,Females,50_to_54,540
+River Valley,Females,55_to_59,340
+River Valley,Females,60_to_64,300
+River Valley,Females,65_to_69,250
+River Valley,Females,70_to_74,210
+River Valley,Females,75_to_79,140
+River Valley,Females,80_to_84,90
+River Valley,Females,85_to_89,50
+River Valley,Females,90_and_over,40
+River Valley,Males,0_to_4,260
+River Valley,Males,10_to_14,280
+River Valley,Males,15_to_19,260
+River Valley,Males,20_to_24,180
+River Valley,Males,25_to_29,250
+River Valley,Males,30_to_34,320
+River Valley,Males,35_to_39,390
+River Valley,Males,40_to_44,490
+River Valley,Males,45_to_49,530
+River Valley,Males,5_to_9,320
+River Valley,Males,50_to_54,530
+River Valley,Males,55_to_59,360
+River Valley,Males,60_to_64,290
+River Valley,Males,65_to_69,230
+River Valley,Males,70_to_74,200
+River Valley,Males,75_to_79,110
+River Valley,Males,80_to_84,70
+River Valley,Males,85_to_89,30
+River Valley,Males,90_and_over,20
+Rochor,Females,0_to_4,180
+Rochor,Females,10_to_14,220
+Rochor,Females,15_to_19,230
+Rochor,Females,20_to_24,270
+Rochor,Females,25_to_29,370
+Rochor,Females,30_to_34,510
+Rochor,Females,35_to_39,480
+Rochor,Females,40_to_44,480
+Rochor,Females,45_to_49,510
+Rochor,Females,5_to_9,210
+Rochor,Females,50_to_54,470
+Rochor,Females,55_to_59,420
+Rochor,Females,60_to_64,430
+Rochor,Females,65_to_69,430
+Rochor,Females,70_to_74,440
+Rochor,Females,75_to_79,300
+Rochor,Females,80_to_84,200
+Rochor,Females,85_to_89,120
+Rochor,Females,90_and_over,60
+Rochor,Males,0_to_4,180
+Rochor,Males,10_to_14,190
+Rochor,Males,15_to_19,230
+Rochor,Males,20_to_24,270
+Rochor,Males,25_to_29,360
+Rochor,Males,30_to_34,510
+Rochor,Males,35_to_39,440
+Rochor,Males,40_to_44,540
+Rochor,Males,45_to_49,550
+Rochor,Males,5_to_9,190
+Rochor,Males,50_to_54,500
+Rochor,Males,55_to_59,470
+Rochor,Males,60_to_64,480
+Rochor,Males,65_to_69,420
+Rochor,Males,70_to_74,380
+Rochor,Males,75_to_79,230
+Rochor,Males,80_to_84,150
+Rochor,Males,85_to_89,80
+Rochor,Males,90_and_over,140
+Seletar,Females,0_to_4,0
+Seletar,Females,10_to_14,10
+Seletar,Females,15_to_19,10
+Seletar,Females,20_to_24,10
+Seletar,Females,25_to_29,0
+Seletar,Females,30_to_34,0
+Seletar,Females,35_to_39,10
+Seletar,Females,40_to_44,10
+Seletar,Females,45_to_49,20
+Seletar,Females,5_to_9,10
+Seletar,Females,50_to_54,20
+Seletar,Females,55_to_59,10
+Seletar,Females,60_to_64,10
+Seletar,Females,65_to_69,0
+Seletar,Females,70_to_74,0
+Seletar,Females,75_to_79,0
+Seletar,Females,80_to_84,0
+Seletar,Females,85_to_89,0
+Seletar,Females,90_and_over,0
+Seletar,Males,0_to_4,0
+Seletar,Males,10_to_14,10
+Seletar,Males,15_to_19,10
+Seletar,Males,20_to_24,10
+Seletar,Males,25_to_29,10
+Seletar,Males,30_to_34,0
+Seletar,Males,35_to_39,0
+Seletar,Males,40_to_44,10
+Seletar,Males,45_to_49,20
+Seletar,Males,5_to_9,10
+Seletar,Males,50_to_54,20
+Seletar,Males,55_to_59,20
+Seletar,Males,60_to_64,10
+Seletar,Males,65_to_69,10
+Seletar,Males,70_to_74,0
+Seletar,Males,75_to_79,0
+Seletar,Males,80_to_84,0
+Seletar,Males,85_to_89,0
+Seletar,Males,90_and_over,0
+Sembawang,Females,0_to_4,3460
+Sembawang,Females,10_to_14,3040
+Sembawang,Females,15_to_19,3200
+Sembawang,Females,20_to_24,3170
+Sembawang,Females,25_to_29,3900
+Sembawang,Females,30_to_34,5310
+Sembawang,Females,35_to_39,4410
+Sembawang,Females,40_to_44,4540
+Sembawang,Females,45_to_49,4720
+Sembawang,Females,5_to_9,2940
+Sembawang,Females,50_to_54,4010
+Sembawang,Females,55_to_59,3430
+Sembawang,Females,60_to_64,2910
+Sembawang,Females,65_to_69,2190
+Sembawang,Females,70_to_74,1470
+Sembawang,Females,75_to_79,860
+Sembawang,Females,80_to_84,690
+Sembawang,Females,85_to_89,310
+Sembawang,Females,90_and_over,220
+Sembawang,Males,0_to_4,3640
+Sembawang,Males,10_to_14,3230
+Sembawang,Males,15_to_19,3220
+Sembawang,Males,20_to_24,3340
+Sembawang,Males,25_to_29,3460
+Sembawang,Males,30_to_34,5060
+Sembawang,Males,35_to_39,4250
+Sembawang,Males,40_to_44,4160
+Sembawang,Males,45_to_49,4290
+Sembawang,Males,5_to_9,3190
+Sembawang,Males,50_to_54,3970
+Sembawang,Males,55_to_59,3770
+Sembawang,Males,60_to_64,3100
+Sembawang,Males,65_to_69,2260
+Sembawang,Males,70_to_74,1350
+Sembawang,Males,75_to_79,710
+Sembawang,Males,80_to_84,440
+Sembawang,Males,85_to_89,200
+Sembawang,Males,90_and_over,70
+Sengkang,Females,0_to_4,6900
+Sengkang,Females,10_to_14,7880
+Sengkang,Females,15_to_19,6940
+Sengkang,Females,20_to_24,6640
+Sengkang,Females,25_to_29,7570
+Sengkang,Females,30_to_34,10980
+Sengkang,Females,35_to_39,12520
+Sengkang,Females,40_to_44,12140
+Sengkang,Females,45_to_49,10600
+Sengkang,Females,5_to_9,8380
+Sengkang,Females,50_to_54,8490
+Sengkang,Females,55_to_59,7520
+Sengkang,Females,60_to_64,7250
+Sengkang,Females,65_to_69,5830
+Sengkang,Females,70_to_74,4110
+Sengkang,Females,75_to_79,2290
+Sengkang,Females,80_to_84,1460
+Sengkang,Females,85_to_89,820
+Sengkang,Females,90_and_over,570
+Sengkang,Males,0_to_4,7400
+Sengkang,Males,10_to_14,8180
+Sengkang,Males,15_to_19,7290
+Sengkang,Males,20_to_24,6950
+Sengkang,Males,25_to_29,7200
+Sengkang,Males,30_to_34,9360
+Sengkang,Males,35_to_39,10890
+Sengkang,Males,40_to_44,11230
+Sengkang,Males,45_to_49,10460
+Sengkang,Males,5_to_9,8900
+Sengkang,Males,50_to_54,8680
+Sengkang,Males,55_to_59,7780
+Sengkang,Males,60_to_64,7010
+Sengkang,Males,65_to_69,5670
+Sengkang,Males,70_to_74,3780
+Sengkang,Males,75_to_79,1860
+Sengkang,Males,80_to_84,1090
+Sengkang,Males,85_to_89,350
+Sengkang,Males,90_and_over,150
+Serangoon,Females,0_to_4,1860
+Serangoon,Females,10_to_14,2560
+Serangoon,Females,15_to_19,2780
+Serangoon,Females,20_to_24,3270
+Serangoon,Females,25_to_29,4370
+Serangoon,Females,30_to_34,4640
+Serangoon,Females,35_to_39,3740
+Serangoon,Females,40_to_44,3970
+Serangoon,Females,45_to_49,4280
+Serangoon,Females,5_to_9,2220
+Serangoon,Females,50_to_54,4350
+Serangoon,Females,55_to_59,4670
+Serangoon,Females,60_to_64,5130
+Serangoon,Females,65_to_69,4730
+Serangoon,Females,70_to_74,3530
+Serangoon,Females,75_to_79,2070
+Serangoon,Females,80_to_84,1640
+Serangoon,Females,85_to_89,900
+Serangoon,Females,90_and_over,640
+Serangoon,Males,0_to_4,1930
+Serangoon,Males,10_to_14,2690
+Serangoon,Males,15_to_19,2990
+Serangoon,Males,20_to_24,3650
+Serangoon,Males,25_to_29,4440
+Serangoon,Males,30_to_34,4510
+Serangoon,Males,35_to_39,3410
+Serangoon,Males,40_to_44,3460
+Serangoon,Males,45_to_49,3640
+Serangoon,Males,5_to_9,2500
+Serangoon,Males,50_to_54,3820
+Serangoon,Males,55_to_59,4070
+Serangoon,Males,60_to_64,4500
+Serangoon,Males,65_to_69,4440
+Serangoon,Males,70_to_74,3220
+Serangoon,Males,75_to_79,1750
+Serangoon,Males,80_to_84,1150
+Serangoon,Males,85_to_89,560
+Serangoon,Males,90_and_over,260
+Simpang,Females,0_to_4,0
+Simpang,Females,10_to_14,0
+Simpang,Females,15_to_19,0
+Simpang,Females,20_to_24,0
+Simpang,Females,25_to_29,0
+Simpang,Females,30_to_34,0
+Simpang,Females,35_to_39,0
+Simpang,Females,40_to_44,0
+Simpang,Females,45_to_49,0
+Simpang,Females,5_to_9,0
+Simpang,Females,50_to_54,0
+Simpang,Females,55_to_59,0
+Simpang,Females,60_to_64,0
+Simpang,Females,65_to_69,0
+Simpang,Females,70_to_74,0
+Simpang,Females,75_to_79,0
+Simpang,Females,80_to_84,0
+Simpang,Females,85_to_89,0
+Simpang,Females,90_and_over,0
+Simpang,Males,0_to_4,0
+Simpang,Males,10_to_14,0
+Simpang,Males,15_to_19,0
+Simpang,Males,20_to_24,0
+Simpang,Males,25_to_29,0
+Simpang,Males,30_to_34,0
+Simpang,Males,35_to_39,0
+Simpang,Males,40_to_44,0
+Simpang,Males,45_to_49,0
+Simpang,Males,5_to_9,0
+Simpang,Males,50_to_54,0
+Simpang,Males,55_to_59,0
+Simpang,Males,60_to_64,0
+Simpang,Males,65_to_69,0
+Simpang,Males,70_to_74,0
+Simpang,Males,75_to_79,0
+Simpang,Males,80_to_84,0
+Simpang,Males,85_to_89,0
+Simpang,Males,90_and_over,0
+Singapore River,Females,0_to_4,130
+Singapore River,Females,10_to_14,120
+Singapore River,Females,15_to_19,80
+Singapore River,Females,20_to_24,60
+Singapore River,Females,25_to_29,90
+Singapore River,Females,30_to_34,150
+Singapore River,Females,35_to_39,220
+Singapore River,Females,40_to_44,240
+Singapore River,Females,45_to_49,210
+Singapore River,Females,5_to_9,130
+Singapore River,Females,50_to_54,140
+Singapore River,Females,55_to_59,90
+Singapore River,Females,60_to_64,70
+Singapore River,Females,65_to_69,70
+Singapore River,Females,70_to_74,40
+Singapore River,Females,75_to_79,20
+Singapore River,Females,80_to_84,20
+Singapore River,Females,85_to_89,0
+Singapore River,Females,90_and_over,0
+Singapore River,Males,0_to_4,110
+Singapore River,Males,10_to_14,90
+Singapore River,Males,15_to_19,70
+Singapore River,Males,20_to_24,50
+Singapore River,Males,25_to_29,60
+Singapore River,Males,30_to_34,110
+Singapore River,Males,35_to_39,160
+Singapore River,Males,40_to_44,190
+Singapore River,Males,45_to_49,210
+Singapore River,Males,5_to_9,150
+Singapore River,Males,50_to_54,180
+Singapore River,Males,55_to_59,110
+Singapore River,Males,60_to_64,80
+Singapore River,Males,65_to_69,50
+Singapore River,Males,70_to_74,40
+Singapore River,Males,75_to_79,30
+Singapore River,Males,80_to_84,10
+Singapore River,Males,85_to_89,0
+Singapore River,Males,90_and_over,0
+Southern Islands,Females,0_to_4,100
+Southern Islands,Females,10_to_14,70
+Southern Islands,Females,15_to_19,80
+Southern Islands,Females,20_to_24,60
+Southern Islands,Females,25_to_29,40
+Southern Islands,Females,30_to_34,70
+Southern Islands,Females,35_to_39,100
+Southern Islands,Females,40_to_44,140
+Southern Islands,Females,45_to_49,120
+Southern Islands,Females,5_to_9,80
+Southern Islands,Females,50_to_54,120
+Southern Islands,Females,55_to_59,90
+Southern Islands,Females,60_to_64,60
+Southern Islands,Females,65_to_69,30
+Southern Islands,Females,70_to_74,20
+Southern Islands,Females,75_to_79,20
+Southern Islands,Females,80_to_84,10
+Southern Islands,Females,85_to_89,10
+Southern Islands,Females,90_and_over,0
+Southern Islands,Males,0_to_4,80
+Southern Islands,Males,10_to_14,50
+Southern Islands,Males,15_to_19,40
+Southern Islands,Males,20_to_24,30
+Southern Islands,Males,25_to_29,30
+Southern Islands,Males,30_to_34,40
+Southern Islands,Males,35_to_39,70
+Southern Islands,Males,40_to_44,90
+Southern Islands,Males,45_to_49,110
+Southern Islands,Males,5_to_9,80
+Southern Islands,Males,50_to_54,130
+Southern Islands,Males,55_to_59,110
+Southern Islands,Males,60_to_64,80
+Southern Islands,Males,65_to_69,50
+Southern Islands,Males,70_to_74,30
+Southern Islands,Males,75_to_79,10
+Southern Islands,Males,80_to_84,10
+Southern Islands,Males,85_to_89,0
+Southern Islands,Males,90_and_over,0
+Straits View,Females,0_to_4,0
+Straits View,Females,10_to_14,0
+Straits View,Females,15_to_19,0
+Straits View,Females,20_to_24,0
+Straits View,Females,25_to_29,0
+Straits View,Females,30_to_34,0
+Straits View,Females,35_to_39,0
+Straits View,Females,40_to_44,0
+Straits View,Females,45_to_49,0
+Straits View,Females,5_to_9,0
+Straits View,Females,50_to_54,0
+Straits View,Females,55_to_59,0
+Straits View,Females,60_to_64,0
+Straits View,Females,65_to_69,0
+Straits View,Females,70_to_74,0
+Straits View,Females,75_to_79,0
+Straits View,Females,80_to_84,0
+Straits View,Females,85_to_89,0
+Straits View,Females,90_and_over,0
+Straits View,Males,0_to_4,0
+Straits View,Males,10_to_14,0
+Straits View,Males,15_to_19,0
+Straits View,Males,20_to_24,0
+Straits View,Males,25_to_29,0
+Straits View,Males,30_to_34,0
+Straits View,Males,35_to_39,0
+Straits View,Males,40_to_44,0
+Straits View,Males,45_to_49,0
+Straits View,Males,5_to_9,0
+Straits View,Males,50_to_54,0
+Straits View,Males,55_to_59,0
+Straits View,Males,60_to_64,0
+Straits View,Males,65_to_69,0
+Straits View,Males,70_to_74,0
+Straits View,Males,75_to_79,0
+Straits View,Males,80_to_84,0
+Straits View,Males,85_to_89,0
+Straits View,Males,90_and_over,0
+Sungei Kadut,Females,0_to_4,10
+Sungei Kadut,Females,10_to_14,10
+Sungei Kadut,Females,15_to_19,10
+Sungei Kadut,Females,20_to_24,20
+Sungei Kadut,Females,25_to_29,30
+Sungei Kadut,Females,30_to_34,20
+Sungei Kadut,Females,35_to_39,30
+Sungei Kadut,Females,40_to_44,20
+Sungei Kadut,Females,45_to_49,20
+Sungei Kadut,Females,5_to_9,10
+Sungei Kadut,Females,50_to_54,30
+Sungei Kadut,Females,55_to_59,30
+Sungei Kadut,Females,60_to_64,30
+Sungei Kadut,Females,65_to_69,20
+Sungei Kadut,Females,70_to_74,20
+Sungei Kadut,Females,75_to_79,10
+Sungei Kadut,Females,80_to_84,10
+Sungei Kadut,Females,85_to_89,10
+Sungei Kadut,Females,90_and_over,10
+Sungei Kadut,Males,0_to_4,10
+Sungei Kadut,Males,10_to_14,10
+Sungei Kadut,Males,15_to_19,10
+Sungei Kadut,Males,20_to_24,30
+Sungei Kadut,Males,25_to_29,20
+Sungei Kadut,Males,30_to_34,20
+Sungei Kadut,Males,35_to_39,20
+Sungei Kadut,Males,40_to_44,10
+Sungei Kadut,Males,45_to_49,20
+Sungei Kadut,Males,5_to_9,20
+Sungei Kadut,Males,50_to_54,30
+Sungei Kadut,Males,55_to_59,20
+Sungei Kadut,Males,60_to_64,20
+Sungei Kadut,Males,65_to_69,20
+Sungei Kadut,Males,70_to_74,20
+Sungei Kadut,Males,75_to_79,10
+Sungei Kadut,Males,80_to_84,10
+Sungei Kadut,Males,85_to_89,10
+Sungei Kadut,Males,90_and_over,0
+Tampines,Females,0_to_4,6300
+Tampines,Females,10_to_14,5680
+Tampines,Females,15_to_19,5950
+Tampines,Females,20_to_24,7580
+Tampines,Females,25_to_29,10580
+Tampines,Females,30_to_34,11830
+Tampines,Females,35_to_39,9600
+Tampines,Females,40_to_44,9090
+Tampines,Females,45_to_49,8540
+Tampines,Females,5_to_9,6010
+Tampines,Females,50_to_54,9400
+Tampines,Females,55_to_59,10810
+Tampines,Females,60_to_64,11310
+Tampines,Females,65_to_69,9340
+Tampines,Females,70_to_74,6200
+Tampines,Females,75_to_79,3190
+Tampines,Females,80_to_84,2420
+Tampines,Females,85_to_89,1310
+Tampines,Females,90_and_over,890
+Tampines,Males,0_to_4,6540
+Tampines,Males,10_to_14,6210
+Tampines,Males,15_to_19,6330
+Tampines,Males,20_to_24,8040
+Tampines,Males,25_to_29,10500
+Tampines,Males,30_to_34,11690
+Tampines,Males,35_to_39,9130
+Tampines,Males,40_to_44,8450
+Tampines,Males,45_to_49,8010
+Tampines,Males,5_to_9,6430
+Tampines,Males,50_to_54,7910
+Tampines,Males,55_to_59,9480
+Tampines,Males,60_to_64,10350
+Tampines,Males,65_to_69,9140
+Tampines,Males,70_to_74,6140
+Tampines,Males,75_to_79,2720
+Tampines,Males,80_to_84,1550
+Tampines,Males,85_to_89,740
+Tampines,Males,90_and_over,300
+Tanglin,Females,0_to_4,570
+Tanglin,Females,10_to_14,750
+Tanglin,Females,15_to_19,660
+Tanglin,Females,20_to_24,580
+Tanglin,Females,25_to_29,580
+Tanglin,Females,30_to_34,800
+Tanglin,Females,35_to_39,1010
+Tanglin,Females,40_to_44,1130
+Tanglin,Females,45_to_49,1220
+Tanglin,Females,5_to_9,890
+Tanglin,Females,50_to_54,990
+Tanglin,Females,55_to_59,740
+Tanglin,Females,60_to_64,630
+Tanglin,Females,65_to_69,590
+Tanglin,Females,70_to_74,510
+Tanglin,Females,75_to_79,340
+Tanglin,Females,80_to_84,230
+Tanglin,Females,85_to_89,120
+Tanglin,Females,90_and_over,90
+Tanglin,Males,0_to_4,520
+Tanglin,Males,10_to_14,740
+Tanglin,Males,15_to_19,530
+Tanglin,Males,20_to_24,490
+Tanglin,Males,25_to_29,480
+Tanglin,Males,30_to_34,620
+Tanglin,Males,35_to_39,720
+Tanglin,Males,40_to_44,880
+Tanglin,Males,45_to_49,1050
+Tanglin,Males,5_to_9,730
+Tanglin,Males,50_to_54,980
+Tanglin,Males,55_to_59,780
+Tanglin,Males,60_to_64,600
+Tanglin,Males,65_to_69,520
+Tanglin,Males,70_to_74,450
+Tanglin,Males,75_to_79,290
+Tanglin,Males,80_to_84,200
+Tanglin,Males,85_to_89,90
+Tanglin,Males,90_and_over,50
+Tengah,Females,0_to_4,0
+Tengah,Females,10_to_14,0
+Tengah,Females,15_to_19,0
+Tengah,Females,20_to_24,0
+Tengah,Females,25_to_29,0
+Tengah,Females,30_to_34,0
+Tengah,Females,35_to_39,0
+Tengah,Females,40_to_44,0
+Tengah,Females,45_to_49,0
+Tengah,Females,5_to_9,0
+Tengah,Females,50_to_54,0
+Tengah,Females,55_to_59,0
+Tengah,Females,60_to_64,0
+Tengah,Females,65_to_69,0
+Tengah,Females,70_to_74,0
+Tengah,Females,75_to_79,0
+Tengah,Females,80_to_84,0
+Tengah,Females,85_to_89,0
+Tengah,Females,90_and_over,0
+Tengah,Males,0_to_4,0
+Tengah,Males,10_to_14,0
+Tengah,Males,15_to_19,0
+Tengah,Males,20_to_24,0
+Tengah,Males,25_to_29,0
+Tengah,Males,30_to_34,0
+Tengah,Males,35_to_39,0
+Tengah,Males,40_to_44,0
+Tengah,Males,45_to_49,0
+Tengah,Males,5_to_9,0
+Tengah,Males,50_to_54,0
+Tengah,Males,55_to_59,0
+Tengah,Males,60_to_64,0
+Tengah,Males,65_to_69,0
+Tengah,Males,70_to_74,0
+Tengah,Males,75_to_79,0
+Tengah,Males,80_to_84,0
+Tengah,Males,85_to_89,0
+Tengah,Males,90_and_over,0
+Toa Payoh,Females,0_to_4,2550
+Toa Payoh,Females,10_to_14,2700
+Toa Payoh,Females,15_to_19,2660
+Toa Payoh,Females,20_to_24,2920
+Toa Payoh,Females,25_to_29,4230
+Toa Payoh,Females,30_to_34,5770
+Toa Payoh,Females,35_to_39,4490
+Toa Payoh,Females,40_to_44,4740
+Toa Payoh,Females,45_to_49,5000
+Toa Payoh,Females,5_to_9,2560
+Toa Payoh,Females,50_to_54,4670
+Toa Payoh,Females,55_to_59,4560
+Toa Payoh,Females,60_to_64,4810
+Toa Payoh,Females,65_to_69,4500
+Toa Payoh,Females,70_to_74,3930
+Toa Payoh,Females,75_to_79,2740
+Toa Payoh,Females,80_to_84,2490
+Toa Payoh,Females,85_to_89,1300
+Toa Payoh,Females,90_and_over,850
+Toa Payoh,Males,0_to_4,2740
+Toa Payoh,Males,10_to_14,2790
+Toa Payoh,Males,15_to_19,2840
+Toa Payoh,Males,20_to_24,3050
+Toa Payoh,Males,25_to_29,3960
+Toa Payoh,Males,30_to_34,5190
+Toa Payoh,Males,35_to_39,4120
+Toa Payoh,Males,40_to_44,4060
+Toa Payoh,Males,45_to_49,4520
+Toa Payoh,Males,5_to_9,2920
+Toa Payoh,Males,50_to_54,4340
+Toa Payoh,Males,55_to_59,4380
+Toa Payoh,Males,60_to_64,4490
+Toa Payoh,Males,65_to_69,4060
+Toa Payoh,Males,70_to_74,3220
+Toa Payoh,Males,75_to_79,2040
+Toa Payoh,Males,80_to_84,1580
+Toa Payoh,Males,85_to_89,740
+Toa Payoh,Males,90_and_over,370
+Tuas,Females,0_to_4,0
+Tuas,Females,10_to_14,0
+Tuas,Females,15_to_19,0
+Tuas,Females,20_to_24,0
+Tuas,Females,25_to_29,0
+Tuas,Females,30_to_34,0
+Tuas,Females,35_to_39,0
+Tuas,Females,40_to_44,0
+Tuas,Females,45_to_49,0
+Tuas,Females,5_to_9,0
+Tuas,Females,50_to_54,0
+Tuas,Females,55_to_59,0
+Tuas,Females,60_to_64,0
+Tuas,Females,65_to_69,0
+Tuas,Females,70_to_74,0
+Tuas,Females,75_to_79,0
+Tuas,Females,80_to_84,0
+Tuas,Females,85_to_89,0
+Tuas,Females,90_and_over,0
+Tuas,Males,0_to_4,0
+Tuas,Males,10_to_14,0
+Tuas,Males,15_to_19,0
+Tuas,Males,20_to_24,0
+Tuas,Males,25_to_29,0
+Tuas,Males,30_to_34,0
+Tuas,Males,35_to_39,0
+Tuas,Males,40_to_44,0
+Tuas,Males,45_to_49,0
+Tuas,Males,5_to_9,0
+Tuas,Males,50_to_54,0
+Tuas,Males,55_to_59,0
+Tuas,Males,60_to_64,0
+Tuas,Males,65_to_69,0
+Tuas,Males,70_to_74,0
+Tuas,Males,75_to_79,0
+Tuas,Males,80_to_84,0
+Tuas,Males,85_to_89,0
+Tuas,Males,90_and_over,0
+Western Islands,Females,0_to_4,0
+Western Islands,Females,10_to_14,0
+Western Islands,Females,15_to_19,0
+Western Islands,Females,20_to_24,0
+Western Islands,Females,25_to_29,0
+Western Islands,Females,30_to_34,0
+Western Islands,Females,35_to_39,0
+Western Islands,Females,40_to_44,0
+Western Islands,Females,45_to_49,0
+Western Islands,Females,5_to_9,0
+Western Islands,Females,50_to_54,0
+Western Islands,Females,55_to_59,0
+Western Islands,Females,60_to_64,0
+Western Islands,Females,65_to_69,0
+Western Islands,Females,70_to_74,0
+Western Islands,Females,75_to_79,0
+Western Islands,Females,80_to_84,0
+Western Islands,Females,85_to_89,0
+Western Islands,Females,90_and_over,0
+Western Islands,Males,0_to_4,0
+Western Islands,Males,10_to_14,0
+Western Islands,Males,15_to_19,0
+Western Islands,Males,20_to_24,0
+Western Islands,Males,25_to_29,0
+Western Islands,Males,30_to_34,0
+Western Islands,Males,35_to_39,0
+Western Islands,Males,40_to_44,0
+Western Islands,Males,45_to_49,0
+Western Islands,Males,5_to_9,0
+Western Islands,Males,50_to_54,0
+Western Islands,Males,55_to_59,0
+Western Islands,Males,60_to_64,0
+Western Islands,Males,65_to_69,0
+Western Islands,Males,70_to_74,0
+Western Islands,Males,75_to_79,0
+Western Islands,Males,80_to_84,0
+Western Islands,Males,85_to_89,0
+Western Islands,Males,90_and_over,0
+Western Water Catchment,Females,0_to_4,20
+Western Water Catchment,Females,10_to_14,20
+Western Water Catchment,Females,15_to_19,10
+Western Water Catchment,Females,20_to_24,70
+Western Water Catchment,Females,25_to_29,20
+Western Water Catchment,Females,30_to_34,20
+Western Water Catchment,Females,35_to_39,30
+Western Water Catchment,Females,40_to_44,30
+Western Water Catchment,Females,45_to_49,30
+Western Water Catchment,Females,5_to_9,20
+Western Water Catchment,Females,50_to_54,20
+Western Water Catchment,Females,55_to_59,20
+Western Water Catchment,Females,60_to_64,20
+Western Water Catchment,Females,65_to_69,10
+Western Water Catchment,Females,70_to_74,0
+Western Water Catchment,Females,75_to_79,0
+Western Water Catchment,Females,80_to_84,0
+Western Water Catchment,Females,85_to_89,0
+Western Water Catchment,Females,90_and_over,0
+Western Water Catchment,Males,0_to_4,10
+Western Water Catchment,Males,10_to_14,10
+Western Water Catchment,Males,15_to_19,10
+Western Water Catchment,Males,20_to_24,20
+Western Water Catchment,Males,25_to_29,20
+Western Water Catchment,Males,30_to_34,20
+Western Water Catchment,Males,35_to_39,30
+Western Water Catchment,Males,40_to_44,20
+Western Water Catchment,Males,45_to_49,30
+Western Water Catchment,Males,5_to_9,30
+Western Water Catchment,Males,50_to_54,20
+Western Water Catchment,Males,55_to_59,20
+Western Water Catchment,Males,60_to_64,20
+Western Water Catchment,Males,65_to_69,10
+Western Water Catchment,Males,70_to_74,0
+Western Water Catchment,Males,75_to_79,0
+Western Water Catchment,Males,80_to_84,0
+Western Water Catchment,Males,85_to_89,0
+Western Water Catchment,Males,90_and_over,0
+Woodlands,Females,0_to_4,5430
+Woodlands,Females,10_to_14,6530
+Woodlands,Females,15_to_19,7360
+Woodlands,Females,20_to_24,9620
+Woodlands,Females,25_to_29,10340
+Woodlands,Females,30_to_34,9410
+Woodlands,Females,35_to_39,8600
+Woodlands,Females,40_to_44,8940
+Woodlands,Females,45_to_49,9560
+Woodlands,Females,5_to_9,5950
+Woodlands,Females,50_to_54,10790
+Woodlands,Females,55_to_59,10030
+Woodlands,Females,60_to_64,8240
+Woodlands,Females,65_to_69,5910
+Woodlands,Females,70_to_74,4010
+Woodlands,Females,75_to_79,2210
+Woodlands,Females,80_to_84,1630
+Woodlands,Females,85_to_89,800
+Woodlands,Females,90_and_over,440
+Woodlands,Males,0_to_4,5670
+Woodlands,Males,10_to_14,6860
+Woodlands,Males,15_to_19,8050
+Woodlands,Males,20_to_24,10390
+Woodlands,Males,25_to_29,11100
+Woodlands,Males,30_to_34,9450
+Woodlands,Males,35_to_39,8020
+Woodlands,Males,40_to_44,8310
+Woodlands,Males,45_to_49,8920
+Woodlands,Males,5_to_9,6320
+Woodlands,Males,50_to_54,9790
+Woodlands,Males,55_to_59,10800
+Woodlands,Males,60_to_64,8880
+Woodlands,Males,65_to_69,6450
+Woodlands,Males,70_to_74,3940
+Woodlands,Males,75_to_79,1850
+Woodlands,Males,80_to_84,1200
+Woodlands,Males,85_to_89,500
+Woodlands,Males,90_and_over,210
+Yishun,Females,0_to_4,5240
+Yishun,Females,10_to_14,5320
+Yishun,Females,15_to_19,5260
+Yishun,Females,20_to_24,6010
+Yishun,Females,25_to_29,7730
+Yishun,Females,30_to_34,9770
+Yishun,Females,35_to_39,9390
+Yishun,Females,40_to_44,8480
+Yishun,Females,45_to_49,8010
+Yishun,Females,5_to_9,5820
+Yishun,Females,50_to_54,7560
+Yishun,Females,55_to_59,8680
+Yishun,Females,60_to_64,8430
+Yishun,Females,65_to_69,6790
+Yishun,Females,70_to_74,4790
+Yishun,Females,75_to_79,2610
+Yishun,Females,80_to_84,1850
+Yishun,Females,85_to_89,920
+Yishun,Females,90_and_over,550
+Yishun,Males,0_to_4,5570
+Yishun,Males,10_to_14,5680
+Yishun,Males,15_to_19,5570
+Yishun,Males,20_to_24,6470
+Yishun,Males,25_to_29,7760
+Yishun,Males,30_to_34,9220
+Yishun,Males,35_to_39,8440
+Yishun,Males,40_to_44,8190
+Yishun,Males,45_to_49,7720
+Yishun,Males,5_to_9,6100
+Yishun,Males,50_to_54,7330
+Yishun,Males,55_to_59,8180
+Yishun,Males,60_to_64,8200
+Yishun,Males,65_to_69,6670
+Yishun,Males,70_to_74,4550
+Yishun,Males,75_to_79,2140
+Yishun,Males,80_to_84,1240
+Yishun,Males,85_to_89,530
+Yishun,Males,90_and_over,190
