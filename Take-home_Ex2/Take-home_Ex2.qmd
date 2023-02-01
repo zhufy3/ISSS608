@@ -282,7 +282,7 @@ From the foundation of the author's plot, we can add new more functions to the p
 
 🎁 Adding a **subtitle** to **shorten** the main title.
 
-### 6 Plotting age-sex pyramid
+## 6 Plotting age-sex pyramid
 
 Now we can plot the chart using code chunk below.
 
