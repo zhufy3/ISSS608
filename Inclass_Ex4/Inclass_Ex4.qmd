@@ -44,14 +44,14 @@ exam_data<-read_csv("data/Exam_data.csv")
 
 Today we are going to explore the function `plot_ly()` to create an interactive plot.
 
-```{r}
+```{r eval=FALSE}
 plot_ly(data = exam_data,
         x = ~ENGLISH,
         y = ~MATHS,
         color = ~RACE)
 ```
 
-```{r}
+```{r eval=FALSE}
 p<-ggplot(data = exam_data,
           aes(x = MATHS,
               y = ENGLISH)) +
