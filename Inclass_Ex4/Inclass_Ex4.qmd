@@ -32,8 +32,10 @@ Packages will be used in this exercise are:
 -   *PMCMRplus*
 
 ```{r}
-install.packages("ggstatsplot")
-pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus)
+library(ggstatsplot)
+update.packages("cli")
+library(cli)
+pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus, readxl, see, parameters, performance)
 ```
 
 ## 3 Data used
@@ -70,10 +72,25 @@ ggplotly(p)
 
 ```{r eval=FALSE}
 ggbetweenstats(
-  data = exam_data,
-  x = GENDER,
+  data = exam,
+  x = GENDER, 
   y = MATHS,
-  type = "o",
+  type = "np",
   messages = FALSE
 )
+```
+
+```{r}
+ggscatterstats(
+  data = exam,
+  x = MATHS,
+  y = ENGLISH,
+  marginal = FALSE,
+  )
+```
+
+```{r}
+car_resale <- read_xls("data/ToyotaCorolla.xls", 
+                       "data")
+car_resale
 ```
