@@ -1,5 +1,5 @@
 ---
-title: "Hands-on Exercise 4"
+title: "In-class Exercise 4"
 author: "Fangyuan Zhu"
 date: 4 Feb 2023
 date-modified: "`r Sys.Date()`"
@@ -32,7 +32,7 @@ Packages will be used in this exercise are:
 -   *PMCMRplus*
 
 ```{r}
-pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus, readxl, see, parameters, performance)
+pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus, readxl, see, parameters, performance, dplyr)
 ```
 
 ## 3 Data used
