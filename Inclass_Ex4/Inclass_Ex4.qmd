@@ -67,24 +67,9 @@ ggplotly(p)
 
 ## 5 Working with *ggstatsplot* package
 
-```{r eval=FALSE}
-ggbetweenstats(
-  data = exam,
-  x = GENDER, 
-  y = MATHS,
-  type = "np",
-  messages = FALSE
-)
-```
+Need to still figure out why I cannot install *ggstatsplot* package.
 
-```{r}
-ggscatterstats(
-  data = exam,
-  x = MATHS,
-  y = ENGLISH,
-  marginal = FALSE,
-  )
-```
+## 6 Regression modeling
 
 ```{r}
 car_resale <- read_xls("data/ToyotaCorolla.xls", 
@@ -93,7 +78,6 @@ car_resale
 ```
 
 ```{r}
-library(dplyr)
 my_sum<-exam_data%>%
   group_by(RACE)%>%
   summarise(
@@ -102,6 +86,17 @@ my_sum<-exam_data%>%
     sd = sd(MATHS)
   )%>%
   mutate(se = sd/sqrt(n-1))
+```
+
+```{r}
+model<-lm(Price ~ Age_08_04 + Mfg_Year + KM +
+            Weight + Guarantee_Period, data = car_resale)
+model
+```
+
+```{r}
+check_c <- check_collinearity(model)
+plot(check_c)
 ```
 
 ```{r}
@@ -122,4 +117,6 @@ ggplot(my_sum) +
     color = "red",
     size = 1.5,
     alpha = 1)
+
+model[["coefficients"]]
 ```
