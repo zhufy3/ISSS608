@@ -1,5 +1,51 @@
 ---
 title: "Hands-on Exercise 4"
 author: "Fangyuan Zhu"
+date: 4 Feb 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
 editor: visual
 ---
+
+## 1 Get started
+
+In this In-class exercise, we will explore more interesting packages to visualize data with statistical summary information shown in the plots.
+
+## 2 Packages used
+
+Packages will be used in this exercise are:
+
+-   *plotly*
+
+-   *tidyverse*
+
+-   *DT*
+
+-   *patchwork*
+
+```{r}
+pacman::p_load(plotly, tidyverse, DT, patchwork)
+```
+
+## 3 Data used
+
+Data we will use in this exercise is *Exam_data.csv,* and we can import the data with codes chunk below.
+
+```{r}
+exam_data<-read_csv("data/Exam_data.csv")
+```
+
+## 4 Working with visual variable: *plot_ly()* method
+
+Today we are going to explore the function `plot_ly()` to create an interactive plot.
+
+```{r}
+plot_ly(data = exam_data,
+        x = ~ENGLISH,
+        y = ~MATHS,
+        color = ~RACE)
+```
