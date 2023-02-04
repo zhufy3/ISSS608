@@ -7,7 +7,6 @@ execute:
   echo: true
   eval: true
   warning: false
-format: html
 editor: visual
 ---
 
@@ -29,10 +28,8 @@ Packages will be used in this exercise are:
 
 -   *ggstatsplot*
 
--   *PMCMRplus*
-
 ```{r}
-pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus, readxl, see, parameters, performance, dplyr)
+pacman::p_load(ggplot, plotly, readr, tidyverse, DT, patchwork, ggstatsplot, readxl, see, parameters, performance, dplyr)
 ```
 
 ## 3 Data used
