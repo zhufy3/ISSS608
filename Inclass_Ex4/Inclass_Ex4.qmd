@@ -27,8 +27,13 @@ Packages will be used in this exercise are:
 
 -   *patchwork*
 
+-   *ggstatsplot*
+
+-   *PMCMRplus*
+
 ```{r}
-pacman::p_load(plotly, tidyverse, DT, patchwork)
+install.packages("ggstatsplot")
+pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus)
 ```
 
 ## 3 Data used
@@ -48,4 +53,27 @@ plot_ly(data = exam_data,
         x = ~ENGLISH,
         y = ~MATHS,
         color = ~RACE)
+```
+
+```{r}
+p<-ggplot(data = exam_data,
+          aes(x = MATHS,
+              y = ENGLISH)) +
+  geom_point(dotsize = 1) +
+  coord_cartesian(xlim = c(0,100),
+                  ylim = c(0,100))
+
+ggplotly(p)
+```
+
+## 5 Working with *ggstatsplot* package
+
+```{r eval=FALSE}
+ggbetweenstats(
+  data = exam_data,
+  x = GENDER,
+  y = MATHS,
+  type = "o",
+  messages = FALSE
+)
 ```
