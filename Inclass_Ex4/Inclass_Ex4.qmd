@@ -32,9 +32,6 @@ Packages will be used in this exercise are:
 -   *PMCMRplus*
 
 ```{r}
-library(ggstatsplot)
-update.packages("cli")
-library(cli)
 pacman::p_load(plotly, tidyverse, DT, patchwork, ggstatsplot, PMCMRplus, readxl, see, parameters, performance)
 ```
 
@@ -93,4 +90,36 @@ ggscatterstats(
 car_resale <- read_xls("data/ToyotaCorolla.xls", 
                        "data")
 car_resale
+```
+
+```{r}
+library(dplyr)
+my_sum<-exam_data%>%
+  group_by(RACE)%>%
+  summarise(
+    n = n(),
+    mean = mean(MATHS),
+    sd = sd(MATHS)
+  )%>%
+  mutate(se = sd/sqrt(n-1))
+```
+
+```{r}
+ggplot(my_sum) +
+  geom_errorbar(
+    aes(x = RACE,
+        ymin = mean - se,
+        ymax = mean + se),
+    width = 0.2,
+    colour = "black",
+    alpha = 0.9,
+    size = 0.5
+  ) +
+  geom_point(aes(
+    x = RACE,
+    y = mean),
+    stat = "identity",
+    color = "red",
+    size = 1.5,
+    alpha = 1)
 ```
