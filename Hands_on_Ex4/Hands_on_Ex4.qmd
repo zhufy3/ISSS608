@@ -1,0 +1,33 @@
+---
+title: "Hands-on Exercise 4"
+author: "Fangyuan Zhu"
+editor: visual
+---
+
+## 1 Get started
+
+In this exercise, we are going to explore packages that give us statistical summary for the data we care about.
+
+## 2 Importing packages
+
+We will use:
+
+-   ggstatsplot
+
+-   tidyverse
+
+packages in this exercise.
+
+```{r}
+pacman::p_load(ggstatsplot, tidyverse)
+```
+
+## 3 Data used
+
+*Exam_data.csv*
+
+## 4 Importing data used
+
+```{r}
+exam<-read_csv("data/Exam_data.csv")
+```
