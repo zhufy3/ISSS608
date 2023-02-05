@@ -32,7 +32,7 @@ Packages will be used in this exercise are:
 -   *readr*
 
 ```{r}
-pacman::p_load(ggplot, plotly, readr, tidyverse, DT, patchwork, ggstatsplot, readxl, see, parameters, performance, dplyr)
+pacman::p_load(ggplot2, plotly, readr, tidyverse, DT, patchwork, ggstatsplot, readxl, see, parameters, performance, dplyr)
 ```
 
 ## 3 Data used
@@ -47,14 +47,16 @@ exam_data<-read_csv("data/Exam_data.csv")
 
 Today we are going to explore the function `plot_ly()` to create an interactive plot.
 
-```{r eval=FALSE}
+```{r}
 plot_ly(data = exam_data,
         x = ~ENGLISH,
         y = ~MATHS,
         color = ~RACE)
 ```
 
-```{r eval=FALSE}
+## 5 Working with *ggplotly* function
+
+```{r}
 p<-ggplot(data = exam_data,
           aes(x = MATHS,
               y = ENGLISH)) +
@@ -65,11 +67,28 @@ p<-ggplot(data = exam_data,
 ggplotly(p)
 ```
 
-## 5 Working with *ggstatsplot* package
+## 6 Working with *ggstatsplot* package
 
-Need to still figure out why I cannot install *ggstatsplot* package.
+```{r}
+ggbetweenstats(
+  data = exam_data,
+  x = GENDER,
+  y = MATHS,
+  type = "np",
+  massages = FALSE
+)
+```
 
-## 6 Regression modeling
+```{r}
+ggscatterstats(
+  data = exam_data,
+  x = MATHS,
+  y = ENGLISH,
+  marginal = FALSE
+)
+```
+
+## 7 Regression modeling
 
 ```{r}
 car_resale <- read_xls("data/ToyotaCorolla.xls", 
