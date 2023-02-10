@@ -33,11 +33,11 @@ pacman::p_load(tidyverse, ggtern, dplyr, plotly)
 
 Data of *Singapore Residents by Planning AreaSubzone, Age Group, Sex and Type of Dwelling, June 2000-2018* will be used in this exercise.
 
-```{r}
+```{r eval=FALSE}
 pop_data<-read_csv("data/respopagsex2000to2018_tidy.csv")
 ```
 
-```{r}
+```{r eval=FALSE}
 agpop_mutated <- pop_data %>%
   mutate(`Year` = as.character(Year))%>%
   spread(AG, Population) %>%
@@ -47,11 +47,14 @@ agpop_mutated <- pop_data %>%
   mutate(TOTAL = rowSums(.[22:24])) %>%
   filter(Year == 2018)%>%
   filter(TOTAL > 0)
+
+write_csv(agpop_mutated,"data/agpop.csv")
 ```
 
 ## Plotting a Static Ternary Diagram
 
 ```{r}
+agpop_mutated<-read_csv("data/agpop.csv")
 ggtern(data=agpop_mutated,aes(x=YOUNG,y=ACTIVE, z=OLD)) +
   geom_point()
 ```
@@ -100,4 +103,247 @@ plot_ly(
     annotations = label("Ternary Markers"),
     ternary = ternaryAxes
   )
+```
+
+# 2 Visualizing Correlation Matrics
+
+### Packages used
+
+Before you get started, you are required:
+
+-   to start a new R project, and
+
+-   to create a new R Markdown document.
+
+Next, you will use the code chunk below to install and launch **corrplot**, **ggpubr**, **plotly** and **tidyverse** in RStudio.
+
+```{r}
+pacman::p_load(corrplot, ggstatsplot)
+```
+
+### Data used
+
+*Wine Quality* data will be used in this exercise.
+
+```{r}
+wine <- read_csv("data/wine_quality.csv")
+```
+
+### Building Correlation Matrix
+
+```{r}
+pairs(wine[,1:11])
+```
+
+```{r}
+pairs(wine[,2:12], upper.panel = NULL)
+```
+
+```{r}
+pairs(wine[,2:12], lower.panel = NULL)
+```
+
+```{r}
+panel.cor <- function(x, y, digits=2, prefix="", cex.cor, ...) {
+usr <- par("usr")
+on.exit(par(usr))
+par(usr = c(0, 1, 0, 1))
+r <- abs(cor(x, y, use="complete.obs"))
+txt <- format(c(r, 0.123456789), digits=digits)[1]
+txt <- paste(prefix, txt, sep="")
+if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
+text(0.5, 0.5, txt, cex = cex.cor * (1 + r) / 2)
+}
+
+pairs(wine[,2:12], 
+      upper.panel = panel.cor)
+```
+
+```{r eval=FALSE}
+ggstatsplot::ggcorrmat(
+  data = wine, 
+  cor.vars = 1:11)
+```
+
+```{r eval=FALSE}
+ggstatsplot::ggcorrmat(
+  data = wine, 
+  cor.vars = 1:11,
+  ggcorrplot.args = list(outline.color = "black", 
+                         hc.order = TRUE,
+                         tl.cex = 10),
+  title    = "Correlogram for wine dataset",
+  subtitle = "Four pairs are no significant at p < 0.05"
+)
+```
+
+```{r}
+ggplot.component = list(
+    theme(text=element_text(size=5),
+      axis.text.x = element_text(size = 8),
+      axis.text.y = element_text(size = 8)))
+```
+
+```{r}
+grouped_ggcorrmat(
+  data = wine,
+  cor.vars = 1:11,
+  grouping.var = type,
+  type = "robust",
+  p.adjust.method = "holm",
+  plotgrid.args = list(ncol = 2),
+  ggcorrplot.args = list(outline.color = "black", 
+                         hc.order = TRUE,
+                         tl.cex = 10),
+  annotation.args = list(
+    tag_levels = "a",
+    title = "Correlogram for wine dataset",
+    subtitle = "The measures are: alcohol, sulphates, fixed acidity, citric acid, chlorides, residual sugar, density, free sulfur dioxide and volatile acidity",
+    caption = "Dataset: UCI Machine Learning Repository"
+  )
+)
+```
+
+```{r}
+wine.cor <- cor(wine[, 1:11])
+```
+
+```{r}
+corrplot(wine.cor)
+```
+
+```{r}
+corrplot(wine.cor, 
+         method = "ellipse") 
+```
+
+```{r}
+corrplot(wine.cor, 
+         method = "ellipse", 
+         type="lower")
+```
+
+```{r}
+corrplot(wine.cor, 
+         method = "ellipse", 
+         type="lower",
+         diag = FALSE,
+         tl.col = "black")
+```
+
+```{r}
+corrplot.mixed(wine.cor, 
+               lower = "ellipse", 
+               upper = "number",
+               tl.pos = "lt",
+               diag = "l",
+               tl.col = "black")
+```
+
+```{r}
+wine.sig = cor.mtest(wine.cor, conf.level= .95)
+
+corrplot(wine.cor,
+         method = "number",
+         type = "lower",
+         diag = FALSE,
+         tl.col = "black",
+         tl.srt = 45,
+         p.mat = wine.sig$p,
+         sig.level = .05)
+```
+
+```{r}
+corrplot.mixed(wine.cor, 
+               lower = "ellipse", 
+               upper = "number",
+               tl.pos = "lt",
+               diag = "l",
+               order="AOE",
+               tl.col = "black")
+```
+
+```{r}
+corrplot(wine.cor, 
+         method = "ellipse", 
+         tl.pos = "lt",
+         tl.col = "black",
+         order="hclust",
+         hclust.method = "ward.D",
+         addrect = 3)
+```
+
+# 3 Plotting Heatmap
+
+## Packages used
+
+```{r}
+pacman::p_load(seriation, dendextend, heatmaply)
+```
+
+## Data used
+
+```{r}
+wh <- read_csv("data/WHData-2018.csv")
+```
+
+## Prepare data
+
+Replace the row name with country's names.
+
+```{r}
+row.names(wh) <- wh$Country
+```
+
+Transform the data into matrix.
+
+```{r}
+wh1 <- dplyr::select(wh, c(3, 7:12))
+wh_matrix <- data.matrix(wh)
+```
+
+## Plotting heat maps
+
+```{r}
+wh_heatmap <- heatmap(wh_matrix,
+                      Rowv=NA, Colv=NA)
+```
+
+```{r}
+wh_heatmap <- heatmap(wh_matrix)
+```
+
+```{r}
+wh_heatmap <- heatmap(wh_matrix,
+                      scale="column",
+                      cexRow = 0.6, 
+                      cexCol = 0.8,
+                      margins = c(10, 4))
+```
+
+```{r}
+heatmaply(mtcars)
+```
+
+```{r}
+heatmaply(wh_matrix[, -c(1, 2, 4, 5)])
+```
+
+```{r}
+heatmaply(wh_matrix[, -c(1, 2, 4, 5)],
+          scale = "column")
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]))
+```
+
+```{r}
+heatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          dist_method = "euclidean",
+          hclust_method = "ward.D")
 ```
