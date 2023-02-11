@@ -26,7 +26,7 @@ The hands-on exercise consists of four steps:
 -   Build an interactive ternary plot using *plot-ly()* function of **Plotly R** package.
 
 ```{r}
-pacman::p_load(tidyverse, ggtern, dplyr, plotly)
+pacman::p_load(tidyverse, ggtern, plotly)
 ```
 
 ## Data used
@@ -158,22 +158,6 @@ text(0.5, 0.5, txt, cex = cex.cor * (1 + r) / 2)
 
 pairs(wine[,2:12], 
       upper.panel = panel.cor)
-```
-
-```{r}
-ggstatsplot::ggcorrmat(
-  data = wine, 
-  cor.vars = 1:11,
-  ggcorrplot.args = list(outline.color = "black", 
-                         hc.order = TRUE,
-                         tl.cex = 10),
-  title    = "Correlogram for wine dataset",
-  subtitle = "Four pairs are no significant at p < 0.05"
-)
-
-ggstatsplot::ggcorrmat(
-  data = wine, 
-  cor.vars = 1:11)
 ```
 
 ```{r}
