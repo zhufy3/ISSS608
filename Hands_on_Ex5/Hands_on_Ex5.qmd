@@ -40,7 +40,7 @@ pop_data<-read_csv("data/respopagsex2000to2018_tidy.csv")
 ```{r eval=FALSE}
 agpop_mutated <- pop_data %>%
   mutate(`Year` = as.character(Year))%>%
-  spread(AG, Population) %>%
+  spread(AG, Population)%>%
   mutate(YOUNG = rowSums(.[4:8]))%>%
   mutate(ACTIVE = rowSums(.[9:16]))  %>%
   mutate(OLD = rowSums(.[17:21])) %>%
@@ -55,6 +55,8 @@ write_csv(agpop_mutated,"data/agpop.csv")
 
 ```{r}
 agpop_mutated<-read_csv("data/agpop.csv")
+agpop_mutated<-agpop_mutated%>%
+  select(c(1,2,22,23,24,25))
 ggtern(data=agpop_mutated,aes(x=YOUNG,y=ACTIVE, z=OLD)) +
   geom_point()
 ```
@@ -159,13 +161,7 @@ pairs(wine[,2:12],
       upper.panel = panel.cor)
 ```
 
-```{r eval=FALSE}
-ggstatsplot::ggcorrmat(
-  data = wine, 
-  cor.vars = 1:11)
-```
-
-```{r eval=FALSE}
+```{r}
 ggstatsplot::ggcorrmat(
   data = wine, 
   cor.vars = 1:11,
@@ -175,13 +171,10 @@ ggstatsplot::ggcorrmat(
   title    = "Correlogram for wine dataset",
   subtitle = "Four pairs are no significant at p < 0.05"
 )
-```
 
-```{r}
-ggplot.component = list(
-    theme(text=element_text(size=5),
-      axis.text.x = element_text(size = 8),
-      axis.text.y = element_text(size = 8)))
+ggstatsplot::ggcorrmat(
+  data = wine, 
+  cor.vars = 1:11)
 ```
 
 ```{r}
