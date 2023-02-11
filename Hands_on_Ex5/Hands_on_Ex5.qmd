@@ -161,22 +161,6 @@ pairs(wine[,2:12],
 ```
 
 ```{r}
-ggstatsplot::ggcorrmat(
-  data = wine, 
-  cor.vars = 1:11,
-  ggcorrplot.args = list(outline.color = "black", 
-                         hc.order = TRUE,
-                         tl.cex = 10),
-  title    = "Correlogram for wine dataset",
-  subtitle = "Four pairs are no significant at p < 0.05"
-)
-
-ggstatsplot::ggcorrmat(
-  data = wine, 
-  cor.vars = 1:11)
-```
-
-```{r}
 grouped_ggcorrmat(
   data = wine,
   cor.vars = 1:11,
