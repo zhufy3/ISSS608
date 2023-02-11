@@ -19,15 +19,15 @@ website:
             
       - text: In-class Exercise
         menu: 
-          - text: In-class Excercise 1
+          - text: In-class Exercise 1
             href: Inclass_Ex1/Inclass_Ex1.qmd
-          - text: In-class Excercise 2
+          - text: In-class Exercise 2
             href: Inclass_Ex2/Inclass_Ex2.qmd
-          - text: In-class Excercise 3
+          - text: In-class Exercise 3
             href: Inclass_Ex3/Inclass_Ex3.qmd
-          - text: In-class Excercise 4
+          - text: In-class Exercise 4
             href: Inclass_Ex4/Inclass_Ex4.qmd
-          - text: In-class Excercise 5
+          - text: In-class Exercise 5
             href: Inclass_Ex5/Inclass_Ex5.qmd
             
       - text: Take-home Exercise
