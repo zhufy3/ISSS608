@@ -147,97 +147,6 @@
     "text": "Parallel coordinates plot with histogram\n\nhistoVisibility <- rep(TRUE, ncol(wh))\nparallelPlot(wh,\n             rotateTitle = TRUE,\n             histoVisibility = histoVisibility)"
   },
   {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html",
-    "href": "Incalss_Ex5/Inclass_Ex5.html",
-    "title": "In-class Exercise 5",
-    "section": "",
-    "text": "The hands-on exercise consists of four steps:\n\nInstall and launch tidyverse and ggtern packages.\nDerive three new measures using mutate() function of dplyr package.\nBuild a static ternary plot using ggtern() function of ggtern package.\nBuild an interactive ternary plot using plot-ly() function of Plotly R package.\n\n\npacman::p_load(tidyverse, ggtern, plotly)\n\n\n\n\nData of Singapore Residents by Planning AreaSubzone, Age Group, Sex and Type of Dwelling, June 2000-2018 will be used in this exercise.\n\npop_data<-read_csv(\"data/respopagsex2000to2018_tidy.csv\")\n\n\nagpop_mutated <- pop_data %>%\n  mutate(`Year` = as.character(Year))%>%\n  spread(AG, Population)%>%\n  mutate(YOUNG = rowSums(.[4:8]))%>%\n  mutate(ACTIVE = rowSums(.[9:16]))  %>%\n  mutate(OLD = rowSums(.[17:21])) %>%\n  mutate(TOTAL = rowSums(.[22:24])) %>%\n  filter(Year == 2018)%>%\n  filter(TOTAL > 0)%>%\n  select(c(1,2,22,23,24,25))\n\nwrite_csv(agpop_mutated,\"data/agpop.csv\")\n\n\n\n\n\nagpop_mutated<-read_csv(\"data/agpop.csv\")\nggtern(data=agpop_mutated,aes(x=YOUNG,y=ACTIVE, z=OLD)) +\n  geom_point()\n\n\n\n\n\nggtern(data=agpop_mutated, aes(x=YOUNG,y=ACTIVE, z=OLD)) +\n  geom_point() +\n  labs(title=\"Population structure, 2015\") +\n  theme_rgbw()\n\n\n\n\n\nlabel <- function(txt){\n  list(\n    text = txt,\n    x = 0.1, y = 1,\n    ax = 0, ay = 0,\n    xref = \"paper\", yref = \"paper\",\n    align = \"center\",\n    font = list(family = \"serif\", size = 15, color = \"white\"),\n    bgcolor = \"#b3b3b3\", bordercolor = \"black\", borderwidth = 2\n  )\n}\n\naxis <- function(txt){\n  list(\n    title = txt, tickformat = \".0%\", tickfont = list(size = 10)\n  )\n}\n\nternaryAxes <- list(\n  aaxis = axis(\"Young\"),\n  baxis = axis(\"Active\"),\n  caxis = axis(\"Old\")\n)\n\nplot_ly(\n  agpop_mutated,\n  a = ~YOUNG,\n  b = ~ACTIVE,\n  c = ~OLD,\n  color = I(\"black\"),\n  type = \"scatterternary\"\n)%>%\n  layout(\n    annotations = label(\"Ternary Markers\"),\n    ternary = ternaryAxes\n  )"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#packages-used-2",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#packages-used-2",
-    "title": "In-class Exercise 5",
-    "section": "Packages used",
-    "text": "Packages used\n\npacman::p_load(seriation, dendextend, heatmaply)"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#data-used-2",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#data-used-2",
-    "title": "In-class Exercise 5",
-    "section": "Data used",
-    "text": "Data used\n\nwh <- read_csv(\"data/WHData-2018.csv\")"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#prepare-data",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#prepare-data",
-    "title": "In-class Exercise 5",
-    "section": "Prepare data",
-    "text": "Prepare data\nReplace the row name with country’s names.\n\nrow.names(wh) <- wh$Country\n\nTransform the data into matrix.\n\nwh1 <- dplyr::select(wh, c(3, 7:12))\nwh_matrix <- data.matrix(wh)"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#plotting-heat-maps",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#plotting-heat-maps",
-    "title": "In-class Exercise 5",
-    "section": "Plotting heat maps",
-    "text": "Plotting heat maps\n\nwh_heatmap <- heatmap(wh_matrix,\n                      Rowv=NA, Colv=NA)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix,\n                      scale=\"column\",\n                      cexRow = 0.6, \n                      cexCol = 0.8,\n                      margins = c(10, 4))\n\n\n\n\n\nheatmaply(mtcars)\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)])   ##exclude column 1,2,4,5\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)],\n          scale = \"column\")\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),\n          dist_method = \"euclidean\",\n          hclust_method = \"ward.D\")"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#packages-used-3",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#packages-used-3",
-    "title": "In-class Exercise 5",
-    "section": "Packages used",
-    "text": "Packages used\n\npacman::p_load(GGally, parallelPlot, tidyverse)"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#data-used-3",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#data-used-3",
-    "title": "In-class Exercise 5",
-    "section": "Data used",
-    "text": "Data used\nWHData-2018.csv will be used in this exercise.\n\nwh <- read_csv(\"data/WHData-2018.csv\")"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#plotting-a-simple-parallel-coordinates",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#plotting-a-simple-parallel-coordinates",
-    "title": "In-class Exercise 5",
-    "section": "Plotting a simple parallel coordinates",
-    "text": "Plotting a simple parallel coordinates\n\nggparcoord(data = wh, \n           columns = c(7:12))\n\n\n\n\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Parallel Coordinates Plot of World Happines Variables\")"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#plotting-with-facet",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#plotting-with-facet",
-    "title": "In-class Exercise 5",
-    "section": "Plotting with facet",
-    "text": "Plotting with facet\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region)"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#rotating-x-axis",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#rotating-x-axis",
-    "title": "In-class Exercise 5",
-    "section": "Rotating x-axis",
-    "text": "Rotating x-axis\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30))"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#adjusting-x-label-text",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#adjusting-x-label-text",
-    "title": "In-class Exercise 5",
-    "section": "Adjusting x-label text",
-    "text": "Adjusting x-label text\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30, hjust=1))"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#interactive-plot",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#interactive-plot",
-    "title": "In-class Exercise 5",
-    "section": "Interactive plot",
-    "text": "Interactive plot\n\nwh <- wh %>%\n  select(\"Happiness score\", c(7:12))\nparallelPlot(wh,\n             width = 320,\n             height = 250)\n\n\n\n\n\n\nparallelPlot(wh,\n             rotateTitle = TRUE)  ##rotate axis label\n\n\n\n\n\n\nparallelPlot(wh,\n             continuousCS = \"YlOrRd\",\n             rotateTitle = TRUE)  ##change the color scheme"
-  },
-  {
-    "objectID": "Incalss_Ex5/Inclass_Ex5.html#parallel-coordinates-plot-with-histogram",
-    "href": "Incalss_Ex5/Inclass_Ex5.html#parallel-coordinates-plot-with-histogram",
-    "title": "In-class Exercise 5",
-    "section": "Parallel coordinates plot with histogram",
-    "text": "Parallel coordinates plot with histogram\n\nhistoVisibility <- rep(TRUE, ncol(wh))\nparallelPlot(wh,\n             rotateTitle = TRUE,\n             histoVisibility = histoVisibility)"
-  },
-  {
     "objectID": "Inclass_Ex1/Inclass_Ex1.html",
     "href": "Inclass_Ex1/Inclass_Ex1.html",
     "title": "In-class Exercise 1",
@@ -320,6 +229,97 @@
     "title": "In-class Exercise 4",
     "section": "7 Regression modeling",
     "text": "7 Regression modeling\n\ncar_resale <- read_xls(\"data/ToyotaCorolla.xls\", \n                       \"data\")\ncar_resale\n\n# A tibble: 1,436 × 38\n      Id Model       Price Age_0…¹ Mfg_M…² Mfg_Y…³     KM Quart…⁴ Weight Guara…⁵\n   <dbl> <chr>       <dbl>   <dbl>   <dbl>   <dbl>  <dbl>   <dbl>  <dbl>   <dbl>\n 1    81 TOYOTA Cor… 18950      25       8    2002  20019     100   1180       3\n 2     1 TOYOTA Cor… 13500      23      10    2002  46986     210   1165       3\n 3     2 TOYOTA Cor… 13750      23      10    2002  72937     210   1165       3\n 4     3  TOYOTA Co… 13950      24       9    2002  41711     210   1165       3\n 5     4 TOYOTA Cor… 14950      26       7    2002  48000     210   1165       3\n 6     5 TOYOTA Cor… 13750      30       3    2002  38500     210   1170       3\n 7     6 TOYOTA Cor… 12950      32       1    2002  61000     210   1170       3\n 8     7  TOYOTA Co… 16900      27       6    2002  94612     210   1245       3\n 9     8 TOYOTA Cor… 18600      30       3    2002  75889     210   1245       3\n10    44 TOYOTA Cor… 16950      27       6    2002 110404     234   1255       3\n# … with 1,426 more rows, 28 more variables: HP_Bin <chr>, CC_bin <chr>,\n#   Doors <dbl>, Gears <dbl>, Cylinders <dbl>, Fuel_Type <chr>, Color <chr>,\n#   Met_Color <dbl>, Automatic <dbl>, Mfr_Guarantee <dbl>,\n#   BOVAG_Guarantee <dbl>, ABS <dbl>, Airbag_1 <dbl>, Airbag_2 <dbl>,\n#   Airco <dbl>, Automatic_airco <dbl>, Boardcomputer <dbl>, CD_Player <dbl>,\n#   Central_Lock <dbl>, Powered_Windows <dbl>, Power_Steering <dbl>,\n#   Radio <dbl>, Mistlamps <dbl>, Sport_Model <dbl>, Backseat_Divider <dbl>, …\n\n\n\nmy_sum<-exam_data%>%\n  group_by(RACE)%>%\n  summarise(\n    n = n(),\n    mean = mean(MATHS),\n    sd = sd(MATHS)\n  )%>%\n  mutate(se = sd/sqrt(n-1))\n\n\nmodel<-lm(Price ~ Age_08_04 + Mfg_Year + KM +\n            Weight + Guarantee_Period, data = car_resale)\nmodel\n\n\nCall:\nlm(formula = Price ~ Age_08_04 + Mfg_Year + KM + Weight + Guarantee_Period, \n    data = car_resale)\n\nCoefficients:\n     (Intercept)         Age_08_04          Mfg_Year                KM  \n      -2.637e+06        -1.409e+01         1.315e+03        -2.323e-02  \n          Weight  Guarantee_Period  \n       1.903e+01         2.770e+01  \n\n\n\ncheck_c <- check_collinearity(model)\nplot(check_c)\n\n\n\n\n\nggplot(my_sum) +\n  geom_errorbar(\n    aes(x = RACE,\n        ymin = mean - se,\n        ymax = mean + se),\n    width = 0.2,\n    colour = \"black\",\n    alpha = 0.9,\n    size = 0.5\n  ) +\n  geom_point(aes(\n    x = RACE,\n    y = mean),\n    stat = \"identity\",\n    color = \"red\",\n    size = 1.5,\n    alpha = 1)\n\n\n\nmodel[[\"coefficients\"]]\n\n     (Intercept)        Age_08_04         Mfg_Year               KM \n   -2.636783e+06    -1.409333e+01     1.314938e+03    -2.323290e-02 \n          Weight Guarantee_Period \n    1.902743e+01     2.769708e+01"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html",
+    "href": "Inclass_Ex5/Inclass_Ex5.html",
+    "title": "In-class Exercise 5",
+    "section": "",
+    "text": "The hands-on exercise consists of four steps:\n\nInstall and launch tidyverse and ggtern packages.\nDerive three new measures using mutate() function of dplyr package.\nBuild a static ternary plot using ggtern() function of ggtern package.\nBuild an interactive ternary plot using plot-ly() function of Plotly R package.\n\n\npacman::p_load(tidyverse, ggtern, plotly)\n\n\n\n\nData of Singapore Residents by Planning AreaSubzone, Age Group, Sex and Type of Dwelling, June 2000-2018 will be used in this exercise.\n\npop_data<-read_csv(\"data/respopagsex2000to2018_tidy.csv\")\n\n\nagpop_mutated <- pop_data %>%\n  mutate(`Year` = as.character(Year))%>%\n  spread(AG, Population)%>%\n  mutate(YOUNG = rowSums(.[4:8]))%>%\n  mutate(ACTIVE = rowSums(.[9:16]))  %>%\n  mutate(OLD = rowSums(.[17:21])) %>%\n  mutate(TOTAL = rowSums(.[22:24])) %>%\n  filter(Year == 2018)%>%\n  filter(TOTAL > 0)%>%\n  select(c(1,2,22,23,24,25))\n\nwrite_csv(agpop_mutated,\"data/agpop.csv\")\n\n\n\n\n\nagpop_mutated<-read_csv(\"data/agpop.csv\")\nggtern(data=agpop_mutated,aes(x=YOUNG,y=ACTIVE, z=OLD)) +\n  geom_point()\n\n\n\n\n\nggtern(data=agpop_mutated, aes(x=YOUNG,y=ACTIVE, z=OLD)) +\n  geom_point() +\n  labs(title=\"Population structure, 2015\") +\n  theme_rgbw()\n\n\n\n\n\nlabel <- function(txt){\n  list(\n    text = txt,\n    x = 0.1, y = 1,\n    ax = 0, ay = 0,\n    xref = \"paper\", yref = \"paper\",\n    align = \"center\",\n    font = list(family = \"serif\", size = 15, color = \"white\"),\n    bgcolor = \"#b3b3b3\", bordercolor = \"black\", borderwidth = 2\n  )\n}\n\naxis <- function(txt){\n  list(\n    title = txt, tickformat = \".0%\", tickfont = list(size = 10)\n  )\n}\n\nternaryAxes <- list(\n  aaxis = axis(\"Young\"),\n  baxis = axis(\"Active\"),\n  caxis = axis(\"Old\")\n)\n\nplot_ly(\n  agpop_mutated,\n  a = ~YOUNG,\n  b = ~ACTIVE,\n  c = ~OLD,\n  color = I(\"black\"),\n  type = \"scatterternary\"\n)%>%\n  layout(\n    annotations = label(\"Ternary Markers\"),\n    ternary = ternaryAxes\n  )"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#packages-used-2",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#packages-used-2",
+    "title": "In-class Exercise 5",
+    "section": "Packages used",
+    "text": "Packages used\n\npacman::p_load(seriation, dendextend, heatmaply)"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#data-used-2",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#data-used-2",
+    "title": "In-class Exercise 5",
+    "section": "Data used",
+    "text": "Data used\n\nwh <- read_csv(\"data/WHData-2018.csv\")"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#prepare-data",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#prepare-data",
+    "title": "In-class Exercise 5",
+    "section": "Prepare data",
+    "text": "Prepare data\nReplace the row name with country’s names.\n\nrow.names(wh) <- wh$Country\n\nTransform the data into matrix.\n\nwh1 <- dplyr::select(wh, c(3, 7:12))\nwh_matrix <- data.matrix(wh)"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#plotting-heat-maps",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#plotting-heat-maps",
+    "title": "In-class Exercise 5",
+    "section": "Plotting heat maps",
+    "text": "Plotting heat maps\n\nwh_heatmap <- heatmap(wh_matrix,\n                      Rowv=NA, Colv=NA)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix,\n                      scale=\"column\",\n                      cexRow = 0.6, \n                      cexCol = 0.8,\n                      margins = c(10, 4))\n\n\n\n\n\nheatmaply(mtcars)\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)])   ##exclude column 1,2,4,5\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)],\n          scale = \"column\")\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),\n          dist_method = \"euclidean\",\n          hclust_method = \"ward.D\")"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#packages-used-3",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#packages-used-3",
+    "title": "In-class Exercise 5",
+    "section": "Packages used",
+    "text": "Packages used\n\npacman::p_load(GGally, parallelPlot, tidyverse)"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#data-used-3",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#data-used-3",
+    "title": "In-class Exercise 5",
+    "section": "Data used",
+    "text": "Data used\nWHData-2018.csv will be used in this exercise.\n\nwh <- read_csv(\"data/WHData-2018.csv\")"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#plotting-a-simple-parallel-coordinates",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#plotting-a-simple-parallel-coordinates",
+    "title": "In-class Exercise 5",
+    "section": "Plotting a simple parallel coordinates",
+    "text": "Plotting a simple parallel coordinates\n\nggparcoord(data = wh, \n           columns = c(7:12))\n\n\n\n\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Parallel Coordinates Plot of World Happines Variables\")"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#plotting-with-facet",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#plotting-with-facet",
+    "title": "In-class Exercise 5",
+    "section": "Plotting with facet",
+    "text": "Plotting with facet\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region)"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#rotating-x-axis",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#rotating-x-axis",
+    "title": "In-class Exercise 5",
+    "section": "Rotating x-axis",
+    "text": "Rotating x-axis\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30))"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#adjusting-x-label-text",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#adjusting-x-label-text",
+    "title": "In-class Exercise 5",
+    "section": "Adjusting x-label text",
+    "text": "Adjusting x-label text\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30, hjust=1))"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#interactive-plot",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#interactive-plot",
+    "title": "In-class Exercise 5",
+    "section": "Interactive plot",
+    "text": "Interactive plot\n\nwh <- wh %>%\n  select(\"Happiness score\", c(7:12))\nparallelPlot(wh,\n             width = 320,\n             height = 250)\n\n\n\n\n\n\nparallelPlot(wh,\n             rotateTitle = TRUE)  ##rotate axis label\n\n\n\n\n\n\nparallelPlot(wh,\n             continuousCS = \"YlOrRd\",\n             rotateTitle = TRUE)  ##change the color scheme"
+  },
+  {
+    "objectID": "Inclass_Ex5/Inclass_Ex5.html#parallel-coordinates-plot-with-histogram",
+    "href": "Inclass_Ex5/Inclass_Ex5.html#parallel-coordinates-plot-with-histogram",
+    "title": "In-class Exercise 5",
+    "section": "Parallel coordinates plot with histogram",
+    "text": "Parallel coordinates plot with histogram\n\nhistoVisibility <- rep(TRUE, ncol(wh))\nparallelPlot(wh,\n             rotateTitle = TRUE,\n             histoVisibility = histoVisibility)"
   },
   {
     "objectID": "index.html",
