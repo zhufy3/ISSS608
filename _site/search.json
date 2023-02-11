@@ -91,6 +91,62 @@
     "text": "Plotting heat maps\n\nwh_heatmap <- heatmap(wh_matrix,\n                      Rowv=NA, Colv=NA)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix)\n\n\n\n\n\nwh_heatmap <- heatmap(wh_matrix,\n                      scale=\"column\",\n                      cexRow = 0.6, \n                      cexCol = 0.8,\n                      margins = c(10, 4))\n\n\n\n\n\nheatmaply(mtcars)\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)])\n\n\n\n\n\n\nheatmaply(wh_matrix[, -c(1, 2, 4, 5)],\n          scale = \"column\")\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))\n\n\n\n\n\n\nheatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),\n          dist_method = \"euclidean\",\n          hclust_method = \"ward.D\")"
   },
   {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#packages-used-3",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#packages-used-3",
+    "title": "Hands-on Exercise 5",
+    "section": "Packages used",
+    "text": "Packages used\n\npacman::p_load(GGally, parallelPlot, tidyverse)"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#data-used-3",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#data-used-3",
+    "title": "Hands-on Exercise 5",
+    "section": "Data used",
+    "text": "Data used\nWHData-2018.csv will be used in this exercise.\n\nwh <- read_csv(\"data/WHData-2018.csv\")"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#plotting-a-simple-parallel-coordinates",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#plotting-a-simple-parallel-coordinates",
+    "title": "Hands-on Exercise 5",
+    "section": "Plotting a simple parallel coordinates",
+    "text": "Plotting a simple parallel coordinates\n\nggparcoord(data = wh, \n           columns = c(7:12))\n\n\n\n\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Parallel Coordinates Plot of World Happines Variables\")"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#plotting-with-facet",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#plotting-with-facet",
+    "title": "Hands-on Exercise 5",
+    "section": "Plotting with facet",
+    "text": "Plotting with facet\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region)"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#rotating-x-axis",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#rotating-x-axis",
+    "title": "Hands-on Exercise 5",
+    "section": "Rotating x-axis",
+    "text": "Rotating x-axis\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30))"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#adjusting-x-label-text",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#adjusting-x-label-text",
+    "title": "Hands-on Exercise 5",
+    "section": "Adjusting x-label text",
+    "text": "Adjusting x-label text\n\nggparcoord(data = wh, \n           columns = c(7:12), \n           groupColumn = 2,\n           scale = \"uniminmax\",\n           alphaLines = 0.2,\n           boxplot = TRUE, \n           title = \"Multiple Parallel Coordinates Plots of World Happines Variables by Region\") +\n  facet_wrap(~ Region) + \n  theme(axis.text.x = element_text(angle = 30, hjust=1))"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#interactive-plot",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#interactive-plot",
+    "title": "Hands-on Exercise 5",
+    "section": "Interactive plot",
+    "text": "Interactive plot\n\nwh <- wh %>%\n  select(\"Happiness score\", c(7:12))\nparallelPlot(wh,\n             width = 320,\n             height = 250)\n\n\n\n\n\n\nparallelPlot(wh,\n             rotateTitle = TRUE)  ##rotate axis label\n\n\n\n\n\n\nparallelPlot(wh,\n             continuousCS = \"YlOrRd\",\n             rotateTitle = TRUE)  ##change the color scheme"
+  },
+  {
+    "objectID": "Hands_on_Ex5/Hands_on_Ex5.html#parallel-coordinates-plot-with-histogram",
+    "href": "Hands_on_Ex5/Hands_on_Ex5.html#parallel-coordinates-plot-with-histogram",
+    "title": "Hands-on Exercise 5",
+    "section": "Parallel coordinates plot with histogram",
+    "text": "Parallel coordinates plot with histogram\n\nhistoVisibility <- rep(TRUE, ncol(wh))\nparallelPlot(wh,\n             rotateTitle = TRUE,\n             histoVisibility = histoVisibility)"
+  },
+  {
     "objectID": "Inclass_Ex1/Inclass_Ex1.html",
     "href": "Inclass_Ex1/Inclass_Ex1.html",
     "title": "In-class Exercise 1",
