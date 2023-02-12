@@ -1,0 +1,95 @@
+---
+title: "Take-home Exercise 3 Resale Flat Prices Analytical Visualisation"
+author: "Fangyuan Zhu"
+date: 12 Feburary 2023
+date-modified: "`r Sys.Date()`"
+page-layout: full
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+## Our Tasks
+
+In this take-home exercise, we are required to uncover the salient patterns of the resale prices of public housing property by residential towns and estates in Singapore by using appropriate analytical visualisation techniques learned in **Lesson 4: Fundamentals of Visual Analytics**. Students are encouraged to apply appropriate interactive techniques to enhance user and data discovery experiences.
+
+For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROOM types**. The study period should be on **2022**.
+
+## Data Used
+
+*Resale flat prices based on registration date from Jan-2017 onwards* will be used to prepare the analytical visualisation. It is available at [Data.gov.sg](https://data.gov.sg/).
+
+## Packages Used
+
+## The Designing Tools
+
+To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
+
+```{r}
+pacman::p_load(tidyverse, tidyr, funModeling)
+```
+
+## Data Preparation
+
+### Importing data
+
+First, let us import the data in *CSV* form into R environment using code chunk below.
+
+```{r}
+data<-read_csv("data/resale-flat-prices.csv")
+```
+
+As information shows above, this data set includes 146701 rows and 11 columns. Let take a closer look at the data set by using code chunk below.
+
+```{r eval=FALSE}
+glimpse(data)
+```
+
+![](images/paste-7B522BA9.png)
+
+### Data cleaning
+
+See that the time is stored in *character* type, and we need to extract data only in 2022. Therefore, we need to first extract on the year number to recode the original data as shown below.
+
+```{r eval=FALSE}
+data$month<-str_extract(data$month,"(\\d+)")
+```
+
+Now let us check the data column *month.*
+
+```{r eval=FALSE}
+head(data$month,10)
+```
+
+![](images/paste-6CEDCAD8.png)
+
+See only year number is retained. Now let us filter the data frame by filter data only in 2022.
+
+```{r eval=FALSE}
+data<-data%>%
+  filter(month == "2022")
+```
+
+```{r eval=FALSE}
+freq(data$flat_type)
+```
+
+![](images/paste-EBFE4AA4.png)
+
+Now let us delete the redundant column *month* and *block* as shown below, and write it as a new data frame to contract its size.
+
+```{r eval=FALSE}
+data<-data%>%
+  filter(flat_type%in%
+           c("3 ROOM",
+             "4 ROOM",
+             "5 ROOM"))%>%
+  select(-1,-4)
+
+write_csv(data,"data/resale-flat2022.csv")
+```
+
+![](images/paste-9987266E.png)

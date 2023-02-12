@@ -1,8 +1,5 @@
 ---
 page-layout: full
-comments: 
-  utterances: 
-    repo:  AlbertRapp/blogComments
 ---
 
 ::: grid
@@ -10,14 +7,11 @@ comments:
 ![](images/paste-B345E8DA.png)
 :::
 
-::: g-col-6
+::: {.g-col-6 style="font: Source Sans Pro"}
 # Hi, I am Fangyuan ZHU.
 
-This is a study journey about Visual Analytics and Applications. There are Hands-on Exercises, In-class Exercises and Take-home Exercises menus for you to explore. You can also explore my [Github](https://github.com/zhufy3/ISSS608) page and reach out to me via fyzhu.2022@mitb.smu.edu.sg. Let us get started to study with the author!!
+This is a study journey about Visual Analytics and Applications. There are Hands-on Exercises, In-class Exercises and Take-home Exercises menus for you to explore. You can also explore my [Github](https://github.com/zhufy3/ISSS608) page and reach out to me via fyzhu.2022\@mitb.smu.edu.sg. Let us get started to study with the author!!
 
 **Welcome** to leave your comments below if you have any questions or suggestions!
-
-
 :::
-
 :::
