@@ -1,13 +1,23 @@
 ---
-title: "ISSS608-Visual Analytics and Applications"
+page-layout: full
+comments: 
+  utterances: 
+    repo:  AlbertRapp/blogComments
 ---
 
-This is a study journey about Visual Analytics and Applications.
+::: grid
+::: g-col-6
+![](images/paste-B345E8DA.png)
+:::
 
-Let us get started with the author!!
+::: g-col-6
+# Hi, I am Fangyuan ZHU.
 
-![](images/unemployment-rate.jpg)
+This is a study journey about Visual Analytics and Applications. There are Hands-on Exercises, In-class Exercises and Take-home Exercises menus for you to explore. You can also explore my [Github](https://github.com/zhufy3/ISSS608) page and reach out to me via fyzhu.2022@mitb.smu.edu.sg. Let us get started to study with the author!!
 
-Visualisation History
+**Welcome** to leave your comments below if you have any questions or suggestions!
 
-![](images/image1-19.png)
+
+:::
+
+:::

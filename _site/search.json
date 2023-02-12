@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Welcome to leave your comments below if you have any questions or suggestions!"
-  },
-  {
     "objectID": "Hands_on_Ex1/Hands_on_Ex1.html",
     "href": "Hands_on_Ex1/Hands_on_Ex1.html",
     "title": "Hands-on Exercise 1",
@@ -324,9 +317,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "ISSS608-Visual Analytics and Applications",
+    "title": "ISSS608 VAA",
     "section": "",
-    "text": "Let us get started with the author!!\n\nVisualisation History"
+    "text": "This is a study journey about Visual Analytics and Applications. There are Hands-on Exercises, In-class Exercises and Take-home Exercises menus for you to explore. You can also explore my Github page and reach out to me via fyzhu.2022@mitb.smu.edu.sg. Let us get started to study with the author!!\nWelcome to leave your comments below if you have any questions or suggestions!"
   },
   {
     "objectID": "Take-home_Ex1/Take-home_Ex1.html",
