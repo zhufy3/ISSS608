@@ -29,7 +29,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
 
 ```{r}
-pacman::p_load(tidyverse, tidyr, funModeling)
+pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling)
 ```
 
 ## Data Preparation
@@ -66,12 +66,20 @@ head(data$month,10)
 
 ![](images/paste-6CEDCAD8.png)
 
-See only year number is retained. Now let us filter the data frame by filter data only in 2022.
+In addition, the *remaining_lease* no needs to contain month information, so we recode the values in the column to only retain its year part. See in code chunk below.
+
+```{r}
+data$remaining_lease<-as.numeric(str_extract(data$remaining_lease,"(\\d+)"))
+```
+
+See only year number is retained. Now let us filter the data frame by filtering data only in 2022.
 
 ```{r eval=FALSE}
 data<-data%>%
   filter(month == "2022")
 ```
+
+Next we need to only focus on *3 ROOM, 4 ROOM* and *5 ROOM*, so let first look at how many types are there of *flat_type* column. We use `freq()` function of *funModeling* package to draw the frequency graph of this column.
 
 ```{r eval=FALSE}
 freq(data$flat_type)
@@ -79,7 +87,7 @@ freq(data$flat_type)
 
 ![](images/paste-EBFE4AA4.png)
 
-Now let us delete the redundant column *month* and *block* as shown below, and write it as a new data frame to contract its size.
+Noted that *4 ROOM* type takes the most part of the total, followed by *5 ROOM* and *3 ROOM.* Now let us delete the redundant column *month* and *block* as shown below, and write a new data frame named *resale-flat2022.csv* to contract the data size.
 
 ```{r eval=FALSE}
 data<-data%>%
@@ -92,4 +100,73 @@ data<-data%>%
 write_csv(data,"data/resale-flat2022.csv")
 ```
 
-![](images/paste-9987266E.png)
+![](images/paste-F02BF02E.png)
+
+![](images/paste-5C66F883.png)
+
+Noted that the data size has been contacted to 1.6 MB.
+
+### Missing value checking
+
+Before we start our analysis, we should first check missing values in this data table. Code chunk below will be used to show us the length of missing values in all columns in this data table.
+
+```{r}
+data<-read_csv("data/resale-flat2022.csv")
+summary(data[rowSums(is.na(data))!=0,])
+```
+
+As shown in table above, no missing values in this data table.
+
+## Visualization Analysis
+
+Now let us start our journey of visual analysis for this data. First, we analyze each variables with different visualization methods. For 5 character type variables out of 9, let us see their histogram one by one.
+
+-   *town*
+
+-   flat_type
+
+-   street_name
+
+-   storey_range
+
+-   flat_model
+
+```{r}
+set.seed(1234)
+
+ptown<-ggplot(
+  data = data,
+  aes(x = town, y = resale_price))+
+  geom_point()
+
+ptown
+
+freq(data$town)
+```
+
+Also, we can suspect that the *lease_commence_date* and *remaining_lease* are highly associated. Therefore we can plot an association graph to see their association relationship as shown below.
+
+```{r}
+p<-ggscatterstats(
+  data = data,
+  x = lease_commence_date,
+  y = remaining_lease,
+  marginal = FALSE,
+  )
+
+ggplotlyr(p)
+```
+
+### Outliers checking
+
+Can do a clustering or regression, so that outliers will strictly impact on the process.???????
+
+### Exploratory descriptive analysis
+
+### Visual statistical testing
+
+#### Visualizing uncertainty
+
+When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be.
+
+#### Multivariate analysis
