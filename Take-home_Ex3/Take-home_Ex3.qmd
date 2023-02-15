@@ -29,7 +29,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
 
 ```{r}
-pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling)
+pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly)
 ```
 
 ## Data Preparation
@@ -68,7 +68,7 @@ head(data$month,10)
 
 In addition, the *remaining_lease* no needs to contain month information, so we recode the values in the column to only retain its year part. See in code chunk below.
 
-```{r}
+```{r eval=FALSE}
 data$remaining_lease<-as.numeric(str_extract(data$remaining_lease,"(\\d+)"))
 ```
 
@@ -119,32 +119,48 @@ As shown in table above, no missing values in this data table.
 
 ## Visualization Analysis
 
-Now let us start our journey of visual analysis for this data. First, we analyze each variables with different visualization methods. For 5 character type variables out of 9, let us see their histogram one by one.
+### Exploratory descriptive analysis
 
--   *town*
+First of all, let us do our EDA with our variables. This step plays a critical role to show the potential patterns behind the data. Let's go!🥳
 
--   flat_type
+#### Distribution test
 
--   street_name
-
--   storey_range
-
--   flat_model
+Now let first check out the distribution pattern of these 9 variables in histogram graphs. Code below being used to achieve this.
 
 ```{r}
-set.seed(1234)
+parea<-ggplot(data = data,
+       aes(x = floor_area_sqm))+
+  geom_density(fill = "skyblue",
+               alpha = 0.3)+
+  geom_boxplot()+
+  labs(x = "Floor Area",
+       y = "Density")
 
-ptown<-ggplot(
+parea
+
+pdate<-gghistostats(
   data = data,
-  aes(x = town, y = resale_price))+
-  geom_point()
+  x = lease_commence_date,
+  type = "np",
+  test.value = 60,
+  xlab = "Lease Commence Date"
+)
 
-ptown
+pdate
+```
 
-freq(data$town)
+```{}
+```
+
+```{r}
+ggplot(data, aes(lease_commence_date)) + geom_density(adjust = 0.3, 
+    fill = "deepskyblue", alpha = 0.2) + labs(x = "Lease Commencement Date", y = "Density", 
+    caption = "Fig.5 A Density Plot of Lease Profile of HDBs")
 ```
 
 Also, we can suspect that the *lease_commence_date* and *remaining_lease* are highly associated. Therefore we can plot an association graph to see their association relationship as shown below.
+
+#### Outliers checking
 
 ```{r}
 p<-ggscatterstats(
@@ -154,19 +170,24 @@ p<-ggscatterstats(
   marginal = FALSE,
   )
 
-ggplotlyr(p)
+
 ```
-
-### Outliers checking
-
-Can do a clustering or regression, so that outliers will strictly impact on the process.???????
-
-### Exploratory descriptive analysis
 
 ### Visual statistical testing
 
 #### Visualizing uncertainty
 
 When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be.
+
+```{r}
+ggplot(data = data, 
+       (aes(x = factor(flat_type), y = resale_price))) +
+  geom_point(position = position_jitter(
+    height = 0.3, width = 0.05), 
+    size = 0.4, color = "#0072B2", alpha = 1/2) +
+  geom_hpline(data = sampler(25, group = RACE), height = 0.6, color = "#D55E00") +
+  theme_bw() + 
+  transition_states(.draw, 1, 3)
+```
 
 #### Multivariate analysis
