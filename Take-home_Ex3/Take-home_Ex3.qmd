@@ -418,20 +418,6 @@ ggbetweenstats(
 The testing result shows a very small **p-value \< 0.05** and small **F-value** of **51.27**, which means that we have enough evident to reject the H0 that the mean of each class in this group are equal. In fact, the mean resale price per sqm of flat with **3** **rooms** is **higher** than that with **4** **rooms**, which is **higher** than that with **5** **rooms**.
 
 ```{r}
-sdata<-data%>%
-  select(c("town","flat_type"))%>%
-  group_by(town)%>%
-  summarise(`N 4ROOM` = n("flat_type"="4 ROOM"))
-
-
-
-funnel_plot(
-  numerator = data$floor_area_sqm,
-  denominator = data$resale_price,
-  group = data$street_name)
-```
-
-```{r}
 df <- data %>%
   mutate(rate = floor_area_sqm / resale_price) %>%
   mutate(rate.se = sqrt((rate*(1-rate)) / (resale_price))) %>%
@@ -484,9 +470,9 @@ p <- ggplot(df, aes(x = resale_price, y = rate)) +
   coord_cartesian(ylim=c(0,0.01)) +
   annotate("text", x = 1, y = -0.13, label = "95%", size = 3, colour = "grey40") + 
   annotate("text", x = 4.5, y = -0.18, label = "99%", size = 3, colour = "grey40") + 
-  ggtitle("Cumulative Fatality Rate by Cumulative Number of COVID-19 Cases") +
-  xlab("Cumulative Number of COVID-19 Cases") + 
-  ylab("Cumulative Fatality Rate") +
+  ggtitle("Floor Area Sqm by Resale Price") +
+  xlab("Floor Area Sqm") + 
+  ylab("Resale Price") +
   theme_light() +
   theme(plot.title = element_text(size=12),
         legend.position = c(0.91,0.85), 
@@ -495,8 +481,4 @@ p <- ggplot(df, aes(x = resale_price, y = rate)) +
         legend.background = element_rect(colour = "grey60", linetype = "dotted"),
         legend.key.height = unit(0.3, "cm"))
 p
-```
-
-```{r}
-leaflet(geodata) %>% addTiles() %>% addProviderTiles("OneMapSG") %>% addMarkers(~long, ~lat, popup = ~address, label = ~round(resale_pricePersqm), clusterOptions = markerClusterOptions())
 ```
