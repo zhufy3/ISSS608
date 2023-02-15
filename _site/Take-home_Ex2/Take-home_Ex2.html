@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fangyuan Zhu">
+<meta name="dcterms.date" content="2023-01-28">
+
+<title>ISSS608 VAA - Take-home Exercise 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="../site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script>
+<script src="../site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script>
+<script src="../site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script>
+<script src="../site_libs/flatbush-4.0.0/flatbush.min.js"></script>
+<link href="../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
+<script src="../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script>
+<script src="../site_libs/girafe-binding-0.8.6/girafe.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ISSS608 VAA</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-hands-on-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hands-on Exercise</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Ex1/Hands_on_Ex1.html">
+ <span class="dropdown-text">Hands-on Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Ex2/Hands_on_Ex2.html">
+ <span class="dropdown-text">Hands-on Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Ex3/Hands_on_Ex3.qmd">
+ <span class="dropdown-text">Hands-on Exercise 3</span></a>
+  </li>  
+        <li class="dropdown-header">Hands-on Exercise 4</li>
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Ex5/Hands_on_Ex5.html">
+ <span class="dropdown-text">Hands-on Exercise 5</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-in-class-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">In-class Exercise</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
+        <li>
+    <a class="dropdown-item" href="../Inclass_Ex1/Inclass_Ex1.html">
+ <span class="dropdown-text">In-class Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Inclass_Ex2/Inclass_Ex2.html">
+ <span class="dropdown-text">In-class Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Inclass_Ex3/Inclass_Ex3.html">
+ <span class="dropdown-text">In-class Exercise 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Inclass_Ex4/Inclass_Ex4.html">
+ <span class="dropdown-text">In-class Exercise 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Inclass_Ex5/Inclass_Ex5.html">
+ <span class="dropdown-text">In-class Exercise 5</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-take-home-exercise" role="button" data-bs-toggle="dropdown" aria-expanded="false">Take-home Exercise</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
+        <li>
+    <a class="dropdown-item" href="../Take-home_Ex1/Take-home_Ex1.html">
+ <span class="dropdown-text">Take-home Exercise 1</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Take-home_Ex2/Take-home_Ex2.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Take-home_Ex3/Take-home_Ex3.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html">Code of Visualisation Analysis</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#our-tasks" id="toc-our-tasks" class="nav-link active" data-scroll-target="#our-tasks">1 Our Tasks</a></li>
+  <li><a href="#guide-of-critiques" id="toc-guide-of-critiques" class="nav-link" data-scroll-target="#guide-of-critiques">2 Guide of Critiques</a></li>
+  <li><a href="#original-design" id="toc-original-design" class="nav-link" data-scroll-target="#original-design">3 Original Design</a></li>
+  <li><a href="#critiques" id="toc-critiques" class="nav-link" data-scroll-target="#critiques">4 Critiques</a>
+  <ul class="collapse">
+  <li><a href="#critiques-on-definition" id="toc-critiques-on-definition" class="nav-link" data-scroll-target="#critiques-on-definition">4.1 Critiques on definition</a></li>
+  <li><a href="#critiques-on-amplification" id="toc-critiques-on-amplification" class="nav-link" data-scroll-target="#critiques-on-amplification">4.2 Critiques on Amplification</a></li>
+  <li><a href="#critiques-on-simplification" id="toc-critiques-on-simplification" class="nav-link" data-scroll-target="#critiques-on-simplification">4.3 Critiques on Simplification</a></li>
+  </ul></li>
+  <li><a href="#remake-of-the-chart" id="toc-remake-of-the-chart" class="nav-link" data-scroll-target="#remake-of-the-chart">5 Remake of the Chart</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-packages" id="toc-importing-the-packages" class="nav-link" data-scroll-target="#importing-the-packages">5.1 Importing the packages</a></li>
+  <li><a href="#importing-the-data" id="toc-importing-the-data" class="nav-link" data-scroll-target="#importing-the-data">5.2 Importing the data</a></li>
+  <li><a href="#glimpse-the-data" id="toc-glimpse-the-data" class="nav-link" data-scroll-target="#glimpse-the-data">5.3 Glimpse the data</a></li>
+  <li><a href="#explanation-of-each-column" id="toc-explanation-of-each-column" class="nav-link" data-scroll-target="#explanation-of-each-column">5.4 Explanation of each column</a></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">5.5 Cleaning the data</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">5.6 Data preparation</a></li>
+  </ul></li>
+  <li><a href="#plotting-age-sex-pyramid" id="toc-plotting-age-sex-pyramid" class="nav-link" data-scroll-target="#plotting-age-sex-pyramid">6 Plotting age-sex pyramid</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Take-home Exercise 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Fangyuan Zhu </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 28, 2023</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="our-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="our-tasks">1 Our Tasks</h2>
+<p>Our tasks in this exercise is to:</p>
+<ul>
+<li><p>select one of the Take-home Exercise 1 prepared by my classmate,</p></li>
+<li><p>critic the submission in terms of <strong>clarity</strong> and <strong>aesthetics</strong>,</p></li>
+<li><p>prepare a sketch for the alternative design,</p></li>
+<li><p>remake the original design by using <strong><em>ggplot2</em></strong>, <strong><em>ggplot2</em></strong> extensions and <strong><em>tidyverse</em></strong> packages.</p></li>
+</ul>
+</section>
+<section id="guide-of-critiques" class="level2">
+<h2 class="anchored" data-anchor-id="guide-of-critiques">2 Guide of Critiques</h2>
+<p>Our task of take-home exercise 1 is to plot age-sex pyramid for 9 planning areas. The guide of the task is to plot an audience-friendly and subject focused charts. Therefore, we can critique and improve our peer’s preparation from perspectives like <strong>clarity</strong> and <strong>aesthetics</strong>.</p>
+<p>Therefore, in this exercise, 3 codes below can serve as our references:</p>
+<ul>
+<li><p><strong>Definition</strong></p></li>
+<li><p><strong>Amplification</strong></p></li>
+<li><p><strong>Simplicity</strong></p></li>
+</ul>
+</section>
+<section id="original-design" class="level2">
+<h2 class="anchored" data-anchor-id="original-design">3 Original Design</h2>
+<p><img src="images/Dashboard%201.png" class="img-fluid" width="1500"></p>
+</section>
+<section id="critiques" class="level2">
+<h2 class="anchored" data-anchor-id="critiques">4 Critiques</h2>
+<section id="critiques-on-definition" class="level3">
+<h3 class="anchored" data-anchor-id="critiques-on-definition">4.1 Critiques on definition</h3>
+<p>The definition of the chart is very clear as the title shows - ‘<em>Demographic structure of Singapore at top 9 population planning areas in June 2022</em>’.</p>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 83%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Issues</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🌟</td>
+<td>The author chose the areas in purpose instead of randomly. That means the author is showing the patterns of population structure with a clear objective.</td>
+<td><img src="images/paste-4B4889B2.png" width="500" height="70"></td>
+</tr>
+<tr class="even">
+<td>🌟</td>
+<td>The title shows clearly the chart type, which is <em>Demographic structure.</em></td>
+<td><img src="images/paste-AE5ED1DB.png" width="500" height="70"></td>
+</tr>
+<tr class="odd">
+<td>🌟</td>
+<td>The title shows the time of the data collection, which is June 2022.</td>
+<td><img src="images/paste-EF0764C7.png" width="500" height="70"></td>
+</tr>
+<tr class="even">
+<td>❎</td>
+<td>The standard population structure chart contains x-axis of <em>Male population</em> and <em>Female population</em>, and y-axis of <em>age group.</em> Normally, <em><strong>Female</strong> population</em> is on the <strong>right</strong> side and <strong><em>Male’s</em></strong> on the <strong>left</strong> side. The author puts the structure chart in a reverse direction, which is okay but against the rule of thumb.</td>
+<td><img src="images/paste-8F83A03F.png" class="img-fluid" width="222"></td>
+</tr>
+<tr class="odd">
+<td>❎</td>
+<td>The range of each age group is normally <strong>5 years</strong> such as 0-4, 5-9 and so on. Otherwise, the shape of the population structure may miss some important information. The range of group in the chart above is 10 years. Maybe better to switch to 5 years as the same as the raw data.</td>
+<td><img src="images/paste-983B8D0A.png" class="img-fluid" width="100"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="critiques-on-amplification" class="level3">
+<h3 class="anchored" data-anchor-id="critiques-on-amplification">4.2 Critiques on Amplification</h3>
+<table class="table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 80%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Issue</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🌟</td>
+<td>It’s good that the author brings the audience’s focus just on the <strong>shape</strong> of each chart under a same range of x-axis, which is -40k to 40k, by not showing the exact number of population of each age group.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>🌟</td>
+<td>It is very clear to draw the bar chart for different genders in different <strong>colors</strong>, red for female and blue for male.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>❎</td>
+<td>However, the <strong>range</strong> of y-axis is too <strong>large</strong> so that the shape is contacted.</td>
+<td><img src="images/paste-1A5FAEEB.png" class="img-fluid" width="539"></td>
+</tr>
+<tr class="even">
+<td>❎</td>
+<td>There is a <strong><em>Column</em></strong> on top of the chart, and <strong><em>Female population</em></strong> and <strong><em>Male population</em></strong> as x-label at the bottom of the chart. So it is a little confusing.</td>
+<td><p><img src="images/paste-B9130EAD.png" width="500" height="70"></p>
+<p><img src="images/paste-1A5FAEEB.png" class="img-fluid" width="539"></p></td>
+</tr>
+<tr class="odd">
+<td>❎</td>
+<td>For each small chart, the author puts the <strong>name</strong> of the planning area <strong>beside the bar of the age group with the</strong> <strong>most population</strong>. There may be some information the author intends to deliver like the age group with the most population, but it appears not very obvious.</td>
+<td><img src="images/paste-D4DAE5C3.png" width="500" height="70"></td>
+</tr>
+<tr class="even">
+<td>❎</td>
+<td>The <strong>x-label</strong> retains the column name, <em><strong>AG</strong>,</em> of the raw data frame, which is the short of age but <strong>no explanation</strong> here.</td>
+<td><img src="images/paste-869A1352.png" width="100" height="239"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="critiques-on-simplification" class="level3">
+<h3 class="anchored" data-anchor-id="critiques-on-simplification">4.3 Critiques on Simplification</h3>
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 70%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Issue</th>
+<th>Screenshot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>🌟</td>
+<td>It is good to configure the chart as 3*3 rows and columns. A visually comfortable and tidy deployment.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>❎</td>
+<td>The <strong>aliases</strong> of the y-axis are a little tedious, which contains <strong><em>number, string</em></strong> and <strong><em>special character.</em></strong> It is better to simplify the aliases.</td>
+<td><img src="images/paste-983B8D0A.png" class="img-fluid" width="100"></td>
+</tr>
+<tr class="odd">
+<td>❎</td>
+<td>There are <strong>column numbers</strong> for the whole chart, which is tedious.</td>
+<td><img src="images/paste-7E4C5FBB.png" width="500" height="70"></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="remake-of-the-chart" class="level2">
+<h2 class="anchored" data-anchor-id="remake-of-the-chart">5 Remake of the Chart</h2>
+<p>In accordance to issues we come up above, we are going to remake the chart to improve step by step.</p>
+<section id="importing-the-packages" class="level3">
+<h3 class="anchored" data-anchor-id="importing-the-packages">5.1 Importing the packages</h3>
+<p>In the exercise, we will mainly use packages as below:</p>
+<ul>
+<li><p><em>ggplot2</em></p></li>
+<li><p><em>tidyverse</em></p></li>
+<li><p><em>ggrepel</em></p></li>
+<li><p><em>ggthemes</em></p></li>
+<li><p><em>hrbrthemes</em></p></li>
+<li><p><em>patchwork</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2,tidyverse,ggrepel,ggthemes,hrbrthemes,patchwork,ggiraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="importing-the-data">5.2 Importing the data</h3>
+<p>First let us import the data of population in Singapore extracted from the Singstat. We will use the <em>read_csv</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pop<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"data/population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Noted from the information above, we have 100928 rows and 7 columns in this data frame. See the 7 columns are <em>PA, SA, AG, Sex, TOD, Pop</em> and <em>Time</em>, among which <strong><em>PA, SZ, AG, Sex</em></strong> <strong>and <em>TOD</em></strong>are <strong><em>character</em></strong> datatype and <strong><em>Pop</em></strong> and <strong><em>Time</em></strong> are double-precision floating-point format (<strong>dbl</strong>) data type.</p>
+</section>
+<section id="glimpse-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="glimpse-the-data">5.3 Glimpse the data</h3>
+<p>Let us take a look at the data we imported to use later using code chunk below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Okay we see values of each column, like <em>Ang Mo Kio</em> in column Planning area<em>, 0_to_4</em> in column AG, etc.</p>
+</section>
+<section id="explanation-of-each-column" class="level3">
+<h3 class="anchored" data-anchor-id="explanation-of-each-column">5.4 Explanation of each column</h3>
+<ul>
+<li><p><em>PA</em>: Planning area</p></li>
+<li><p><em>SZ</em>: Subzone</p></li>
+<li><p><em>AG</em>: Age</p></li>
+<li><p><em>Sex</em>: Sex</p></li>
+<li><p><em>TOD</em>: Type of dwelling</p></li>
+<li><p><em>Pop</em>: Population</p></li>
+<li><p><em>Time</em>: Time, each value = June 2022</p></li>
+</ul>
+</section>
+<section id="cleaning-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-the-data">5.5 Cleaning the data</h3>
+<section id="extracting-columns-used" class="level4">
+<h4 class="anchored" data-anchor-id="extracting-columns-used">5.5.1 Extracting columns used</h4>
+<p>As we see from the data frame, there are 7 columns. Most of them won’t be used in this exercise. We need to therefore extract only columns of <strong>Planning area, Age, Sex</strong> and <strong>Pop</strong>, and write this new data table as <strong><em>ppl.</em></strong> And rename the <em>Sex</em> and <em>Pop</em> as <em>SX</em> and <em>PP</em> for more convenience.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ppl<span class="ot">&lt;-</span>pop<span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PA,AG,Sex,Pop)<span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">SX =</span> <span class="st">`</span><span class="at">Sex</span><span class="st">`</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PP =</span> <span class="st">`</span><span class="at">Pop</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="checking-missing-values" class="level4">
+<h4 class="anchored" data-anchor-id="checking-missing-values">5.5.2 Checking missing values</h4>
+<p>Before we use the data, we should first check if there are any missing values using codes below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ppl[<span class="fu">rowSums</span>(<span class="fu">is.na</span>(ppl))<span class="sc">!=</span><span class="dv">0</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From the information above, we see no missing values in this data table.</p>
+</section>
+<section id="aggregate-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="aggregate-the-data">5.5.3 Aggregate the data</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>prop<span class="ot">&lt;-</span>ppl<span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">PA</span><span class="st">`</span>, <span class="st">`</span><span class="at">SX</span><span class="st">`</span>, <span class="st">`</span><span class="at">AG</span><span class="st">`</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">"Subsum"</span> <span class="ot">=</span> <span class="fu">sum</span>(PP))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(prop,<span class="st">"data/prop.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="images/paste-7F91C86F.png" class="img-fluid"></p>
+<p><img src="images/paste-6F3BD705.png" class="img-fluid"></p>
+<p>We see that the size of the new data table is much smaller than the raw data.✨</p>
+</section>
+<section id="create-new-columns" class="level4">
+<h4 class="anchored" data-anchor-id="create-new-columns">5.5.4 Create new columns</h4>
+<p>Then we can create a new column which shows percentage of population belonging to each age group for male and female in each planning area, instead of only the exact number of the population.</p>
+<p>First, we need to use codes below to compute the sum of population of each gender in a spacific planning area.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prop<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"data/prop.csv"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ppsum<span class="ot">&lt;-</span>prop<span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">PA</span><span class="st">`</span>, <span class="st">`</span><span class="at">SX</span><span class="st">`</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="st">"SUM"</span> <span class="ot">=</span> <span class="fu">sum</span>(Subsum))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then let us just <strong>combine</strong> the new data table named <strong><em>ppsum</em></strong> with data table named <strong><em>prop</em></strong> by <strong>planning area</strong> and <strong>sex</strong> using code chunk below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pct<span class="ot">&lt;-</span><span class="fu">merge</span>(prop, ppsum, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"PA"</span>, <span class="st">"SX"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can noe create the new column named <em>PCT</em> using code chunk below and have a look at the new data table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pct<span class="ot">&lt;-</span>pct<span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">"PCT"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="fu">as.character</span>(<span class="fu">signif</span>(Subsum<span class="sc">/</span>SUM<span class="sc">*</span><span class="dv">100</span>,<span class="dv">2</span>)),<span class="st">"%"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pct,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           PA      SX       AG Subsum   SUM   PCT
+1  Ang Mo Kio Females   0_to_4   2480 84410 2.9 %
+2  Ang Mo Kio Females 10_to_14   3320 84410 3.9 %
+3  Ang Mo Kio Females 15_to_19   3620 84410 4.3 %
+4  Ang Mo Kio Females 20_to_24   4030 84410 4.8 %
+5  Ang Mo Kio Females 25_to_29   5020 84410 5.9 %
+6  Ang Mo Kio Females 30_to_34   5650 84410 6.7 %
+7  Ang Mo Kio Females 35_to_39   5120 84410 6.1 %
+8  Ang Mo Kio Females 40_to_44   5970 84410 7.1 %
+9  Ang Mo Kio Females 45_to_49   6350 84410 7.5 %
+10 Ang Mo Kio Females   5_to_9   3120 84410 3.7 %</code></pre>
+</div>
+</div>
+<p>We see that we have new column named <em>PCT</em> in the most right of the data table, which shows the percentage of population from each age group of female or male in a planning area.</p>
+</section>
+</section>
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">5.6 Data preparation</h3>
+<section id="extracting-top-9-population-planning-areas" class="level4">
+<h4 class="anchored" data-anchor-id="extracting-top-9-population-planning-areas">5.6.1 Extracting top 9 population planning areas</h4>
+<p>In accordance to the author’s intention, we need to find out the <strong>top 9</strong> population planning areas. Code chunk below will help us achieve this objective.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  pct<span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(PA)<span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="st">"SPP"</span><span class="ot">=</span><span class="fu">sum</span>(SUM))<span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(SPP,<span class="cn">FALSE</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+  PA                SPP
+  &lt;chr&gt;           &lt;dbl&gt;
+1 Punggol       3539130
+2 Choa Chu Kang 3616270
+3 Yishun        4236240
+4 Hougang       4323260
+5 Woodlands     4797690
+6 Sengkang      4809280
+7 Jurong West   4912260
+8 Tampines      5048110
+9 Bedok         5294160</code></pre>
+</div>
+</div>
+<p>As shown in chart above, <strong>Bedok, Tampines, Jurong West, Sengkang, Woodlands, Hougang, Yishun, Choa Chu Kang</strong> and <strong>Punggol</strong> are the top 9 population planning areas.</p>
+</section>
+<section id="recoding-of-the-column-ag" class="level4">
+<h4 class="anchored" data-anchor-id="recoding-of-the-column-ag">5.6.2 Recoding of the column AG</h4>
+<p>In order to better sort the x-axis, we recode the values in column <em>AG</em> as the cutting years, 0, 5, 10, …, 90 using below codes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pct<span class="ot">&lt;-</span>pct<span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">AG =</span> <span class="fu">recode</span>(AG, <span class="st">"0_to_4"</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">"5_to_9"</span> <span class="ot">=</span> <span class="dv">5</span>, <span class="st">"10_to_14"</span> <span class="ot">=</span> <span class="dv">10</span>, <span class="st">"15_to_19"</span> <span class="ot">=</span> <span class="dv">15</span>, <span class="st">"20_to_24"</span> <span class="ot">=</span> <span class="dv">20</span>, <span class="st">"25_to_29"</span> <span class="ot">=</span> <span class="dv">25</span>, <span class="st">"30_to_34"</span> <span class="ot">=</span> <span class="dv">30</span>, <span class="st">"35_to_39"</span> <span class="ot">=</span> <span class="dv">35</span>, <span class="st">"40_to_44"</span> <span class="ot">=</span> <span class="dv">40</span>, <span class="st">"45_to_49"</span> <span class="ot">=</span> <span class="dv">45</span>, <span class="st">"50_to_54"</span> <span class="ot">=</span> <span class="dv">50</span>, <span class="st">"55_to_59"</span> <span class="ot">=</span> <span class="dv">55</span>, <span class="st">"60_to_64"</span> <span class="ot">=</span> <span class="dv">60</span>, <span class="st">"65_to_69"</span> <span class="ot">=</span> <span class="dv">65</span>, <span class="st">"70_to_74"</span> <span class="ot">=</span> <span class="dv">70</span>, <span class="st">"75_to_79"</span> <span class="ot">=</span> <span class="dv">75</span>, <span class="st">"80_to_84"</span> <span class="ot">=</span> <span class="dv">80</span>, <span class="st">"85_to_89"</span> <span class="ot">=</span> <span class="dv">85</span>,<span class="st">"90_and_over"</span> <span class="ot">=</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="review-and-improvement-of-the-issues" class="level4">
+<h4 class="anchored" data-anchor-id="review-and-improvement-of-the-issues">5.6.3 Review and improvement of the issues</h4>
+<p>In our revised plot, we need to fix issues we found before step by step.</p>
+<ul>
+<li><p>Adjust the bar chart of <strong>Male</strong> population to the <strong>left</strong> side and that of <strong>Female</strong> to the <strong>right</strong> side.</p></li>
+<li><p>Change the <strong>range</strong> of each <strong>age group to 5 years.</strong></p></li>
+<li><p>Change the <strong>range</strong> of <strong>y-axis</strong> from 0 - 4k to <strong>0 - 2k.</strong></p></li>
+<li><p><strong>Delete</strong> tedious <strong>labels</strong> like <em>column</em> and <em>Female population</em> and <em>Male population.</em></p></li>
+<li><p>Put the <strong>name of each planning area</strong> on the <strong>top</strong> of the chart.</p></li>
+<li><p>Switch the x-label from <em>AG</em> to <em><strong>Age Group</strong>.</em></p></li>
+<li><p>Recode the age group <strong>aliases</strong> to the <strong>cutting</strong> of years.</p></li>
+</ul>
+</section>
+<section id="adding-new-functions" class="level4">
+<h4 class="anchored" data-anchor-id="adding-new-functions">5.6.4 Adding new functions</h4>
+<p>From the foundation of the author’s plot, we can add new more functions to the plot, such as <strong>interaction</strong>, <strong>background</strong> and <strong>legend</strong>.</p>
+<p>🎁 To make the plot more amplified, we don’t put the exact number of population to the bar chart. We can add an <strong>interactive labels</strong> showing instead of the number, but the <strong>percentage</strong> of the population for each age group among the total when putting the tick on a specific bar.</p>
+<p>🎁 Adding a grey background with x-y grid as <strong>reference</strong> <strong>lines.</strong></p>
+<p>🎁 Offering a <strong>legend</strong> showing colors denoting Female and Male.</p>
+<p>🎁 Adding a <strong>note</strong> for the audience to explore the <strong>interactive</strong> function.</p>
+<p>🎁 Adding a <strong>subtitle</strong> to <strong>shorten</strong> the main title.</p>
+</section>
+</section>
+</section>
+<section id="plotting-age-sex-pyramid" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-age-sex-pyramid">6 Plotting age-sex pyramid</h2>
+<p>Now we can plot the chart using code chunk below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tooltip_css <span class="ot">&lt;-</span> <span class="st">"background-color:white; #&lt;&lt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">font-style:bold; color:black;"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>p<span class="ot">&lt;-</span>pct<span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">PA</span><span class="st">`</span> <span class="sc">%in%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="st">"Bedok"</span>,<span class="st">"Tampines"</span>, <span class="st">"Jurong West"</span>, <span class="st">"Sengkang"</span>, <span class="st">"Woodlands"</span>, <span class="st">"Hougang"</span>, <span class="st">"Yishun"</span>, <span class="st">"Choa Chu Kang"</span>, <span class="st">"Punggol"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Subsum =</span> <span class="fu">ifelse</span>(SX <span class="sc">==</span> <span class="st">"Males"</span>, Subsum<span class="sc">*</span>(<span class="sc">-</span><span class="dv">1</span>), Subsum<span class="sc">*</span><span class="dv">1</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(AG), <span class="at">y =</span> Subsum, <span class="at">fill =</span> SX)) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar_interactive</span>(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">tooltip =</span> PCT),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> PA) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="sc">-</span><span class="dv">1</span>), <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>))), <span class="st">"k"</span>)) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Demographic Structure Pyramid"</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> <span class="st">"of top 9 population planning areas in SG (June 2022, data sorce: SingStat)"</span>,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">caption =</span> <span class="st">"Note: </span><span class="sc">\n</span><span class="st"> Put your mouse on the bar to see the No. of population as percentage of the total population within a gender"</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Age </span><span class="sc">\n</span><span class="st"> Group"</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"No. of Population"</span>)<span class="sc">+</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_grey</span>()<span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">""</span>),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">size=</span><span class="fl">0.5</span>)))<span class="sc">+</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">13</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"italic"</span>),</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">7</span>),</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">5</span>),</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">0</span>, <span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y.left =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x.bottom =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>),</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">5</span>,<span class="at">vjust =</span> <span class="dv">1</span>),</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.ticks.y =</span> <span class="fu">element_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"grey"</span>),</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"blue"</span>, <span class="at">face =</span> <span class="st">"italic"</span>))</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="fu">girafe</span>(                                  </span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggobj =</span> p,                             </span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">width_svg =</span> <span class="dv">8</span>,                         </span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">height_svg =</span> <span class="dv">8</span><span class="sc">*</span><span class="fl">0.8</span>,</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">options =</span> <span class="fu">list</span>(                        </span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">opts_tooltip</span>(</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">css =</span> tooltip_css)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="girafe html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2e942738eb7622f22e46" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2e942738eb7622f22e46">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7' viewBox='0 0 576 460.8'>\n <defs id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_defs'>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c1'>\n   <rect x='0' y='0' width='576' height='460.8'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c2'>\n   <rect x='40.11' y='54.67' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c3'>\n   <rect x='40.11' y='180.54' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c4'>\n   <rect x='40.11' y='306.41' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c5'>\n   <rect x='198.13' y='54.67' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c6'>\n   <rect x='198.13' y='180.54' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c7'>\n   <rect x='198.13' y='306.41' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c8'>\n   <rect x='356.14' y='54.67' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c9'>\n   <rect x='356.14' y='180.54' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c10'>\n   <rect x='356.14' y='306.41' width='152.53' height='103.47'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c11'>\n   <rect x='40.11' y='289.49' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c12'>\n   <rect x='198.13' y='289.49' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c13'>\n   <rect x='356.14' y='289.49' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c14'>\n   <rect x='40.11' y='163.62' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c15'>\n   <rect x='198.13' y='163.62' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c16'>\n   <rect x='356.14' y='163.62' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c17'>\n   <rect x='40.11' y='37.75' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c18'>\n   <rect x='198.13' y='37.75' width='152.53' height='16.92'/>\n  <\/clipPath>\n  <clipPath id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c19'>\n   <rect x='356.14' y='37.75' width='152.53' height='16.92'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c1)'>\n   <rect x='0' y='0' width='576' height='460.8' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='-0' width='576' height='460.8' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c2)'>\n   <rect x='40.11' y='54.67' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='42.41,158.14 42.41,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='71.05,158.14 71.05,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='99.69,158.14 99.69,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='128.32,158.14 128.32,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='156.96,158.14 156.96,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='185.60,158.14 185.60,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e1' x='114' y='152.48' width='28.47' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e2' x='114' y='141.7' width='35.63' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e3' x='114' y='136.32' width='38.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e4' x='114' y='130.93' width='41.87' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e5' x='114' y='125.54' width='50.52' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e6' x='114' y='120.15' width='57.56' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e7' x='114' y='114.76' width='53.73' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e8' x='114' y='109.37' width='59.17' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e9' x='114' y='103.98' width='62.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e10' x='114' y='147.09' width='32.65' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e11' x='114' y='98.59' width='58.25' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e12' x='114' y='93.2' width='60.54' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e13' x='114' y='87.81' width='63.41' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e14' x='114' y='82.42' width='59' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e15' x='114' y='77.03' width='49.89' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e16' x='114' y='71.64' width='29.67' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e17' x='114' y='66.25' width='21.48' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e18' x='114' y='60.87' width='12.26' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e19' x='114' y='55.48' width='8.25' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e20' x='84.85' y='152.48' width='29.15' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e21' x='77.12' y='141.7' width='36.89' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e22' x='75.23' y='136.32' width='38.78' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e23' x='68.99' y='130.93' width='45.02' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e24' x='62.11' y='125.54' width='51.89' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e25' x='58.16' y='120.15' width='55.85' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e26' x='66.75' y='114.76' width='47.25' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e27' x='63.26' y='109.37' width='50.75' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e28' x='57.42' y='103.98' width='56.59' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e29' x='79.87' y='147.09' width='34.14' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e30' x='57.42' y='98.59' width='56.59' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e31' x='56.27' y='93.2' width='57.74' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e32' x='53.41' y='87.81' width='60.6' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e33' x='59.76' y='82.42' width='54.24' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e34' x='68.64' y='77.03' width='45.36' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e35' x='88.4' y='71.64' width='25.6' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e36' x='98.31' y='66.25' width='15.69' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e37' x='106.56' y='60.87' width='7.45' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.96 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e38' x='110.22' y='55.48' width='3.78' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.49 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c3)'>\n   <rect x='40.11' y='180.54' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='42.41,284.01 42.41,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='71.05,284.01 71.05,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='99.69,284.01 99.69,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='128.32,284.01 128.32,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='156.96,284.01 156.96,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='185.60,284.01 185.60,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e39' x='114' y='278.35' width='27.61' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e40' x='114' y='267.58' width='39.98' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e41' x='114' y='262.19' width='42.38' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e42' x='114' y='256.8' width='45.99' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e43' x='114' y='251.41' width='53.21' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e44' x='114' y='246.02' width='54.13' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e45' x='114' y='240.63' width='53.61' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e46' x='114' y='235.24' width='60.14' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e47' x='114' y='229.85' width='57.22' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e48' x='114' y='272.97' width='33.97' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e49' x='114' y='224.46' width='54.76' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e50' x='114' y='219.07' width='53.38' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e51' x='114' y='213.68' width='49.54' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e52' x='114' y='208.29' width='44.5' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e53' x='114' y='202.9' width='31.62' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e54' x='114' y='197.52' width='16.55' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e55' x='114' y='192.13' width='10.71' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e56' x='114' y='186.74' width='5.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e57' x='114' y='181.35' width='3.49' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.47 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e58' x='85.31' y='278.35' width='28.7' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e59' x='72.71' y='267.58' width='41.3' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e60' x='68.99' y='262.19' width='45.02' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e61' x='64.52' y='256.8' width='49.49' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e62' x='59.08' y='251.41' width='54.93' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e63' x='60.62' y='246.02' width='53.38' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e64' x='66.06' y='240.63' width='47.94' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e65' x='58.96' y='235.24' width='55.04' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e66' x='55.24' y='229.85' width='58.77' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e67' x='78.32' y='272.97' width='35.68' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e68' x='56.38' y='224.46' width='57.62' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e69' x='56.79' y='219.07' width='57.22' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e70' x='61.83' y='213.68' width='52.18' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e71' x='69.16' y='208.29' width='44.85' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e72' x='81.59' y='202.9' width='32.42' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e73' x='98.71' y='197.52' width='15.29' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='2.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e74' x='105.59' y='192.13' width='8.42' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e75' x='110.51' y='186.74' width='3.49' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.47 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e76' x='112.86' y='181.35' width='1.15' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.15 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c4)'>\n   <rect x='40.11' y='306.41' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='42.41,409.89 42.41,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='71.05,409.89 71.05,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='99.69,409.89 99.69,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='128.32,409.89 128.32,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='156.96,409.89 156.96,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='185.60,409.89 185.60,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e77' x='114' y='404.23' width='36.08' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e78' x='114' y='393.45' width='32.53' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e79' x='114' y='388.06' width='34.08' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e80' x='114' y='382.67' width='43.42' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e81' x='114' y='377.28' width='60.6' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e82' x='114' y='371.89' width='67.76' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e83' x='114' y='366.5' width='54.99' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e84' x='114' y='361.11' width='52.06' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e85' x='114' y='355.72' width='48.91' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e86' x='114' y='398.84' width='34.42' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e87' x='114' y='350.33' width='53.84' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e88' x='114' y='344.94' width='61.92' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e89' x='114' y='339.55' width='64.78' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e90' x='114' y='334.17' width='53.5' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e91' x='114' y='328.78' width='35.51' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e92' x='114' y='323.39' width='18.27' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e93' x='114' y='318' width='13.86' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e94' x='114' y='312.61' width='7.5' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.96 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e95' x='114' y='307.22' width='5.1' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.65 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e96' x='76.55' y='404.23' width='37.46' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e97' x='78.44' y='393.45' width='35.57' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e98' x='77.75' y='388.06' width='36.26' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e99' x='67.95' y='382.67' width='46.05' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e100' x='53.86' y='377.28' width='60.14' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e101' x='47.05' y='371.89' width='66.96' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e102' x='61.71' y='366.5' width='52.29' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e103' x='65.61' y='361.11' width='48.4' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e104' x='68.13' y='355.72' width='45.88' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e105' x='77.18' y='398.84' width='36.83' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e106' x='68.7' y='350.33' width='45.31' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e107' x='59.71' y='344.94' width='54.3' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e108' x='54.72' y='339.55' width='59.28' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e109' x='61.65' y='334.17' width='52.35' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e110' x='78.84' y='328.78' width='35.17' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e111' x='98.43' y='323.39' width='15.58' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='2.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e112' x='105.13' y='318' width='8.88' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e113' x='109.77' y='312.61' width='4.24' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.57 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e114' x='112.29' y='307.22' width='1.72' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.23 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c5)'>\n   <rect x='198.13' y='54.67' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='200.42,158.14 200.42,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='229.06,158.14 229.06,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='257.70,158.14 257.70,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.34,158.14 286.34,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='314.98,158.14 314.98,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='343.61,158.14 343.61,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e115' x='272.02' y='152.48' width='23.37' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e116' x='272.02' y='141.7' width='26.75' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e117' x='272.02' y='136.32' width='30.41' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e118' x='272.02' y='130.93' width='39.06' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e119' x='272.02' y='125.54' width='47.25' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e120' x='272.02' y='120.15' width='43.24' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e121' x='272.02' y='114.76' width='37.4' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e122' x='272.02' y='109.37' width='37.52' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e123' x='272.02' y='103.98' width='38.72' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e124' x='272.02' y='147.09' width='25.83' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e125' x='272.02' y='98.59' width='45.25' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e126' x='272.02' y='93.2' width='47.37' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e127' x='272.02' y='87.81' width='37.12' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e128' x='272.02' y='82.42' width='27.38' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e129' x='272.02' y='77.03' width='17.98' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e130' x='272.02' y='71.64' width='9.68' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e131' x='272.02' y='66.25' width='7.16' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e132' x='272.02' y='60.87' width='4.07' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.74 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e133' x='272.02' y='55.48' width='2.46' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.45 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e134' x='247.62' y='152.48' width='24.4' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e135' x='244.07' y='141.7' width='27.95' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e136' x='240' y='136.32' width='32.02' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e137' x='230.38' y='130.93' width='41.64' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e138' x='222.19' y='125.54' width='49.83' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='9.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e139' x='229.69' y='120.15' width='42.33' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e140' x='236.51' y='114.76' width='35.51' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e141' x='238.11' y='109.37' width='33.91' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e142' x='236.22' y='103.98' width='35.8' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e143' x='245.16' y='147.09' width='26.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e144' x='232.73' y='98.59' width='39.29' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e145' x='224.25' y='93.2' width='47.77' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e146' x='231.24' y='87.81' width='40.78' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e147' x='242.23' y='82.42' width='29.78' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e148' x='253.86' y='77.03' width='18.16' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e149' x='263.54' y='71.64' width='8.48' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e150' x='267.44' y='66.25' width='4.58' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.85 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e151' x='269.84' y='60.87' width='2.18' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e152' x='271.16' y='55.48' width='0.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.16 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c6)'>\n   <rect x='198.13' y='180.54' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='200.42,284.01 200.42,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='229.06,284.01 229.06,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='257.70,284.01 257.70,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.34,284.01 286.34,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='314.98,284.01 314.98,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='343.61,284.01 343.61,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e153' x='272.02' y='278.35' width='39.75' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e154' x='272.02' y='267.58' width='34.77' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e155' x='272.02' y='262.19' width='27.84' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e156' x='272.02' y='256.8' width='22.34' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e157' x='272.02' y='251.41' width='28.01' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e158' x='272.02' y='246.02' width='53.67' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='9.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e159' x='272.02' y='240.63' width='63.81' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='12 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e160' x='272.02' y='235.24' width='56.25' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='10 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e161' x='272.02' y='229.85' width='44.5' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e162' x='272.02' y='272.97' width='43.87' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e163' x='272.02' y='224.46' width='30.76' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e164' x='272.02' y='219.07' width='24.86' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e165' x='272.02' y='213.68' width='21.08' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e166' x='272.02' y='208.29' width='18.67' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e167' x='272.02' y='202.9' width='15.24' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e168' x='272.02' y='197.52' width='7.85' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e169' x='272.02' y='192.13' width='5.04' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.93 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e170' x='272.02' y='186.74' width='2.41' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.44 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e171' x='272.02' y='181.35' width='1.55' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.29 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e172' x='231.41' y='278.35' width='40.61' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e173' x='233.64' y='267.58' width='38.38' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e174' x='243.67' y='262.19' width='28.35' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e175' x='248.13' y='256.8' width='23.88' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e176' x='248.48' y='251.41' width='23.54' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e177' x='230.03' y='246.02' width='41.98' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e178' x='216.8' y='240.63' width='55.22' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='11 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e179' x='216.86' y='235.24' width='55.16' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='11 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e180' x='224.02' y='229.85' width='48' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='9.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e181' x='224.82' y='272.97' width='47.2' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e182' x='238.28' y='224.46' width='33.74' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e183' x='245.1' y='219.07' width='26.92' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e184' x='251.57' y='213.68' width='20.45' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e185' x='255.52' y='208.29' width='16.5' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e186' x='259.47' y='202.9' width='12.54' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='2.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e187' x='265.49' y='197.52' width='6.53' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e188' x='268.18' y='192.13' width='3.84' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.73 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e189' x='270.64' y='186.74' width='1.37' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.26 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e190' x='271.56' y='181.35' width='0.46' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.087 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c7)'>\n   <rect x='198.13' y='306.41' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='200.42,409.89 200.42,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='229.06,409.89 229.06,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='257.70,409.89 257.70,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.34,409.89 286.34,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='314.98,409.89 314.98,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='343.61,409.89 343.61,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e191' x='272.02' y='404.23' width='31.1' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e192' x='272.02' y='393.45' width='37.4' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e193' x='272.02' y='388.06' width='42.16' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e194' x='272.02' y='382.67' width='55.1' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e195' x='272.02' y='377.28' width='59.22' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e196' x='272.02' y='371.89' width='53.9' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e197' x='272.02' y='366.5' width='49.26' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e198' x='272.02' y='361.11' width='51.21' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e199' x='272.02' y='355.72' width='54.76' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e200' x='272.02' y='398.84' width='34.08' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e201' x='272.02' y='350.33' width='61.8' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e202' x='272.02' y='344.94' width='57.45' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e203' x='272.02' y='339.55' width='47.2' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e204' x='272.02' y='334.17' width='33.85' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e205' x='272.02' y='328.78' width='22.97' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e206' x='272.02' y='323.39' width='12.66' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e207' x='272.02' y='318' width='9.34' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e208' x='272.02' y='312.61' width='4.58' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.64 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e209' x='272.02' y='307.22' width='2.52' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.35 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e210' x='239.54' y='404.23' width='32.48' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e211' x='232.73' y='393.45' width='39.29' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e212' x='225.91' y='388.06' width='46.11' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e213' x='212.51' y='382.67' width='59.51' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e214' x='208.44' y='377.28' width='63.58' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e215' x='217.89' y='371.89' width='54.13' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e216' x='226.08' y='366.5' width='45.94' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e217' x='224.42' y='361.11' width='47.6' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e218' x='220.93' y='355.72' width='51.09' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e219' x='235.82' y='398.84' width='36.2' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e220' x='215.94' y='350.33' width='56.07' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e221' x='210.16' y='344.94' width='61.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e222' x='221.16' y='339.55' width='50.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e223' x='235.07' y='334.17' width='36.94' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e224' x='249.45' y='328.78' width='22.57' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e225' x='261.42' y='323.39' width='10.6' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e226' x='265.15' y='318' width='6.87' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.95 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e227' x='269.15' y='312.61' width='2.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.39 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e228' x='270.82' y='307.22' width='1.2' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.17 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c8)'>\n   <rect x='356.14' y='54.67' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='358.44,158.14 358.44,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='387.07,158.14 387.07,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='415.71,158.14 415.71,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='444.35,158.14 444.35,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='472.99,158.14 472.99,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='501.63,158.14 501.63,54.67' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e229' x='430.03' y='152.48' width='25.37' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e230' x='430.03' y='141.7' width='28.18' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e231' x='430.03' y='136.32' width='29.73' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e232' x='430.03' y='130.93' width='36.26' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e233' x='430.03' y='125.54' width='47.08' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e234' x='430.03' y='120.15' width='53.21' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e235' x='430.03' y='114.76' width='46.8' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e236' x='430.03' y='109.37' width='45.48' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e237' x='430.03' y='103.98' width='46.39' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e238' x='430.03' y='147.09' width='28.41' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e239' x='430.03' y='98.59' width='47.43' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e240' x='430.03' y='93.2' width='52.52' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e241' x='430.03' y='87.81' width='53.55' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e242' x='430.03' y='82.42' width='46.05' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e243' x='430.03' y='77.03' width='33.56' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e244' x='430.03' y='71.64' width='19.02' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e245' x='430.03' y='66.25' width='14.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e246' x='430.03' y='60.87' width='7.68' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e247' x='430.03' y='55.48' width='5.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.77 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e248' x='404.14' y='152.48' width='25.89' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e249' x='401.91' y='141.7' width='28.12' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e250' x='399.05' y='136.32' width='30.99' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e251' x='391.43' y='130.93' width='38.6' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e252' x='381.58' y='125.54' width='48.46' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e253' x='378.54' y='120.15' width='51.49' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e254' x='387.7' y='114.76' width='42.33' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e255' x='388.91' y='109.37' width='41.12' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e256' x='386.04' y='103.98' width='43.99' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e257' x='402.08' y='147.09' width='27.95' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e258' x='387.19' y='98.59' width='42.84' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e259' x='378.83' y='93.2' width='51.21' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e260' x='376.19' y='87.81' width='53.84' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e261' x='384.27' y='82.42' width='45.76' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e262' x='398.47' y='77.03' width='31.56' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e263' x='413.42' y='71.64' width='16.61' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='2.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e264' x='419.89' y='66.25' width='10.14' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e265' x='425.56' y='60.87' width='4.47' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e266' x='428.14' y='55.48' width='1.89' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.3 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c9)'>\n   <rect x='356.14' y='180.54' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='358.44,284.01 358.44,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='387.07,284.01 387.07,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='415.71,284.01 415.71,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='444.35,284.01 444.35,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='472.99,284.01 472.99,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='501.63,284.01 501.63,180.54' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e267' x='430.03' y='278.35' width='39.52' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e268' x='430.03' y='267.58' width='45.13' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e269' x='430.03' y='262.19' width='39.75' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e270' x='430.03' y='256.8' width='38.03' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e271' x='430.03' y='251.41' width='43.36' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e272' x='430.03' y='246.02' width='62.89' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e273' x='430.03' y='240.63' width='71.71' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='9.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e274' x='430.03' y='235.24' width='69.53' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='9.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e275' x='430.03' y='229.85' width='60.71' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e276' x='430.03' y='272.97' width='48' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e277' x='430.03' y='224.46' width='48.63' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e278' x='430.03' y='219.07' width='43.07' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e279' x='430.03' y='213.68' width='41.53' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e280' x='430.03' y='208.29' width='33.39' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e281' x='430.03' y='202.9' width='23.54' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='3.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e282' x='430.03' y='197.52' width='13.12' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e283' x='430.03' y='192.13' width='8.36' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e284' x='430.03' y='186.74' width='4.7' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.64 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e285' x='430.03' y='181.35' width='3.26' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.44 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e286' x='387.65' y='278.35' width='42.38' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e287' x='383.18' y='267.58' width='46.85' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e288' x='388.28' y='262.19' width='41.75' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e289' x='390.22' y='256.8' width='39.81' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e290' x='388.79' y='251.41' width='41.24' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e291' x='376.42' y='246.02' width='53.61' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e292' x='367.66' y='240.63' width='62.37' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e293' x='365.71' y='235.24' width='64.32' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e294' x='370.12' y='229.85' width='59.91' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e295' x='379.06' y='272.97' width='50.98' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e296' x='380.32' y='224.46' width='49.72' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e297' x='385.47' y='219.07' width='44.56' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e298' x='389.88' y='213.68' width='40.15' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e299' x='397.56' y='208.29' width='32.48' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e300' x='408.38' y='202.9' width='21.65' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e301' x='419.38' y='197.52' width='10.65' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e302' x='423.79' y='192.13' width='6.24' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.88 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e303' x='428.03' y='186.74' width='2' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.28 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e304' x='429.17' y='181.35' width='0.86' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.12 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c10)'>\n   <rect x='356.14' y='306.41' width='152.53' height='103.47' fill='#EBEBEB' fill-opacity='1' stroke='none'/>\n   <polyline points='358.44,409.89 358.44,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='387.07,409.89 387.07,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='415.71,409.89 415.71,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='444.35,409.89 444.35,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='472.99,409.89 472.99,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='501.63,409.89 501.63,306.41' fill='none' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.53' stroke-linejoin='round' stroke-linecap='butt'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e305' x='430.03' y='404.23' width='30.01' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e306' x='430.03' y='393.45' width='30.47' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e307' x='430.03' y='388.06' width='30.13' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e308' x='430.03' y='382.67' width='34.42' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e309' x='430.03' y='377.28' width='44.28' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.8 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e310' x='430.03' y='371.89' width='55.96' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e311' x='430.03' y='366.5' width='53.78' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='8.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e312' x='430.03' y='361.11' width='48.57' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e313' x='430.03' y='355.72' width='45.88' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e314' x='430.03' y='398.84' width='33.34' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e315' x='430.03' y='350.33' width='43.3' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e316' x='430.03' y='344.94' width='49.72' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e317' x='430.03' y='339.55' width='48.28' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='7.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e318' x='430.03' y='334.17' width='38.89' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e319' x='430.03' y='328.78' width='27.44' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='4.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e320' x='430.03' y='323.39' width='14.95' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='2.3 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e321' x='430.03' y='318' width='10.6' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='1.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e322' x='430.03' y='312.61' width='5.27' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.81 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e323' x='430.03' y='307.22' width='3.15' height='4.85' fill='#F8766D' fill-opacity='1' stroke='none' title='0.49 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e324' x='398.13' y='404.23' width='31.9' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e325' x='397.5' y='393.45' width='32.53' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.2 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e326' x='398.13' y='388.06' width='31.9' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e327' x='392.97' y='382.67' width='37.06' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e328' x='385.59' y='377.28' width='44.45' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e329' x='377.22' y='371.89' width='52.81' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='8.4 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e330' x='381.69' y='366.5' width='48.34' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e331' x='383.12' y='361.11' width='46.91' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e332' x='385.81' y='355.72' width='44.22' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e333' x='395.09' y='398.84' width='34.94' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='5.6 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e334' x='388.05' y='350.33' width='41.98' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.7 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e335' x='383.18' y='344.94' width='46.85' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e336' x='383.07' y='339.55' width='46.97' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='7.5 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e337' x='391.83' y='334.17' width='38.2' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='6.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e338' x='403.97' y='328.78' width='26.06' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='4.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e339' x='417.78' y='323.39' width='12.26' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.9 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e340' x='422.93' y='318' width='7.1' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='1.1 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e341' x='427' y='312.61' width='3.04' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.48 %'/>\n   <rect id='svg_99746868_fa2f_489b_ac36_7b30f247bcd7_e342' x='428.94' y='307.22' width='1.09' height='4.85' fill='#00BFC4' fill-opacity='1' stroke='none' title='0.17 %'/>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c11)'>\n   <rect x='40.11' y='289.49' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='97.55' y='301.1' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Tampines<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c12)'>\n   <rect x='198.13' y='289.49' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='252.46' y='301.1' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Woodlands<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c13)'>\n   <rect x='356.14' y='289.49' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='419.12' y='301.1' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Yishun<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c14)'>\n   <rect x='40.11' y='163.62' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='91.76' y='175.23' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Jurong West<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c15)'>\n   <rect x='198.13' y='163.62' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='258.25' y='175.23' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Punggol<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c16)'>\n   <rect x='356.14' y='163.62' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='412.59' y='175.23' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Sengkang<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c17)'>\n   <rect x='40.11' y='37.75' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='103.9' y='49.36' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Bedok<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c18)'>\n   <rect x='198.13' y='37.75' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='243.08' y='49.36' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Choa Chu Kang<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c19)'>\n   <rect x='356.14' y='37.75' width='152.53' height='16.92' fill='#D9D9D9' fill-opacity='1' stroke='none'/>\n   <text x='414.55' y='49.36' font-size='6.6pt' font-family='Arial' fill='#1A1A1A' fill-opacity='1'>Hougang<\/text>\n  <\/g>\n  <g clip-path='url(#svg_99746868_fa2f_489b_ac36_7b30f247bcd7_c1)'>\n   <polyline points='56.73,412.62 56.73,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='85.37,412.62 85.37,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='114.00,412.62 114.00,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='142.64,412.62 142.64,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='171.28,412.62 171.28,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='52.08' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <text x='80.72' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='109.36' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0k<\/text>\n   <text x='138' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='166.63' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <polyline points='214.74,412.62 214.74,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='243.38,412.62 243.38,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='272.02,412.62 272.02,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='300.66,412.62 300.66,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='329.30,412.62 329.30,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='210.09' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <text x='238.73' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='267.37' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0k<\/text>\n   <text x='296.01' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='324.65' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <polyline points='372.76,412.62 372.76,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='401.39,412.62 401.39,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='430.03,412.62 430.03,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='458.67,412.62 458.67,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='487.31,412.62 487.31,409.89' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='368.11' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <text x='396.75' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='425.38' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0k<\/text>\n   <text x='454.02' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>1k<\/text>\n   <text x='482.66' y='421.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>2k<\/text>\n   <text x='32.4' y='158.49' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='32.4' y='153.1' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>5<\/text>\n   <text x='29.62' y='147.71' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>10<\/text>\n   <text x='29.62' y='142.32' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>15<\/text>\n   <text x='29.62' y='136.93' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='29.62' y='131.54' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>25<\/text>\n   <text x='29.62' y='126.15' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>30<\/text>\n   <text x='29.62' y='120.76' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>35<\/text>\n   <text x='29.62' y='115.37' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='29.62' y='109.98' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>45<\/text>\n   <text x='29.62' y='104.59' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>50<\/text>\n   <text x='29.62' y='99.2' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>55<\/text>\n   <text x='29.62' y='93.82' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='29.62' y='88.43' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>65<\/text>\n   <text x='29.62' y='83.04' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>70<\/text>\n   <text x='29.62' y='77.65' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>75<\/text>\n   <text x='29.62' y='72.26' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='29.62' y='66.87' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>85<\/text>\n   <text x='29.62' y='61.48' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>90<\/text>\n   <polyline points='37.37,154.91 40.11,154.91' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,149.52 40.11,149.52' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,144.13 40.11,144.13' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,138.74 40.11,138.74' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,133.35 40.11,133.35' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,127.96 40.11,127.96' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,122.57 40.11,122.57' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,117.18 40.11,117.18' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,111.79 40.11,111.79' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,106.41 40.11,106.41' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,101.02 40.11,101.02' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,95.63 40.11,95.63' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,90.24 40.11,90.24' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,84.85 40.11,84.85' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,79.46 40.11,79.46' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,74.07 40.11,74.07' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,68.68 40.11,68.68' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,63.29 40.11,63.29' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,57.90 40.11,57.90' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='32.4' y='284.36' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='32.4' y='278.97' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>5<\/text>\n   <text x='29.62' y='273.58' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>10<\/text>\n   <text x='29.62' y='268.19' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>15<\/text>\n   <text x='29.62' y='262.8' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='29.62' y='257.41' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>25<\/text>\n   <text x='29.62' y='252.02' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>30<\/text>\n   <text x='29.62' y='246.63' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>35<\/text>\n   <text x='29.62' y='241.24' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='29.62' y='235.85' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>45<\/text>\n   <text x='29.62' y='230.47' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>50<\/text>\n   <text x='29.62' y='225.08' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>55<\/text>\n   <text x='29.62' y='219.69' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='29.62' y='214.3' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>65<\/text>\n   <text x='29.62' y='208.91' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>70<\/text>\n   <text x='29.62' y='203.52' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>75<\/text>\n   <text x='29.62' y='198.13' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='29.62' y='192.74' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>85<\/text>\n   <text x='29.62' y='187.35' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>90<\/text>\n   <polyline points='37.37,280.78 40.11,280.78' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,275.39 40.11,275.39' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,270.00 40.11,270.00' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,264.61 40.11,264.61' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,259.22 40.11,259.22' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,253.83 40.11,253.83' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,248.44 40.11,248.44' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,243.06 40.11,243.06' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,237.67 40.11,237.67' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,232.28 40.11,232.28' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,226.89 40.11,226.89' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,221.50 40.11,221.50' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,216.11 40.11,216.11' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,210.72 40.11,210.72' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,205.33 40.11,205.33' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,199.94 40.11,199.94' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,194.55 40.11,194.55' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,189.16 40.11,189.16' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,183.77 40.11,183.77' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='32.4' y='410.23' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='32.4' y='404.84' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>5<\/text>\n   <text x='29.62' y='399.45' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>10<\/text>\n   <text x='29.62' y='394.06' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>15<\/text>\n   <text x='29.62' y='388.67' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='29.62' y='383.28' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>25<\/text>\n   <text x='29.62' y='377.89' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>30<\/text>\n   <text x='29.62' y='372.5' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>35<\/text>\n   <text x='29.62' y='367.12' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='29.62' y='361.73' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>45<\/text>\n   <text x='29.62' y='356.34' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>50<\/text>\n   <text x='29.62' y='350.95' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>55<\/text>\n   <text x='29.62' y='345.56' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='29.62' y='340.17' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>65<\/text>\n   <text x='29.62' y='334.78' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>70<\/text>\n   <text x='29.62' y='329.39' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>75<\/text>\n   <text x='29.62' y='324' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='29.62' y='318.61' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>85<\/text>\n   <text x='29.62' y='313.22' font-size='3.75pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>90<\/text>\n   <polyline points='37.37,406.65 40.11,406.65' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,401.26 40.11,401.26' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,395.87 40.11,395.87' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,390.48 40.11,390.48' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,385.09 40.11,385.09' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,379.71 40.11,379.71' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,374.32 40.11,374.32' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,368.93 40.11,368.93' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,363.54 40.11,363.54' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,358.15 40.11,358.15' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,352.76 40.11,352.76' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,347.37 40.11,347.37' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,341.98 40.11,341.98' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,336.59 40.11,336.59' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,331.20 40.11,331.20' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,325.81 40.11,325.81' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,320.42 40.11,320.42' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,315.03 40.11,315.03' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='37.37,309.64 40.11,309.64' fill='none' stroke='#BEBEBE' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='247.54' y='430.72' font-size='5.25pt' font-family='Arial'>No. of Population<\/text>\n   <text x='8.98' y='231' font-size='5.25pt' font-family='Arial'>Age <\/text>\n   <text x='5.48' y='238.56' font-size='5.25pt' font-family='Arial'> Group<\/text>\n   <rect x='519.64' y='204.53' width='50.89' height='55.49' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect x='525.11' y='219.98' width='17.28' height='17.28' fill='#F2F2F2' fill-opacity='1' stroke='none'/>\n   <rect x='525.82' y='220.69' width='15.86' height='15.86' fill='#F8766D' fill-opacity='1' stroke='none'/>\n   <rect x='525.11' y='237.26' width='17.28' height='17.28' fill='#F2F2F2' fill-opacity='1' stroke='none'/>\n   <rect x='525.82' y='237.97' width='15.86' height='15.86' fill='#00BFC4' fill-opacity='1' stroke='none'/>\n   <text x='545.88' y='230.41' font-size='3.75pt' font-family='Arial'>Females<\/text>\n   <text x='545.88' y='247.69' font-size='3.75pt' font-family='Arial'>Males<\/text>\n   <text x='40.11' y='30.17' font-size='7.5pt' font-style='italic' font-family='Arial'>of top 9 population planning areas in SG (June 2022, data sorce: SingStat)<\/text>\n   <text x='40.11' y='14.79' font-size='9.75pt' font-weight='bold' font-family='Arial'>Demographic Structure Pyramid<\/text>\n   <text x='40.11' y='443.97' font-size='6.6pt' font-style='italic' font-family='Arial' fill='#0000FF' fill-opacity='1'>Note: <\/text>\n   <text x='40.11' y='453.47' font-size='6.6pt' font-style='italic' font-family='Arial' fill='#0000FF' fill-opacity='1'> Put your mouse on the bar to see the No. of population as percentage of the total population within a gender<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_99746868_fa2f_489b_ac36_7b30f247bcd7","ratio":1.25,"settings":{"tooltip":{"css":".tooltip_SVGID_ { background-color:white; #<<\nfont-style:bold; color:black; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":0,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

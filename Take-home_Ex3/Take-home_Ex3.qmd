@@ -38,7 +38,7 @@ pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly, ungeviz, ggan
 
 First, let us import the data in *CSV* form into R environment using code chunk below.
 
-```{r}
+```{r eval=FALSE}
 data<-read_csv("data/resale-flat-prices.csv")
 ```
 
@@ -100,7 +100,7 @@ data<-data%>%
 
 Now take a quick glimpse we can find that the variable *lease_commence_date* and *remaining_lease* have high association. We can plot an association plot to check their relationship.
 
-```{r}
+```{r eval=FALSE}
 ggscatterstats(
   data = data,
   x = lease_commence_date,
@@ -178,32 +178,6 @@ As shown in graph above, we see that the resale price per sqm is highly right sk
 
 ------------------------------------------------------------------------
 
-Now let first check out the distribution pattern of these 9 variables in histogram graphs. Code below being used to achieve this.
-
-```{r}
-parea<-ggplot(data = data,
-       aes(x = floor_area_sqm))+
-  geom_density(fill = "skyblue",
-               alpha = 0.3)+
-  geom_boxplot()+
-  labs(x = "Floor Area",
-       y = "Density")
-
-parea
-
-pdate<-gghistostats(
-  data = data,
-  x = lease_commence_date,
-  type = "np",
-  test.value = 60,
-  xlab = "Lease Commence Date"
-)
-
-pdate
-```
-
-#### Outliers checking
-
 ## Visual statistical testing
 
 ### Visualizing uncertaincy
@@ -266,9 +240,7 @@ p<-ggplot(sum_tbl) +
 
 ggplotly(p)
 
-p1<-ggplotly(p)
-
-t1<-datatable(sum_tbl, options = list(pageLength = 12))
+datatable(sum_tbl, options = list(pageLength = 12))
 
 
 ```
@@ -395,9 +367,5 @@ Noted that across the past 50 years, the gross mean resale price per sqm is show
 #### Visual association of resale price/sqm vs. floor area
 
 Now let us explore the association between mean resale price/sqm and floor area by plotting a scatter plot.
-
-```{r}
-
-```
 
 ### Multivariate analysis
