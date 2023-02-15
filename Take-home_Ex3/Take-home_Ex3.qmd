@@ -29,7 +29,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
 
 ```{r}
-pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly)
+pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly, ungeviz, gganimate, DT, patchwork, ggdist)
 ```
 
 ## Data Preparation
@@ -96,6 +96,24 @@ data<-data%>%
              "4 ROOM",
              "5 ROOM"))%>%
   select(-1,-4)
+```
+
+Now take a quick glimpse we can find that the variable *lease_commence_date* and *remaining_lease* have high association. We can plot an association plot to check their relationship.
+
+```{r}
+ggscatterstats(
+  data = data,
+  x = lease_commence_date,
+  y = remaining_lease,
+  marginal = FALSE,
+  )
+```
+
+![](images/paste-8DE01A88.png)As shown in plot above, we see that these two variables have high association. Therefore, we can just delete one column of them. Let us delete the column named *remaining_lease.*
+
+```{r eval=FALSE}
+data<-data%>%
+  select(-8)
 
 write_csv(data,"data/resale-flat2022.csv")
 ```
@@ -117,6 +135,19 @@ summary(data[rowSums(is.na(data))!=0,])
 
 As shown in table above, no missing values in this data table.
 
+### Creating new variables
+
+To remove the influence from area of a flat to its resale price, we create a new variable of resale price per sqm, and we name it as *resale_price_per.*
+
+```{r}
+data<-data%>%
+  mutate(`resale_price_per` = resale_price/floor_area_sqm)
+
+summary(data$resale_price_per)
+```
+
+Noted that the scale of the new created column is changed to **3333** to **14731**.
+
 ## Visualization Analysis
 
 ### Exploratory descriptive analysis
@@ -124,6 +155,28 @@ As shown in table above, no missing values in this data table.
 First of all, let us do our EDA with our variables. This step plays a critical role to show the potential patterns behind the data. Let's go!🥳
 
 #### Distribution test
+
+First of all, let take a look at the distribution of dependent variable *resale_price* by plotting its density plot using codes below.
+
+```{r}
+set.seed(1234)
+
+gghistostats(
+  data = data,
+  x = resale_price_per,
+  type = "p",
+  test.value = 60,
+  xlab = "Resale Price Per Sqm"
+)+
+  scale_x_continuous(breaks = seq(0,max(data$resale_price), by = 100000))+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price), by = 100000))
+```
+
+As shown in graph above, we see that the resale price per sqm is highly right skewed. That means most of the resale price per sqm congregated at lower prices, which is intuitively retional.
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 Now let first check out the distribution pattern of these 9 variables in histogram graphs. Code below being used to achieve this.
 
@@ -149,35 +202,161 @@ pdate<-gghistostats(
 pdate
 ```
 
-```{}
-```
-
-```{r}
-ggplot(data, aes(lease_commence_date)) + geom_density(adjust = 0.3, 
-    fill = "deepskyblue", alpha = 0.2) + labs(x = "Lease Commencement Date", y = "Density", 
-    caption = "Fig.5 A Density Plot of Lease Profile of HDBs")
-```
-
-Also, we can suspect that the *lease_commence_date* and *remaining_lease* are highly associated. Therefore we can plot an association graph to see their association relationship as shown below.
-
 #### Outliers checking
 
+## Visual statistical testing
+
+### Visualizing uncertaincy
+
+A point estimate is a single number, such as a mean. And uncertainty is expressed as standard error, confidence interval, or confidence interval. Now let's plot interactive error bar plots by using 💼*ggplot2()* package to indicate the 95% confidence interval of mean resale price for different towns.
+
+First of all, we need statistical features of the columns we care about.
+
+-   group the observation by *town*,
+
+-   computes the count of observations, mean, standard deviation and standard error of *resale_price* by *town*, and
+
+-   save the output as a tibble data table called `sum_tbl`.
+
 ```{r}
-p<-ggscatterstats(
-  data = data,
-  x = lease_commence_date,
-  y = remaining_lease,
-  marginal = FALSE,
-  )
+sum_tbl <- data %>%
+  group_by(town) %>%
+  summarise(
+    n=n(),
+    mean=mean(resale_price_per),
+    sd=sd(resale_price_per)
+    ) %>%
+  mutate(se=sd/sqrt(n-1))
+```
+
+Let us take a look at the table we created.
+
+```{r}
+knitr::kable(head(sum_tbl), format = 'html')
+```
+
+```{r}
+p<-ggplot(sum_tbl) +
+  geom_errorbar(aes(x=town, 
+        ymin=mean-se, 
+        ymax=mean+se), 
+    width=0.2, 
+    colour="black", 
+    alpha=0.95, 
+    size=0.5) +
+  geom_point(aes
+           (x=town, 
+            y=mean), 
+           stat="identity", 
+           color="red",
+           size = 1.5,
+           alpha=1) +
+  geom_hline(yintercept = mean(data$resale_price_per),
+             linetype = "dashed",
+             color = "blue")+
+  ggtitle("Standard error of mean Resale Price per Sqm by Town")+
+  labs(x = "Town", y = "Mean")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=0, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1),
+          plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
+
+ggplotly(p)
+
+p1<-ggplotly(p)
+
+t1<-datatable(sum_tbl, options = list(pageLength = 12))
 
 
 ```
 
-### Visual statistical testing
+From the above plot, we can easily see that the mean resale price per sqm for all towns are above **5736** SG Dollar, but in some towns it is quite dispersed. For example, the town ***CENTRAL AREA*** has the highest mean resale price of about **8410** SG Dollar, but the range of *Uncertainty* is also large*.* On the other hand, towns like ***WOODLANDS*** **and *JURONG WEST*** have relatively low resale prices per sqm, but the standard error or their uncertainty is also small.
 
-#### Visualizing uncertainty
+Generally, towns whose mean resale price is **above** the gross mean resale price have relatively **large** standard error, while whose mean resale price is **under** the gross mean resale price have relatively **small** standard error. 🤓
 
-When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be.
+Now let us use a more convenient way of *ggdist()* package to plot error bar with **95%** confidence interval for other variables, which are *flat_type, street_name, storey_range, and flat_model.*
+
+```{r}
+data %>%
+  ggplot(aes(x = flat_type, 
+             y = resale_price_per)) +
+  stat_gradientinterval(   
+    fill = "bisque3",
+    p_limits = c(0.025, 0.975),
+    show.legend = TRUE     
+  ) +
+  geom_hline(yintercept = mean(data$resale_price_per),
+             linetype = "dashed",
+             color = "blue")+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100000))+
+  labs(
+    title = "Visualising confidence intervals of mean Resale Price per Sqm \nby Flat type",
+    subtitle = "Gradient + interval plot")
+```
+
+From the chart above, we can easily see that the **mean** resale price per sqm is almost the **same** for each type of flat. But through the extent of shade of colors, we can see that there are subtle differences in standard error for resale price per sqm of these 3 types. For flat with **3 rooms**, the mean resale price per sqm is relatively **congregated** than other two types.
+
+```{r}
+data %>%
+  ggplot(aes(x = storey_range, 
+             y = resale_price_per)) +
+  stat_gradientinterval(   
+    fill = "bisque3",
+    p_limits = c(0.025, 0.975),
+    show.legend = TRUE     
+  ) +
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100000))+
+  geom_hline(yintercept = mean(data$resale_price_per),
+             linetype = "dashed",
+             color = "blue")+
+  labs(
+    title = "Visualising confidence intervals of mean Resale Price/Sqm \nby Storey Range",
+    subtitle = "Gradient + interval plot")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+
+```
+
+As shown in the above chart, we easily see that as the **storey** **rises**, the **mean resale price per sqm** is **higher**. In addition, the **standard** **error** of mean resale price per sqm of storey range from ***16 to 27*** is the **largest** among other storey ranges. And we can see that flats with storey above **13** are more expensive than the gross mean resale price per sqm.
+
+Now let us take a look at the pattern within *flat_model*
+
+```{r}
+data %>%
+  ggplot(aes(x = reorder(flat_model,
+                        resale_price_per,
+                        FUN = mean), 
+             y = resale_price_per)) +
+  stat_gradientinterval(   
+    fill = "bisque3",
+    p_limits = c(0.025, 0.975),
+    show.legend = TRUE     
+  ) +
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100000))+
+  geom_hline(yintercept = mean(data$resale_price_per),
+             linetype = "dashed",
+             color = "blue")+
+  labs(
+    title = "Visualising confidence intervals of mean Resale Price/Sqm \nby Flat Model",
+    subtitle = "Gradient + interval plot")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+```
+
+From chart above, it is easily to tell that the flat model named ***Type S1*** has the **highest** **mean** resale price per sqm among others, with relatively **large** **standard error**. And flat with model named ***Model A2*** has the **lowest** **mean** resale price per sqm among others, with relatively **small** **standard error**.
+
+When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be. Therefore, we can usually give a certain percentage of confidence for the audiences to see the interval of the average value for a specific variable, and we can also offer the audiences a friendly animation to see the resale price for different type of flat - 3 ROOM, 4 ROOM and 5 ROOM - when we sampling 5 times.
 
 ```{r}
 ggplot(data = data, 
@@ -185,9 +364,40 @@ ggplot(data = data,
   geom_point(position = position_jitter(
     height = 0.3, width = 0.05), 
     size = 0.4, color = "#0072B2", alpha = 1/2) +
-  geom_hpline(data = sampler(25, group = RACE), height = 0.6, color = "#D55E00") +
-  theme_bw() + 
-  transition_states(.draw, 1, 3)
+  geom_hpline(data = sampler(5, group = flat_type), height = 0.6, color = "#D55E00") +
+  theme_bw()+
+  transition_states(.draw, transition_length = 1, state_length = 3)
 ```
 
-#### Multivariate analysis
+#### Visual time series analysis
+
+At last, let us take a look at the pattern between mean resale price per sqm and lease commence year, which is a time series graph and let us line chart instead of error bar plot.
+
+```{r}
+p<-ggplot(data = data,
+       aes(x = lease_commence_date,
+           y = resale_price_per))+
+  geom_line(stat = "summary",
+            fun.y = "mean")+
+  geom_hline(yintercept = mean(data$resale_price_per),
+             linetype = "dashed",
+             color = "blue")+
+  scale_x_continuous(breaks = seq(min(data$lease_commence_date),max(data$resale_price_per), by = 5))+
+  labs(x = "Lease Commence Year",
+       y = "Mean Resale Price/Sqm",
+       title = "Line plot of Mean Resale Price/Sqm \nvs. Lease Commence Year ")
+
+ggplotly(p)
+```
+
+Noted that across the past 50 years, the gross mean resale price per sqm is showing a rising tendency. But in short period, from year 1975, the mean resale price per sqm is dropping down until year 1991. And a **sharp increase** in year **2006**, followed by dramatic fluctuations in later years, reaching **highest** **point** of 9049 in year **2011**.
+
+#### Visual association of resale price/sqm vs. floor area
+
+Now let us explore the association between mean resale price/sqm and floor area by plotting a scatter plot.
+
+```{r}
+
+```
+
+### Multivariate analysis
