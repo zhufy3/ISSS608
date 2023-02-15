@@ -64,7 +64,7 @@ Now let us check the data column *month.*
 head(data$month,10)
 ```
 
-![](images/paste-6CEDCAD8.png){width="491"}
+![](images/paste-6CEDCAD8.png){width="1071" height="581"}
 
 In addition, the *remaining_lease* no needs to contain month information, so we recode the values in the column to only retain its year part. See in code chunk below.
 
@@ -85,7 +85,7 @@ Next we need to only focus on *3 ROOM, 4 ROOM* and *5 ROOM*, so let first look a
 freq(data$flat_type)
 ```
 
-![](images/paste-EBFE4AA4.png){height="500"}
+![](images/paste-EBFE4AA4.png){width="606" height="450"}
 
 Noted that *4 ROOM* type takes the most part of the total, followed by *5 ROOM* and *3 ROOM.* Now let us delete the redundant column *month* and *block* as shown below, and write a new data frame named *resale-flat2022.csv* to contract the data size.
 
@@ -109,7 +109,7 @@ ggscatterstats(
   )
 ```
 
-![](images/paste-8DE01A88.png){style="width " width="810"}
+![](images/paste-8DE01A88.png){style="width " width="729"}
 
 As shown in plot above, we see that these two variables have high association. Therefore, we can just delete one column of them. Let us delete the column named *remaining_lease.*
 
@@ -174,7 +174,7 @@ gghistostats(
   scale_y_continuous(breaks = seq(0,max(data$resale_price), by = 100000))
 ```
 
-![](images/paste-BDFF6A0A.png){width="810"}
+![](images/paste-BDFF6A0A.png){width="729"}
 
 As shown in graph above, we see that the resale price per sqm is highly right skewed. That means most of the resale price per sqm congregated at lower prices, which is intuitively retional.
 
@@ -273,7 +273,7 @@ data %>%
     subtitle = "Gradient + interval plot")
 ```
 
-![](images/paste-A4212DA8.png){width="810"}
+![](images/paste-A4212DA8.png){width="729"}
 
 From the chart above, we can easily see that the **mean** resale price per sqm is almost the **same** for each type of flat. But through the extent of shade of colors, we can see that there are subtle differences in standard error for resale price per sqm of these 3 types. For flat with **3 rooms**, the mean resale price per sqm is relatively **congregated** than other two types.
 
@@ -302,7 +302,7 @@ data %>%
 
 ```
 
-![](images/paste-26687E54.png){width="810"}
+![](images/paste-26687E54.png){width="729"}
 
 As shown in the above chart, we easily see that as the **storey** **rises**, the **mean resale price per sqm** is **higher**. In addition, the **standard** **error** of mean resale price per sqm of storey range from ***16 to 27*** is the **largest** among other storey ranges. And we can see that flats with storey above **13** are more expensive than the gross mean resale price per sqm.
 
@@ -334,7 +334,7 @@ data %>%
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
 ```
 
-![](images/paste-3BA2819D.png){width="810"}
+![](images/paste-3BA2819D.png){width="729"}
 
 From chart above, it is easily to tell that the flat model named ***Type S1*** has the **highest** **mean** resale price per sqm among others, with relatively **large** **standard error**. And flat with model named ***Model A2*** has the **lowest** **mean** resale price per sqm among others, with relatively **small** **standard error**.
 
@@ -389,11 +389,11 @@ ggplot(data = data,
               color = "black")
 ```
 
-![](images/paste-A57D5DFE.png){width="810"}
+![](images/paste-A57D5DFE.png){width="729"}
 
 From this combined chart above, we see that the area of floor is basically aligned with number of rooms of a flat, meaning that the differences between average area of each room among flats are not much big. On the other hand, as the **area** of floor **rises**, the **resale** **price** **per** **sqm** actually goes **down**.
 
-## One-way ANOVA Test
+#### One-way ANOVA Test
 
 As shown above visual analysis, we see that the mean resale prices per sqm for flat type are quite the same. Therefore, we can use One-way ANOVA Test to see whether the assumption is true. Because we cannot sure if the variance of these 3 samples, we choose the type of "robust" as our testing method to test if the means of 3 groups are the same.
 
@@ -413,9 +413,11 @@ ggbetweenstats(
 )
 ```
 
-![](images/paste-7F15D709.png){width="810"}
+![](images/paste-7F15D709.png){width="729"}
 
 The testing result shows a very small **p-value \< 0.05** and small **F-value** of **51.27**, which means that we have enough evident to reject the H0 that the mean of each class in this group are equal. In fact, the mean resale price per sqm of flat with **3** **rooms** is **higher** than that with **4** **rooms**, which is **higher** than that with **5** **rooms**.
+
+#### Funnel Plotting
 
 ```{r eval=FALSE}
 df <- data %>%
