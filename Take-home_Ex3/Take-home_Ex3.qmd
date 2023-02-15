@@ -64,7 +64,7 @@ Now let us check the data column *month.*
 head(data$month,10)
 ```
 
-![](images/paste-6CEDCAD8.png){width="1071" height="581"}
+![](images/paste-6CEDCAD8.png){width="700" height="581"}
 
 In addition, the *remaining_lease* no needs to contain month information, so we recode the values in the column to only retain its year part. See in code chunk below.
 
@@ -211,10 +211,13 @@ Let us take a look at the table we created.
 
 ```{r}
 knitr::kable(head(sum_tbl), format = 'html')
+
 ```
 
 ```{r}
-datatable(sum_tbl, options = list(pageLength = 12), style = "auto")
+datatable(sum_tbl, options = list(pageLength = 12)) %>% 
+  formatStyle(columns = colnames(sum_tbl),
+  backgroundColor = "White")
 ```
 
 ```{r eval=FALSE}
