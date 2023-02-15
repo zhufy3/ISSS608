@@ -213,6 +213,10 @@ Let us take a look at the table we created.
 knitr::kable(head(sum_tbl), format = 'html')
 ```
 
+```{r}
+datatable(sum_tbl, options = list(pageLength = 12), style = "auto")
+```
+
 ```{r eval=FALSE}
 p<-ggplot(sum_tbl) +
   geom_errorbar(aes(x=town, 
@@ -243,10 +247,9 @@ p<-ggplot(sum_tbl) +
           plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
 
 ggplotly(p)
+```
 
-datatable(sum_tbl, options = list(pageLength = 12), style = "auto")
-
-
+```{}
 ```
 
 ![](images/paste-447F4895.png){width="810"}
@@ -279,7 +282,7 @@ data %>%
 
 From the chart above, we can easily see that the **mean** resale price per sqm is almost the **same** for each type of flat. But through the extent of shade of colors, we can see that there are subtle differences in standard error for resale price per sqm of these 3 types. For flat with **3 rooms**, the mean resale price per sqm is relatively **congregated** than other two types.
 
-```{r}
+```{r eval=FALSE}
 data %>%
   ggplot(aes(x = storey_range, 
              y = resale_price_per)) +
@@ -343,6 +346,8 @@ From chart above, it is easily to tell that the flat model named ***Type S1*** h
 When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be. Therefore, we can usually give a certain percentage of confidence for the audiences to see the interval of the average value for a specific variable, and we can also offer the audiences a friendly animation to see the resale price for different type of flat - 3 ROOM, 4 ROOM and 5 ROOM - when we sampling 5 times.
 
 ```{r}
+set.seed(1234)
+
 ggplot(data = data, 
        (aes(x = factor(flat_type), y = resale_price))) +
   geom_point(position = position_jitter(
@@ -389,7 +394,7 @@ ggplot(data = data,
               color = "black")
 ```
 
-### ![](images/paste-A57D5DFE.png){width="810"}
+![](images/paste-A57D5DFE.png){width="810"}
 
 From this combined chart above, we see that the area of floor is basically aligned with number of rooms of a flat, meaning that the differences between average area of each room among flats are not much big. On the other hand, as the **area** of floor **rises**, the **resale** **price** **per** **sqm** actually goes **down**.
 
@@ -417,18 +422,18 @@ ggbetweenstats(
 
 The testing result shows a very small **p-value \< 0.05** and small **F-value** of **51.27**, which means that we have enough evident to reject the H0 that the mean of each class in this group are equal. In fact, the mean resale price per sqm of flat with **3** **rooms** is **higher** than that with **4** **rooms**, which is **higher** than that with **5** **rooms**.
 
-```{r}
+```{r eval=FALSE}
 df <- data %>%
   mutate(rate = floor_area_sqm / resale_price) %>%
   mutate(rate.se = sqrt((rate*(1-rate)) / (resale_price))) %>%
   filter(rate > 0)
 ```
 
-```{r}
+```{r eval=FALSE}
 fit.mean <- weighted.mean(df$rate, 1/df$rate.se^2)
 ```
 
-```{r}
+```{r eval=FALSE}
 number.seq <- seq(1, max(df$resale_price), 1)
 number.ll95 <- fit.mean - 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
 number.ul95 <- fit.mean + 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
@@ -437,7 +442,7 @@ number.ul999 <- fit.mean + 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq))
 dfCI <- data.frame(number.ll95, number.ul95, number.ll999, number.ul999, number.seq, fit.mean)
 ```
 
-```{r}
+```{r eval=FALSE}
 p <- ggplot(df, aes(x = resale_price, y = rate)) +
   geom_point(aes(label=`street_name`), 
              alpha=0.4) +
@@ -482,3 +487,5 @@ p <- ggplot(df, aes(x = resale_price, y = rate)) +
         legend.key.height = unit(0.3, "cm"))
 p
 ```
+
+![](images/paste-87251555.png){width="810"}
