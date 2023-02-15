@@ -249,11 +249,6 @@ p<-ggplot(sum_tbl) +
 ggplotly(p)
 ```
 
-```{}
-```
-
-![](images/paste-447F4895.png){width="810"}
-
 From the above plot, we can easily see that the mean resale price per sqm for all towns are above **5736** SG Dollar, but in some towns it is quite dispersed. For example, the town ***CENTRAL AREA*** has the highest mean resale price of about **8410** SG Dollar, but the range of *Uncertainty* is also large*.* On the other hand, towns like ***WOODLANDS*** **and *JURONG WEST*** have relatively low resale prices per sqm, but the standard error or their uncertainty is also small.
 
 Generally, towns whose mean resale price is **above** the gross mean resale price have relatively **large** standard error, while whose mean resale price is **under** the gross mean resale price have relatively **small** standard error. 🤓
