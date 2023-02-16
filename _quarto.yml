@@ -46,6 +46,7 @@ website:
 
 format:
   html:
+    code-fold: true
     theme: solar
     css: styles.css
     toc: true

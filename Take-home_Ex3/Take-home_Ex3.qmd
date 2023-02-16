@@ -4,6 +4,8 @@ author: "Fangyuan Zhu"
 date: 12 Feburary 2023
 date-modified: "`r Sys.Date()`"
 page-layout: full
+fig-height: 4
+fig-width: 6
 execute: 
   echo: true
   eval: true
@@ -83,7 +85,7 @@ Next we need to only focus on *3 ROOM, 4 ROOM* and *5 ROOM*, so let first look a
 freq(data$flat_type)
 ```
 
-![](images/paste-EBFE4AA4.png){width="606" height="450"}
+![](images/paste-EBFE4AA4.png){width="6.31in" height="4.67in"}
 
 Noted that *4 ROOM* type takes the most part of the total, followed by *5 ROOM* and *3 ROOM.* Now let us delete the redundant column *month* and *block* as shown below, and write a new data frame named *resale-flat2022.csv* to contract the data size.
 
@@ -107,7 +109,7 @@ ggscatterstats(
   )
 ```
 
-![](images/paste-8DE01A88.png){style="width " width="729"}
+![](images/paste-8DE01A88.png){style="width " width="7.59in"}
 
 As shown in plot above, we see that these two variables have complete association with the test result ***r = 1***. Therefore, we can just delete one column of them. Let us delete the column named *remaining_lease.*
 
@@ -158,7 +160,7 @@ First of all, let us do our EDA with our variables. This step plays a critical r
 
 First of all, let take a look at the distribution of dependent variable *resale_price_per* by plotting its histogram plot using codes below.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 p<-ggplot(data = data,
        aes(resale_price_per,
            tooltip = flat_model))+
@@ -217,7 +219,7 @@ ggplotly(p)
 
 See that ***BUKITTIMAH*** has the least amount of **52** samples.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 reorder_size <- function(x) {
         factor(x, levels = names(sort(table(x), decreasing = TRUE)))}
 
@@ -243,7 +245,7 @@ With the distribution plot for *flat_model,* we see that flat model named *Impro
 
 Let us also take a look at the proportion of storey range for each model of flat.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 reorder_size <- function(x) {
         factor(x, levels = names(sort(table(x), decreasing = TRUE)))}
 
@@ -264,6 +266,8 @@ p<-ggplot(data = data,
 
 ggplotly(p)
 ```
+
+It shows that for each model of flat, there are feature storey ranges. Some covers many storey ranges, while others are quite congregated,
 
 ## 6 Visual statistical testing
 
@@ -290,7 +294,7 @@ ggplot(data = data,
 
 Noted that the resale price/sqm for each flat type is also **right skewed.** Even if we remove those outliers, it cannot be symmetrical. let us do *non-parametric* testing for them. Indeed, we can also test the normal distribution by using Q-Q plot. `qqnorm()`and `qqline()`from `psych package` will be used.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 qqnorm(data[data$flat_type=="3 ROOM",]$resale_price_per)
 qqline(data[data$flat_type=="3 ROOM",]$resale_price_per)
 
@@ -303,7 +307,7 @@ qqline(data[data$flat_type=="5 ROOM",]$resale_price_per)
 par(mfrow = c(1,3))
 ```
 
-```{r}
+```{r eval=FALSE}
 
 p1<-gghistostats(
   data = data[data$flat_type=="3 ROOM",],
@@ -335,11 +339,8 @@ p3<-gghistostats(
   scale_x_continuous(breaks = seq(0,max(data$resale_price_per), by = 1000))+
   scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100))
 
-ggarrange(p1+ rremove("x.text"), p2 + rremove("x.text"), p3 + rremove("x.text"),
-          ncol = 3)
+ggarrange(p1+ rremove("x.text"), p2 + rremove("x.text"), p3 + rremove("x.text"),ncol = 1)
 ```
-
-![](images/paste-EBF7C753.png){width="729"}
 
 Noted that all p-values are less than 0.05, meaning it is significant to reject the null hypothesis.
 
@@ -373,13 +374,7 @@ knitr::kable(head(sum_tbl), format = 'html')
 
 ```
 
-```{r}
-datatable(sum_tbl, options = list(pageLength = 12)) %>% 
-  formatStyle(columns = colnames(sum_tbl),
-  backgroundColor = "White")
-```
-
-```{r}
+```{r fig.height=5, fig.width=8, fig.subcap= c('A figure', 'A table')}
 p<-ggplot(sum_tbl) +
   geom_errorbar(aes(x=town, 
         ymin=mean-se, 
@@ -408,7 +403,12 @@ p<-ggplot(sum_tbl) +
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1),
           plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
 
+datatable(sum_tbl, options = list(pageLength = 5), style = "auto") %>% 
+  formatStyle(columns = colnames(sum_tbl),
+  backgroundColor = "White")
+
 ggplotly(p)
+
 ```
 
 From the above plot, we can easily see that the mean resale price per sqm for all towns are above **5736** SG Dollar, but in some towns it is quite dispersed. For example, the town ***CENTRAL AREA*** has the highest mean resale price of about **8410** SG Dollar, but the range of *Uncertainty* is also large*.* On the other hand, towns like ***WOODLANDS*** **and *JURONG WEST*** have relatively low resale prices per sqm, but the standard error or their uncertainty is also small.
@@ -502,7 +502,7 @@ From chart above, it is easily to tell that the flat model named ***Type S1*** h
 
 When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be. Therefore, we can usually give a certain percentage of confidence for the audiences to see the interval of the average value for a specific variable, and we can also offer the audiences a friendly animation to see the resale price for different type of flat - 3 ROOM, 4 ROOM and 5 ROOM - when we sampling 5 times.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 ggplot(data = data, 
        (aes(x = factor(flat_type), 
             y = resale_price))) +
@@ -523,7 +523,7 @@ ggplot(data = data,
 
 At last, let us take a look at the pattern between mean resale price per sqm and lease commence year, which is a time series graph and let us line chart instead of error bar plot.
 
-```{r}
+```{r fig.height=5, fig.width=8}
 p<-ggplot(data = data,
        aes(x = lease_commence_date,
            y = resale_price_per))+
