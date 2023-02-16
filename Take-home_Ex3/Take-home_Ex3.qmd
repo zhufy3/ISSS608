@@ -12,17 +12,15 @@ format: html
 editor: visual
 ---
 
-## Our Tasks
+## 1 Our Tasks
 
 In this take-home exercise, we are required to uncover the salient patterns of the resale prices of public housing property by residential towns and estates in Singapore by using appropriate analytical visualisation techniques learned in **Lesson 4: Fundamentals of Visual Analytics**. Students are encouraged to apply appropriate interactive techniques to enhance user and data discovery experiences.
 
 For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROOM types**. The study period should be on **2022**.
 
-## Data Used
+## 2 Data Used
 
 *Resale flat prices based on registration date from Jan-2017 onwards* will be used to prepare the analytical visualisation. It is available at [Data.gov.sg](https://data.gov.sg/).
-
-## Packages Used
 
 ## The Designing Tools
 
@@ -64,7 +62,7 @@ Now let us check the data column *month.*
 head(data$month,10)
 ```
 
-![](images/paste-6CEDCAD8.png){width="700" height="581"}
+![](images/paste-6CEDCAD8.png){width="700" height="300"}
 
 In addition, the *remaining_lease* no needs to contain month information, so we recode the values in the column to only retain its year part. See in code chunk below.
 
