@@ -307,7 +307,7 @@ qqline(data[data$flat_type=="5 ROOM",]$resale_price_per)
 par(mfrow = c(1,3))
 ```
 
-```{r eval=FALSE}
+```{r}
 
 p1<-gghistostats(
   data = data[data$flat_type=="3 ROOM",],
@@ -370,11 +370,12 @@ sum_tbl <- data %>%
 Let us take a look at the table we created.
 
 ```{r}
-knitr::kable(head(sum_tbl), format = 'html')
-
+datatable(sum_tbl, options = list(pageLength = 5), style = "auto") %>% 
+  formatStyle(columns = colnames(sum_tbl),
+  backgroundColor = "White")
 ```
 
-```{r fig.height=5, fig.width=8, fig.subcap= c('A figure', 'A table')}
+```{r fig.height=5, fig.width=8}
 p<-ggplot(sum_tbl) +
   geom_errorbar(aes(x=town, 
         ymin=mean-se, 
@@ -402,10 +403,6 @@ p<-ggplot(sum_tbl) +
           axis.text.y = element_text(size = 5,vjust = 1),
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1),
           plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
-
-datatable(sum_tbl, options = list(pageLength = 5), style = "auto") %>% 
-  formatStyle(columns = colnames(sum_tbl),
-  backgroundColor = "White")
 
 ggplotly(p)
 
@@ -516,7 +513,7 @@ ggplot(data = data,
                              group = flat_type), 
               color = "#D55E00") +
   theme_bw()+
-  transition_states(.draw, 1, 3)
+  transition_states(.draw)
 ```
 
 ### 6.3 Visual time series analysis
