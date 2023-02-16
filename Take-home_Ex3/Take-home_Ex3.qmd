@@ -27,7 +27,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
 
 ```{r}
-pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly, ungeviz, gganimate, DT, patchwork, ggdist, FunnelPlotR, gridExtra, leaflet)
+pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly, ungeviz, gganimate, DT, patchwork, ggdist, FunnelPlotR, ggpubr, psych)
 ```
 
 ## Data Preparation
@@ -109,7 +109,7 @@ ggscatterstats(
 
 ![](images/paste-8DE01A88.png){style="width " width="729"}
 
-As shown in plot above, we see that these two variables have high association. Therefore, we can just delete one column of them. Let us delete the column named *remaining_lease.*
+As shown in plot above, we see that these two variables have complete association with the test result ***r = 1***. Therefore, we can just delete one column of them. Let us delete the column named *remaining_lease.*
 
 ```{r eval=FALSE}
 data<-data%>%
@@ -154,33 +154,194 @@ Noted that the scale of the new created column is changed to **3333** to **14731
 
 First of all, let us do our EDA with our variables. This step plays a critical role to show the potential patterns behind the data. Let's go!🥳
 
-#### Distribution test
+#### Distribution testing
 
-First of all, let take a look at the distribution of dependent variable *resale_price* by plotting its density plot using codes below.
+First of all, let take a look at the distribution of dependent variable *resale_price_per* by plotting its histogram plot using codes below.
+
+```{r}
+p<-ggplot(data = data,
+       aes(resale_price_per,
+           tooltip = flat_model))+
+  geom_histogram(binwidth = 50)
+  labs(x = "Resale Price/Sqm",
+       title = "Distribution of Resale Price/Sqm \nby Flat Model")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+  
+ggplotly(p)
+```
+
+As shown in graph above, we see that the resale price per sqm is highly **right skewed**. According to the information of outliers, flat model of *Type S1* has very high resale price per sqm. That means most of the resale price per sqm congregated at lower prices, which is intuitively rational. Also it shows that it's good to use non-parametric test because it's better to use ***medium*** to represent our sample. Even though we have large enough data set, we don't assume the distribution of resale price per sqm conforming to normal distribution, that's why we use ***non-parametric*** test.
 
 ```{r eval=FALSE}
-set.seed(1234)
-
 gghistostats(
   data = data,
   x = resale_price_per,
-  type = "p",
+  type = "np",
   test.value = 60,
   xlab = "Resale Price Per Sqm"
 )+
-  scale_x_continuous(breaks = seq(0,max(data$resale_price), by = 100000))+
-  scale_y_continuous(breaks = seq(0,max(data$resale_price), by = 100000))
+  scale_x_continuous(breaks = seq(0,max(data$resale_price_per), by = 1000))+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100))
 ```
 
-![](images/paste-BDFF6A0A.png){width="729"}
+![](images/paste-B578D34E.png){width="729"}
 
-As shown in graph above, we see that the resale price per sqm is highly right skewed. That means most of the resale price per sqm congregated at lower prices, which is intuitively retional.
+Next let us take a look at the distribution of *town,* to see the sample capacity of each town.
 
-------------------------------------------------------------------------
+```{r}
+reorder_size <- function(x) {
+        factor(x, levels = names(sort(table(x), decreasing = TRUE)))}
 
-------------------------------------------------------------------------
+p<-ggplot(data = data,
+       aes(x = reorder_size(town),
+       fill = flat_type))+
+  geom_bar(color = "black",
+           alpha = 0.8)+
+  labs(x = "Town",
+    title = "Distribution of Town",
+    subtitle = "Fill by Flat Type")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+
+ggplotly(p)
+```
+
+See that ***BUKITTIMAH*** has the least amount of **52** samples.
+
+```{r}
+reorder_size <- function(x) {
+        factor(x, levels = names(sort(table(x), decreasing = TRUE)))}
+
+p<-ggplot(data = data,
+       aes(x = reorder_size(flat_model),
+       fill = flat_type))+
+  geom_bar(color = "black",
+           alpha = 0.8)+
+  labs(x = "Flat Model",
+    title = "Distribution of Flat Model",
+    subtitle = "Fill by Flat Type")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+
+ggplotly(p)
+```
+
+With the distribution plot for *flat_model,* we see that flat model named *Improved-Maisonette* only has **2** sample flats with **5 rooms** in total. Also we can see the main flat type for each model of flat. For example, flats of *Model A* mainly have 4 rooms, and flats of *Improved* mainly have 5 rooms.
+
+Let us also take a look at the proportion of storey range for each model of flat.
+
+```{r}
+reorder_size <- function(x) {
+        factor(x, levels = names(sort(table(x), decreasing = TRUE)))}
+
+p<-ggplot(data = data,
+       aes(x = reorder_size(flat_model),
+       fill = storey_range))+
+  geom_bar(color = "black",
+           alpha = 0.8)+
+  labs(x = "Flat Model",
+    title = "Distribution of Flat Model",
+    subtitle = "Fill by Flat Type")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+
+ggplotly(p)
+```
 
 ## Visual statistical testing
+
+#### Distribution testing
+
+First let us see the distribution of flat type using code chunk below.
+
+```{r eval=FALSE}
+ggplot(data = data,
+       aes(resale_price_per))+
+  geom_histogram(binwidth = 50)+
+  facet_grid(~ flat_type)+
+  labs(x = "Resale Price/Sqm",
+       title = "Distribution of Resale Price/Sqm \nby Flat Type")+
+  theme(plot.title = element_text(size=13, face = "bold"),
+          axis.title.y=element_text(angle=90, size = 9),
+          axis.title.y.left = element_text(vjust = 0.5),
+          axis.title.x.bottom = element_text( size = 9),
+          axis.text.y = element_text(size = 5,vjust = 1),
+          axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
+```
+
+![](images/paste-0BA9D507.png){width="729"}
+
+Noted that the resale price/sqm for each flat type is also **right skewed.** Even if we remove those outliers, it cannot be symmetrical. let us do *non-parametric* testing for them. Indeed, we can also test the normal distribution by using Q-Q plot. `qqnorm()`and `qqline()`from `psych package` will be used.
+
+```{r}
+qqnorm(data[data$flat_type=="3 ROOM",]$resale_price_per)
+qqline(data[data$flat_type=="3 ROOM",]$resale_price_per)
+
+qqnorm(data[data$flat_type=="4 ROOM",]$resale_price_per)
+qqline(data[data$flat_type=="4 ROOM",]$resale_price_per)
+
+qqnorm(data[data$flat_type=="5 ROOM",]$resale_price_per)
+qqline(data[data$flat_type=="5 ROOM",]$resale_price_per)
+
+par(mfrow = c(1,3))
+```
+
+```{r}
+
+p1<-gghistostats(
+  data = data[data$flat_type=="3 ROOM",],
+  x = resale_price_per,
+  type = "np",
+  test.value = 60,
+  xlab = "Resale Price Per Sqm"
+)+
+  scale_x_continuous(breaks = seq(0,max(data$resale_price_per), by = 1000))+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100))
+
+p2<-gghistostats(
+  data = data[data$flat_type=="4 ROOM",],
+  x = resale_price_per,
+  type = "np",
+  test.value = 60,
+  xlab = "Resale Price Per Sqm"
+)+
+  scale_x_continuous(breaks = seq(0,max(data$resale_price_per), by = 1000))+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100))
+
+p3<-gghistostats(
+  data = data[data$flat_type=="5 ROOM",],
+  x = resale_price_per,
+  type = "np",
+  test.value = 60,
+  xlab = "Resale Price Per Sqm"
+)+
+  scale_x_continuous(breaks = seq(0,max(data$resale_price_per), by = 1000))+
+  scale_y_continuous(breaks = seq(0,max(data$resale_price_per), by = 100))
+
+ggarrange(p1+ rremove("x.text"), p2 + rremove("x.text"), p3 + rremove("x.text"),
+          ncol = 3)
+```
+
+![](images/paste-EBF7C753.png){width="729"}
+
+Noted that all p-values are less than 0.05, meaning it is significant to reject the null hypothesis.
 
 ### Visualizing uncertainty
 
@@ -218,7 +379,7 @@ datatable(sum_tbl, options = list(pageLength = 12)) %>%
   backgroundColor = "White")
 ```
 
-```{r eval=FALSE}
+```{r}
 p<-ggplot(sum_tbl) +
   geom_errorbar(aes(x=town, 
         ymin=mean-se, 
@@ -237,7 +398,7 @@ p<-ggplot(sum_tbl) +
   geom_hline(yintercept = mean(data$resale_price_per),
              linetype = "dashed",
              color = "blue")+
-  ggtitle("Standard error of mean Resale Price per Sqm by Town")+
+  ggtitle("Standard error of mean Resale Price/Sqm by Town")+
   labs(x = "Town", y = "Mean")+
   theme(plot.title = element_text(size=13, face = "bold"),
           axis.title.y=element_text(angle=0, size = 9),
@@ -274,7 +435,7 @@ data %>%
     subtitle = "Gradient + interval plot")
 ```
 
-![](images/paste-A4212DA8.png){width="729"}
+![](images/paste-35418D0C.png){width="729"}
 
 From the chart above, we can easily see that the **mean** resale price per sqm is almost the **same** for each type of flat. But through the extent of shade of colors, we can see that there are subtle differences in standard error for resale price per sqm of these 3 types. For flat with **3 rooms**, the mean resale price per sqm is relatively **congregated** than other two types.
 
@@ -303,7 +464,7 @@ data %>%
 
 ```
 
-![](images/paste-26687E54.png){width="729"}
+![](images/paste-0B8A4A95.png){width="729"}
 
 As shown in the above chart, we easily see that as the **storey** **rises**, the **mean resale price per sqm** is **higher**. In addition, the **standard** **error** of mean resale price per sqm of storey range from ***16 to 27*** is the **largest** among other storey ranges. And we can see that flats with storey above **13** are more expensive than the gross mean resale price per sqm.
 
@@ -342,14 +503,18 @@ From chart above, it is easily to tell that the flat model named ***Type S1*** h
 When we talk about visualizing uncertainty, though, we usually mean visualizing information about different values the data could plausibly be. Therefore, we can usually give a certain percentage of confidence for the audiences to see the interval of the average value for a specific variable, and we can also offer the audiences a friendly animation to see the resale price for different type of flat - 3 ROOM, 4 ROOM and 5 ROOM - when we sampling 5 times.
 
 ```{r}
-set.seed(1234)
-
 ggplot(data = data, 
-       (aes(x = factor(flat_type), y = resale_price))) +
+       (aes(x = factor(flat_type), 
+            y = resale_price))) +
   geom_point(position = position_jitter(
-    height = 0.3, width = 0.05), 
-    size = 0.4, color = "#0072B2", alpha = 1/2) +
-  geom_hpline(data = sampler(5, group = flat_type), height = 0.6, color = "#D55E00") +
+    height = 0.3, 
+    width = 0.05), 
+    size = 0.4, 
+    color = "#0072B2", 
+    alpha = 1/2) +
+  geom_hpline(data = sampler(5, 
+                             group = flat_type), 
+              color = "#D55E00") +
   theme_bw()+
   transition_states(.draw, 1, 3)
 ```
@@ -396,7 +561,7 @@ From this combined chart above, we see that the area of floor is basically align
 
 #### One-way ANOVA Test
 
-As shown above visual analysis, we see that the mean resale prices per sqm for flat type are quite the same. Therefore, we can use One-way ANOVA Test to see whether the assumption is true. Because we cannot sure if the variance of these 3 samples, we choose the type of "robust" as our testing method to test if the means of 3 groups are the same.
+As shown above visual analysis, we see that the mean resale prices per sqm for flat type are quite the same. Therefore, we can use One-way ANOVA Test to see whether the assumption is true. Because we have tested the distribution of these 3 samples that they don't conform to normal distribution, we choose the type of "robust" as our testing method to test if the means of 3 groups are the same.
 
 Reference to [ggbetweenstats()](https://indrajeetpatil.github.io/ggstatsplot/articles/web_only/ggbetweenstats.html).
 
@@ -417,73 +582,3 @@ ggbetweenstats(
 ![](images/paste-7F15D709.png){width="729"}
 
 The testing result shows a very small **p-value \< 0.05** and small **F-value** of **51.27**, which means that we have enough evident to reject the H0 that the mean of each class in this group are equal. In fact, the mean resale price per sqm of flat with **3** **rooms** is **higher** than that with **4** **rooms**, which is **higher** than that with **5** **rooms**.
-
-#### Funnel Plotting
-
-```{r eval=FALSE}
-df <- data %>%
-  mutate(rate = floor_area_sqm / resale_price) %>%
-  mutate(rate.se = sqrt((rate*(1-rate)) / (resale_price))) %>%
-  filter(rate > 0)
-```
-
-```{r eval=FALSE}
-fit.mean <- weighted.mean(df$rate, 1/df$rate.se^2)
-```
-
-```{r eval=FALSE}
-number.seq <- seq(1, max(df$resale_price), 1)
-number.ll95 <- fit.mean - 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
-number.ul95 <- fit.mean + 1.96 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
-number.ll999 <- fit.mean - 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
-number.ul999 <- fit.mean + 3.29 * sqrt((fit.mean*(1-fit.mean)) / (number.seq)) 
-dfCI <- data.frame(number.ll95, number.ul95, number.ll999, number.ul999, number.seq, fit.mean)
-```
-
-```{r eval=FALSE}
-p <- ggplot(df, aes(x = resale_price, y = rate)) +
-  geom_point(aes(label=`street_name`), 
-             alpha=0.4) +
-  geom_line(data = dfCI, 
-            aes(x = number.seq, 
-                y = number.ll95), 
-            size = 0.4, 
-            colour = "grey40", 
-            linetype = "dashed") +
-  geom_line(data = dfCI, 
-            aes(x = number.seq, 
-                y = number.ul95), 
-            size = 0.4, 
-            colour = "grey40", 
-            linetype = "dashed") +
-  geom_line(data = dfCI, 
-            aes(x = number.seq, 
-                y = number.ll999), 
-            size = 0.4, 
-            colour = "grey40") +
-  geom_line(data = dfCI, 
-            aes(x = number.seq, 
-                y = number.ul999), 
-            size = 0.4, 
-            colour = "grey40") +
-  geom_hline(data = dfCI, 
-             aes(yintercept = fit.mean), 
-             size = 0.4, 
-             colour = "grey40") +
-  coord_cartesian(ylim=c(0,0.01)) +
-  annotate("text", x = 1, y = -0.13, label = "95%", size = 3, colour = "grey40") + 
-  annotate("text", x = 4.5, y = -0.18, label = "99%", size = 3, colour = "grey40") + 
-  ggtitle("Floor Area Sqm by Resale Price") +
-  xlab("Floor Area Sqm") + 
-  ylab("Resale Price") +
-  theme_light() +
-  theme(plot.title = element_text(size=12),
-        legend.position = c(0.91,0.85), 
-        legend.title = element_text(size=7),
-        legend.text = element_text(size=7),
-        legend.background = element_rect(colour = "grey60", linetype = "dotted"),
-        legend.key.height = unit(0.3, "cm"))
-p
-```
-
-![](images/paste-87251555.png){width="810"}
