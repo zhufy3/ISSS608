@@ -22,7 +22,7 @@ For the purpose of this study, the focus should be on **3-ROOM, 4-ROOM and 5-ROO
 
 *Resale flat prices based on registration date from Jan-2017 onwards* will be used to prepare the analytical visualisation. It is available at [Data.gov.sg](https://data.gov.sg/).
 
-## The Designing Tools
+## 3 The Designing Tools
 
 To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and their extension will be used. Code chunk below will help us load these packages into R studio environment.
 
@@ -30,9 +30,9 @@ To achieve the purposes in this exercise, R packages *tidyverse, tidyr* and thei
 pacman::p_load(tidyverse, tidyr, ggstatsplot, funModeling, plotly, ungeviz, gganimate, DT, patchwork, ggdist, FunnelPlotR, ggpubr, psych)
 ```
 
-## Data Preparation
+## 4 Data Preparation
 
-### Importing data
+### 4.1 Importing data
 
 First, let us import the data in *CSV* form into R environment using code chunk below.
 
@@ -48,7 +48,7 @@ glimpse(data)
 
 ![](images/paste-7B522BA9.png)
 
-### Data cleaning
+### 4.2 Data cleaning
 
 See that the time is stored in *character* type, and we need to extract data only in 2022. Therefore, we need to first extract on the year number to recode the original data as shown below.
 
@@ -124,7 +124,7 @@ write_csv(data,"data/resale-flat2022.csv")
 
 Noted that the data size has been contacted to 1.6 MB.
 
-### Missing value checking
+### 4.3 Missing value checking
 
 Before we start our analysis, we should first check missing values in this data table. Code chunk below will be used to show us the length of missing values in all columns in this data table.
 
@@ -135,7 +135,7 @@ summary(data[rowSums(is.na(data))!=0,])
 
 As shown in table above, no missing values in this data table.
 
-### Creating new variables
+### 4.4 Creating new variables
 
 To remove the influence from area of a flat to its resale price, we create a new variable of resale price per sqm, and we name it as *resale_price_per.*
 
@@ -148,13 +148,13 @@ summary(data$resale_price_per)
 
 Noted that the scale of the new created column is changed to **3333** to **14731**.
 
-## Visualization Analysis
+## 5 Visualization Analysis
 
-### Exploratory descriptive analysis
+### 5.1 Exploratory descriptive analysis
 
 First of all, let us do our EDA with our variables. This step plays a critical role to show the potential patterns behind the data. Let's go!🥳
 
-#### Distribution testing
+#### 5.2 Distribution test
 
 First of all, let take a look at the distribution of dependent variable *resale_price_per* by plotting its histogram plot using codes below.
 
@@ -265,9 +265,9 @@ p<-ggplot(data = data,
 ggplotly(p)
 ```
 
-## Visual statistical testing
+## 6 Visual statistical testing
 
-#### Distribution testing
+### 6.1 Distribution test
 
 First let us see the distribution of flat type using code chunk below.
 
@@ -343,7 +343,7 @@ ggarrange(p1+ rremove("x.text"), p2 + rremove("x.text"), p3 + rremove("x.text"),
 
 Noted that all p-values are less than 0.05, meaning it is significant to reject the null hypothesis.
 
-### Visualizing uncertainty
+### 6.2 Visualizing uncertainty
 
 A point estimate is a single number, such as a mean. And uncertainty is expressed as standard error, confidence interval, or confidence interval. Now let's plot interactive error bar plots by using 💼*ggplot2()* package to indicate the 95% confidence interval of mean resale price for different towns.
 
@@ -519,7 +519,7 @@ ggplot(data = data,
   transition_states(.draw, 1, 3)
 ```
 
-#### Visual time series analysis
+### 6.3 Visual time series analysis
 
 At last, let us take a look at the pattern between mean resale price per sqm and lease commence year, which is a time series graph and let us line chart instead of error bar plot.
 
@@ -542,7 +542,7 @@ ggplotly(p)
 
 Noted that across the past 50 years, the gross mean resale price per sqm is showing a rising tendency. But in short period, from year 1975, the mean resale price per sqm is dropping down until year 1991. And a **sharp increase** in year **2006**, followed by dramatic fluctuations in later years, reaching **highest** **point** of 9049 in year **2011**.
 
-#### Visual association of resale price/sqm vs. floor area
+### 6.4 Visual association of resale price/sqm vs. floor area
 
 Now let us explore the association between mean resale price/sqm and floor area by plotting a scatter plot.
 
@@ -559,7 +559,7 @@ ggplot(data = data,
 
 From this combined chart above, we see that the area of floor is basically aligned with number of rooms of a flat, meaning that the differences between average area of each room among flats are not much big. On the other hand, as the **area** of floor **rises**, the **resale** **price** **per** **sqm** actually goes **down**.
 
-#### One-way ANOVA Test
+### 6.5 One-way ANOVA Test
 
 As shown above visual analysis, we see that the mean resale prices per sqm for flat type are quite the same. Therefore, we can use One-way ANOVA Test to see whether the assumption is true. Because we have tested the distribution of these 3 samples that they don't conform to normal distribution, we choose the type of "robust" as our testing method to test if the means of 3 groups are the same.
 
