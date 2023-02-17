@@ -331,7 +331,7 @@ ggplot(data = data,
 
 Noted that the resale price/sqm for each flat type is also **right skewed.** Even if we remove those outliers, it cannot be symmetrical. let us do *non-parametric* testing for them. Indeed, we can also test the normal distribution by using Q-Q plot. `qqnorm()`and `qqline()`from `psych package` will be used.
 
-```{r fig.height=5, fig.width=8}
+```{r fig.height=5, fig.width=8, eval=FALSE}
 qqnorm(data[data$flat_type=="3 ROOM",]$resale_price_per)
 
 qqline(data[data$flat_type=="3 ROOM",]$resale_price_per)
@@ -413,14 +413,6 @@ sum_tbl <- data %>%
     sd=sd(resale_price_per)
     ) %>%
   mutate(se=sd/sqrt(n-1))
-```
-
-Let us take a look at the table we created.
-
-```{r}
-datatable(sum_tbl, options = list(pageLength = 5), style = "auto", width = 7.59, height = 4.68) %>% 
-  formatStyle(columns = colnames(sum_tbl),
-  backgroundColor = "White")
 ```
 
 ```{r fig.height=5, fig.width=8}
