@@ -1,0 +1,210 @@
+---
+title: "Hands-on Exercise 6: Visualising and Analysing Time-oriented Data"
+author: "Fangyuan ZHU"
+date: 10 Feb 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+## Packages used
+
+```{r}
+pacman::p_load(scales, viridis, lubridate, ggthemes, gridExtra, readxl, knitr, data.table, tidyverse, patchwork)
+```
+
+## Plotting Calendar Heatmap
+
+### Importing data
+
+```{r}
+attacks<-read_csv("data/eventlog.csv")
+```
+
+### Examining data structure
+
+Use `kable()` to review the data imported.
+
+```{r}
+kable(head(attacks))
+```
+
+### Data preparation
+
+Step 1: Deriving *weekday* and *hour of day* fields.
+
+```{r}
+make_hr_wkday <- function(ts, sc, tz) {
+  real_times <- ymd_hms(ts, 
+                        tz = tz[1], 
+                        quiet = TRUE)
+  dt <- data.table(source_country = sc,
+                   wkday = weekdays(real_times),
+                   hour = hour(real_times))
+  return(dt)
+  }
+```
+
+Note: [`ymd_hms()`](https://lubridate.tidyverse.org/reference/ymd_hms.html) and [`hour()`](https://lubridate.tidyverse.org/reference/hour.html) are from [**lubridate**](https://lubridate.tidyverse.org/) package and [`weekdays()`](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/weekdays) is a **base** R function.
+
+Step 2: Deriving the attacks tibble data frame
+
+```{r}
+wkday_levels<-c('Saturday', 'Friday', 
+                  'Thursday', 'Wednesday', 
+                  'Tuesday', 'Monday', 
+                  'Sunday')
+
+attacks<-attacks%>%
+  group_by(tz)%>%
+  do(make_hr_wkday(.$timestamp,
+                   .$source_country,
+                   .$tz))%>%
+  ungroup()%>%
+  mutate(wkday = factor(
+    wkday, levels = wkday_levels),
+    hour = factor(
+      hour, levels = 0:23))
+```
+
+```{r}
+kable(head(attacks))
+```
+
+## Building the Calendar Heatmaps
+
+```{r}
+grouped <- attacks %>% 
+  count(wkday, hour) %>% 
+  ungroup()%>%
+  na.omit()
+
+p1<-ggplot(grouped, 
+       aes(hour, 
+           wkday, 
+           fill = n)) + 
+geom_tile(color = "white", 
+          size = 0.1) + 
+theme_tufte(base_family = "Helvetica") + 
+coord_equal() +
+scale_fill_gradient(name = "# of attacks",
+                    low = "sky blue", 
+                    high = "dark blue") +
+labs(x = NULL, 
+     y = NULL, 
+     title = "Attacks by weekday and time of day") +
+theme(axis.ticks = element_blank(),
+      plot.title = element_text(hjust = 0.5),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 6) )
+
+p2<-ggplot(grouped, 
+       aes(hour, 
+           wkday, 
+           fill = n)) + 
+geom_tile(color = "white", 
+          size = 0.1) + 
+#theme_tufte(base_family = "Helvetica") + 
+coord_equal() +
+scale_fill_gradient(name = "# of attacks",
+                    low = "sky blue", 
+                    high = "dark blue") +
+labs(x = NULL, 
+     y = NULL, 
+     title = "Attacks by weekday and time of day") +
+theme(axis.ticks = element_blank(),
+      plot.title = element_text(hjust = 0.5),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 6) )
+
+p1/p2
+```
+
+```{r}
+attacks_by_country <- count(
+  attacks, source_country) %>%
+  mutate(percent = percent(n/sum(n))) %>%
+  arrange(desc(n))
+
+top4 <- attacks_by_country$source_country[1:4]
+top4_attacks <- attacks %>%
+  filter(source_country %in% top4) %>%
+  count(source_country, wkday, hour) %>%
+  ungroup() %>%
+  mutate(source_country = factor(
+    source_country, levels = top4)) %>%
+  na.omit()
+```
+
+```{r}
+ggplot(top4_attacks, 
+       aes(hour, 
+           wkday, 
+           fill = n)) + 
+  geom_tile(color = "white", 
+          size = 0.1) + 
+  theme_tufte(base_family = "Helvetica") + 
+  coord_equal() +
+  scale_fill_gradient(name = "# of attacks",
+                    low = "sky blue", 
+                    high = "dark blue") +
+  facet_wrap(~source_country, ncol = 2) +
+  labs(x = NULL, y = NULL, 
+     title = "Attacks on top 4 countries by weekday and time of day") +
+  theme(axis.ticks = element_blank(),
+        axis.text.x = element_text(size = 7),
+        plot.title = element_text(hjust = 0.5),
+        legend.title = element_text(size = 8),
+        legend.text = element_text(size = 6) )
+```
+
+## Cycle Plot
+
+```{r}
+air <- read_excel("data/arrivals_by_air.xlsx")
+```
+
+```{r}
+air$month <- factor(month(air$`Month-Year`), 
+                    levels=1:12, 
+                    labels=month.abb, 
+                    ordered=TRUE) 
+air$year <- year(ymd(air$`Month-Year`))
+```
+
+```{r}
+Vietnam <- air %>% 
+  select(`Vietnam`, 
+         month, 
+         year) %>%
+  filter(year >= 2010)
+```
+
+```{r}
+hline.data <- Vietnam %>% 
+  group_by(month) %>%
+  summarise(avgvalue = mean(`Vietnam`))
+```
+
+```{r}
+ggplot() + 
+  geom_line(data=Vietnam,
+            aes(x=year, 
+                y=`Vietnam`, 
+                group=month), 
+            colour="black") +
+  geom_hline(aes(yintercept=avgvalue), 
+             data=hline.data, 
+             linetype=6, 
+             colour="red", 
+             size=0.5) + 
+  facet_grid(~month) +
+  labs(axis.text.x = element_blank(),
+       title = "Visitor arrivals from Vietnam by air, Jan 2010-Dec 2019") +
+  xlab("") +
+  ylab("No. of Visitors")
+```
