@@ -301,7 +301,7 @@ p<-ggplot(data = data,
           axis.text.y = element_text(size = 5,vjust = 1),
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
 
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 ```
 
 It shows that for each model of flat, there are feature storey ranges. Some covers many storey ranges, while others are quite congregated,
@@ -333,6 +333,7 @@ Noted that the resale price/sqm for each flat type is also **right skewed.** Eve
 
 ```{r fig.height=5, fig.width=8}
 qqnorm(data[data$flat_type=="3 ROOM",]$resale_price_per)
+
 qqline(data[data$flat_type=="3 ROOM",]$resale_price_per)
 
 qqnorm(data[data$flat_type=="4 ROOM",]$resale_price_per)
@@ -341,8 +342,14 @@ qqline(data[data$flat_type=="4 ROOM",]$resale_price_per)
 qqnorm(data[data$flat_type=="5 ROOM",]$resale_price_per)
 qqline(data[data$flat_type=="5 ROOM",]$resale_price_per)
 
-par(mfrow = c(1,3))
+
 ```
+
+![](images/paste-707F1495.png){width="729" height="450"}
+
+![](images/paste-42266E59.png){width="729" height="450"}
+
+![](images/paste-299A132F.png){width="729" height="450"}
 
 Noted that these three distributions don't fit normal distributions. Therefore, let's test their distributions with ***Bayes*** **test.**
 
@@ -411,7 +418,7 @@ sum_tbl <- data %>%
 Let us take a look at the table we created.
 
 ```{r}
-datatable(sum_tbl, options = list(pageLength = 5), style = "auto") %>% 
+datatable(sum_tbl, options = list(pageLength = 5), style = "auto", width = 7.59, height = 4.68) %>% 
   formatStyle(columns = colnames(sum_tbl),
   backgroundColor = "White")
 ```
