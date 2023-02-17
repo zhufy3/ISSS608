@@ -200,17 +200,19 @@ p<-ggplot(data = data,
           axis.text.y = element_text(size = 5,vjust = 1),
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
   
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 ```
 
 As shown in graph above, we see that the resale price per sqm is highly **right skewed**. According to the information of outliers, flat model of *Type S1* has very high resale price per sqm. That means most of the resale price per sqm congregated at lower prices, which is intuitively rational.
 
 Now let us test if it fits normal distribution though we can guess it doesn't.
 
-```{r}
+```{r eval=FALSE}
 qqnorm(data$resale_price_per)
 qqline(data$resale_price_per)
 ```
+
+![](images/paste-B53BB285.png){width="729"}
 
 Also it shows that it's good to use non-parametric test because it's better to use ***medium*** to represent our sample. Even though we have large enough data set, we don't assume the distribution of resale price per sqm conforming to normal distribution, that's why we use ***Bayes*** test.
 
@@ -249,7 +251,7 @@ p<-ggplot(data = data,
           axis.text.y = element_text(size = 5,vjust = 1),
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
 
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 ```
 
 See that ***BUKITTIMAH*** has the least amount of **52** samples.
@@ -273,7 +275,7 @@ p<-ggplot(data = data,
           axis.text.y = element_text(size = 5,vjust = 1),
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1))
 
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 ```
 
 With the distribution plot for *flat_model,* we see that flat model named *Improved-Maisonette* only has **2** sample flats with **5 rooms** in total. Also we can see the main flat type for each model of flat. For example, flats of *Model A* mainly have 4 rooms, and flats of *Improved* mainly have 5 rooms.
@@ -443,7 +445,7 @@ p<-ggplot(sum_tbl) +
           axis.text.x = element_text(angle = 45,size = 5, hjust = 1),
           plot.caption = element_text(hjust = 0, colour = "blue", face = "italic"))
 
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 
 ```
 
@@ -574,7 +576,7 @@ p<-ggplot(data = data,
        y = "Mean Resale Price/Sqm",
        title = "Line plot of Mean Resale Price/Sqm \nvs. Lease Commence Year ")
 
-ggplotly(p)
+ggplotly(p, width = 7.59, height = 4.68)
 ```
 
 Noted that across the past 50 years, the gross mean resale price per sqm is showing a rising tendency. But in short period, from year 1975, the mean resale price per sqm is dropping down until year 1991. And a **sharp increase** in year **2006**, followed by dramatic fluctuations in later years, reaching **highest** **point** of 9049 in year **2011**.
@@ -592,7 +594,7 @@ ggplot(data = data,
               color = "black")
 ```
 
-![](images/paste-A57D5DFE.png){width="729"}
+![](images/paste-A57D5DFE.png){width="7.59in"}
 
 From this combined chart above, we see that the area of floor is basically aligned with number of rooms of a flat, meaning that the differences between average area of each room among flats are not much big. On the other hand, as the **area** of floor **rises**, the **resale** **price** **per** **sqm** actually goes **down**.
 
