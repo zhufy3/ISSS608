@@ -1,5 +1,5 @@
 ---
-title: "Take-home Exercise 3 Resale Flat Prices Analytical Visualisation"
+title: "Take-home Exercise 3: Resale Flat Prices Analytical Visualisation"
 author: "Fangyuan Zhu"
 date: 12 Feburary 2023
 date-modified: "`r Sys.Date()`"
@@ -14,7 +14,7 @@ format: html
 editor: visual
 ---
 
-## 1 Our Tasks
+## 🏆 Our Tasks
 
 In this take-home exercise, we are required to uncover the salient patterns of the resale prices of public housing property by residential towns and estates in Singapore by using appropriate analytical visualisation techniques learned in **Lesson 4: Fundamentals of Visual Analytics**. Students are encouraged to apply appropriate interactive techniques to enhance user and data discovery experiences.
 
@@ -182,7 +182,7 @@ Noted that the scale of the new created column is changed to **3333** to **14731
 
 First of all, let us do our EDA with our variables. This step plays a critical role to show the potential patterns behind the data. Let's go!🥳
 
-#### 5.2 Distribution test
+### 5.2 Distribution test
 
 First of all, let take a look at the distribution of dependent variable *resale_price_per* by plotting its histogram plot using codes below.
 
