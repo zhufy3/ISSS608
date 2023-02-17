@@ -622,10 +622,14 @@ The testing result shows a very small **p-value \< 0.05** and small **F-value** 
 
 After the former tests, we have noticed that the distribution of resale price per sqm is highly skewed, let's see if the skewness can be reduced by data transformation. let us first try **Log.**
 
-```{r}
+```{r eval=FALSE}
 qqnorm(log(data$resale_price_per))
 qqline(log(data$resale_price_per))
 ```
+
+![](images/paste-C7C4A1B9.png){width="729"}
+
+Noted that the data gets less skewed after transforming.
 
 ```{r}
 model<-lm(log(resale_price_per) ~ town + flat_type + storey_range +
@@ -633,7 +637,7 @@ model<-lm(log(resale_price_per) ~ town + flat_type + storey_range +
 model
 ```
 
-```{r}
+```{r eval=FALSE}
 check_c <- check_collinearity(model)
 plot(check_c)+
   theme(
@@ -642,4 +646,6 @@ plot(check_c)+
   )
 ```
 
-From the plot above, noted that variables *flat_model, flat_type* and *floor_area_sqm* have highly collinearity. While variables *lease_commence_date* and *storey_range* have low colliearity.
+![](images/paste-0BF59835.png){width="729" height="450"}
+
+From the plot above, noted that variables ***flat_model, flat_type*** and ***floor_area_sqm***have highly collinearity. While variables ***lease_commence_date*****, *storey_range*** and ***town*** have relatively low colliearity. May try to exclude some of them in our later analysis.
