@@ -1,5 +1,5 @@
 ---
-title: "Singapore bi-lateral trade | See what happened?!"
+title: "Singapore bi-lateral trade | See what happened"
 author: "Fangyuan ZHU"
 date: 20 Feb 2023
 date-modified: "`r Sys.Date()`"
@@ -90,7 +90,6 @@ write_excel_csv(exp, "data/export.csv")
 Then let us see is there any missing value in this data set. Codes below will show us the amount of missing values in each column.
 
 ```{r}
-imp<-read_csv("data/import.csv")
 print(paste0("Count of rows containing missing values in import data table is: ",sum(imp[rowSums(is.na(imp))!=0,])))
 
 exp<-read_csv("data/export.csv")
@@ -98,6 +97,45 @@ print(paste0("Count of rows containing missing values in export data table is: "
 ```
 
 From the printed information, we see that the missing values in both data tables are 0.
+
+## Data recoding
+
+### Converting data type
+
+Our column of time is formatted with YYYY Month. Now we need to remove the year and convert the month into time type as shown below.
+
+```{r}
+imp$Month<-str_extract(imp$Month, "\\d+ (\\w+)", group = 1)
+
+exp$Month<-str_extract(exp$Month, "\\d+ (\\w+)", group = 1)
+
+imp<-imp%>%
+  mutate(Month = recode(Month, "Apr" = "April", "Jan" = "January", "Feb" = "February", "Mar" = "March", "Jun" = "June", "Jul" = "July", "Aug" = "August", "Sep" = "September", "Oct" = "October", "Nov" = "November", "Dec" = "December"))
+
+exp<-exp%>%
+  mutate(Month = recode(Month, "Apr" = "April", "Jan" = "January", "Feb" = "February", "Mar" = "March", "Jun" = "June", "Jul" = "July", "Aug" = "August", "Sep" = "September", "Oct" = "October", "Nov" = "November", "Dec" = "December"))
+
+```
+
+Then we sort the rows with the ascending order of month for both data tables.
+
+```{r}
+imp<-imp%>%
+  mutate(Month = factor(Month, levels = month.name))%>%
+  arrange(imp$Month, decreasing = FALSE)
+
+exp<-exp%>%
+  mutate(Month = factor(Month, levels = month.name))%>%
+  arrange(exp$Month, decreasing = FALSE)
+```
+
+### Unifying unit
+
+We see that the unit of the columns are not aligned, so we can unify the unit of *million* and *thousand.* Let us see which columns are in which unit with codes below.
+
+```{r}
+colnames(imp)
+```
 
 ## Glimpse at data table
 
@@ -117,27 +155,4 @@ datatable(data = exp, class = "display", extensions = "Buttons", options = list(
 ```
 :::
 
-## Data recoding
-
-Our column of time is formatted with YYYY Month. Now we need to separate the year and month with a function as shown below.
-
-```{r}
-mak_month<-function(ts){
-  
-  dt<-data.table(Month = )
-  return(dt)
-  }
-```
-
-```{r}
-month_level<-c("Jan, Feb, March, April, May, June, July, Aug, Sep, Oct, Nov, Dec")
-
-imp$Month<-str_extract(imp$Month, "\\d+ (\\w+)", group = 1)
-
-
-exp$Month<-str_extract(exp$Month, "\\d+ (\\w+)", group = 1)
-
-parse_date(imp$Month)
-imp<-imp%>%
-  mutate(Month = recode(AG, ""))
-```
+## 
