@@ -1,0 +1,143 @@
+---
+title: "Singapore bi-lateral trade | See what happened?!"
+author: "Fangyuan ZHU"
+date: 20 Feb 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+format: html
+editor: visual
+---
+
+## Our Task
+
+In this take-home exercise, we are required to uncover the impact of COVID-19 as well as the global economic and political dynamic in **2022** on Singapore bi-lateral trade by using appropriate analytical visualisation techniques learned in **Lesson 6: It's About Time**. We are encouraged to apply appropriate interactive techniques to enhance user and data discovery experiences.
+
+## Data Used
+
+Merchandise Trade provided by Department of Statistics, Singapore (DOS) will be used. The study period will be between **January 2020 to December 2022**.
+
+## Designing Tools
+
+In this Exercise, we will mainly use R packages like *tidyverse* and *tidyr* and their extensions.
+
+## Importing Packages
+
+-   tidyverse
+
+-   tidyr: provides read_excel() function
+
+-   readxl: provides read_xsls() function
+
+-   knitr: helps to make a tidy table
+
+-   DT: interactive data table. datatable() function
+
+-   patchwork: arange the layout of plots
+
+-   lubridate: ymd_hms
+
+-   data.table: data.table() function
+
+```{r}
+pacman::p_load(tidyverse, tidyr, readxl, knitr, DT, patchwork, lubridate, data.table, dplyr)
+```
+
+## Importing Data {.tabset .tabset-fade .tabset-pills}
+
+Our raw dataset is in a report form so that when we import the dataset, we need to set some augments to properly choose our data. Given that our dataset is *xlsx* format, and the first sheet named "content" is a note of the dataset, the second sheet named "T1" is import data, the third sheet named "T2" is export data, we need to set the **sheet name** and the **range** of the sheet to extract, excluding useless rows and columns.
+
+Let us import the *import* data by calling the sheet named "T1" and range from A10 to UT129. Let us take a look at the data we just imported using `datatable()` from `DT` package.
+
+```{r eval=FALSE}
+imp<-read_xlsx("data/outputFile.xlsx", sheet = "T1", range = "A10:UT129")
+
+exp<-read_xlsx("data/outputFile.xlsx", sheet = "T2", range = "A10:DT101")
+```
+
+## Data cleaning
+
+Now since we need to extract data in 2022, let us select columns from **column 3** to **column 14.**
+
+```{r eval=FALSE}
+imp<-imp%>%
+  select(c(1,3:14))
+
+exp<-exp%>%
+  select(c(1,3:14))
+```
+
+Then let us convert rows into columns and columns into rows, so that we have the states/region as variables.
+
+```{r eval=FALSE}
+
+imp<-imp%>%
+  gather(Month, value, -`Data Series`)%>%
+  spread(`Data Series`, value)
+write_excel_csv(imp, "data/import.csv")
+
+
+exp<-exp%>%
+  gather(Month, value, -`Data Series`)%>%
+  spread(`Data Series`, value)
+write_excel_csv(exp, "data/export.csv")
+```
+
+## Missing value check
+
+Then let us see is there any missing value in this data set. Codes below will show us the amount of missing values in each column.
+
+```{r}
+imp<-read_csv("data/import.csv")
+print(paste0("Count of rows containing missing values in import data table is: ",sum(imp[rowSums(is.na(imp))!=0,])))
+
+exp<-read_csv("data/export.csv")
+print(paste0("Count of rows containing missing values in export data table is: ", sum(exp[rowSums(is.na(exp))!=0,])))
+```
+
+From the printed information, we see that the missing values in both data tables are 0.
+
+## Glimpse at data table
+
+::: panel-tabset
+### Import data
+
+```{r}
+
+datatable(data = imp, class = "display", extensions = "Buttons", options = list(dom="Bfrtip", buttons = list(list(extend = "colvis", text = "Exclude/Include Columns"))))
+
+```
+
+### Export data
+
+```{r}
+datatable(data = exp, class = "display", extensions = "Buttons", options = list(dom="Bfrtip", buttons = list(list(extend = "colvis", text = "Exclude/Include Columns"))))
+```
+:::
+
+## Data recoding
+
+Our column of time is formatted with YYYY Month. Now we need to separate the year and month with a function as shown below.
+
+```{r}
+mak_month<-function(ts){
+  
+  dt<-data.table(Month = )
+  return(dt)
+  }
+```
+
+```{r}
+month_level<-c("Jan, Feb, March, April, May, June, July, Aug, Sep, Oct, Nov, Dec")
+
+imp$Month<-str_extract(imp$Month, "\\d+ (\\w+)", group = 1)
+
+
+exp$Month<-str_extract(exp$Month, "\\d+ (\\w+)", group = 1)
+
+parse_date(imp$Month)
+imp<-imp%>%
+  mutate(Month = recode(AG, ""))
+```

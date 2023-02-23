@@ -42,6 +42,8 @@ website:
             href: Take-home_Ex2/Take-home_Ex2.qmd
           - text: Take-home Exercise 3
             href: Take-home_Ex3/Take-home_Ex3.qmd
+          - text: Take-home Exercise 4
+            href: Take-home_Ex4/Take-home_Ex4.qmd
 
     right:
       - href: index.qmd
@@ -51,9 +53,16 @@ website:
 format:
   html:
     code-fold: true
-    theme: solar
+    code-summary: "Show the code"
+    code-tools: true
+    code-block-bg: true
+    code-block-border-left: "bisque3"
+    theme: 
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
+    toc-location: left
 
 editor: visual
 
