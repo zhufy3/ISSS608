@@ -147,16 +147,15 @@ print(paste0("Count of rows containing missing values in export data table is: "
 ### Unifying unit
 
 ::: panel-tabset
-We see that the unit of the columns are not aligned, so we can unify the unit of *million* and *thousand.* Let us see which columns are in which unit with codes below.
+We see that the unit of the columns are not aligned, so we can unify the unit of *million dollars* and *thousand dollars.* Let us see which columns are in which unit with codes below.
 
 #### Import data
 
 ```{r}
-
 kable(head(colnames(imp),10))
 ```
 
-We see that some columns are calculated in *Thousand Dollars,* some are in *Million Dollars.* Since the *Thousand Dollars* takes the majority, we change *Million Dollars* to thousand dollars. Now let check which columns are in million dollars.
+We see that some columns are calculated in *Thousand Dollars,* some are in *Million Dollars.* Now let check which columns are in million dollars.
 
 ```{r}
 grep("Million", colnames(imp))
@@ -169,34 +168,36 @@ Now we see column 3, 4, 7, 29, 30 and 80 are in million dollars, so that we can 
 colnames(imp)[c(3,4,7,29,30,80)]
 ```
 
-Noted that only data from continents are in Million dollars.
+Noted that only data from **continents** are in **Million** dollars.
 
 #### Export Data
+
+With same steps, let us check for Export data.
 
 ```{r}
 kable(head(colnames(imp),10))
 ```
 
-We see that some columns are calculated in Thousand Dollars, some are in Million Dollars. Since the Thousand Dollars takes the majority, we change Million Dollars to thousand dollars. Now let check which columns are in million dollars.
+We see that some columns are calculated in Thousand Dollars, some are in Million Dollars. Now let check which columns are in million dollars.
 
 ```{r}
 grep("Million", colnames(exp))
 
 ```
 
-Now we see column 3, 4, 6, 23, 24 and 60 are in million dollars, so that we can change values in these columns into *Thousand Dollars.*
+Now we see column 3, 4, 6, 23, 24 and 60 are in million dollars, so that we can check which columns they are.
 
 ```{r}
 colnames(exp)[c(3,4,6,23,24,60)]
 ```
 
-Noted that only data from continents are in Million dollars.
+Noted that only data from **continents** are in **Million** dollars.
 :::
 
 ### Recode column names
-::: panel-tabset
 
-We see that the column names contain unit dollars, which will be useless because we have unify the unit. Therefore let us extract the column names to only retain the countries' names.
+::: panel-tabset
+We see that the column names contain unit dollar, which will be tedious for users to read. Therefore let us extract the column names only retaining the countries' names.
 
 #### Import data
 
@@ -214,10 +215,12 @@ print(colnames(exp)[-1]<-str_extract(colnames(exp)[-1],"(.+)\\(.+\\)$",group = 1
 
 ### Glimpse at data table
 
+Let us take a glimpse at the tidy data tables using interactive data tables.
+
 ::: panel-tabset
 ### Import data
 
-In this interactive data table, users can choose to include/exclude specific columns to show what they want.
+In this interactive data table, users can choose to **include**/**exclude** specific columns to show that they like.
 
 ```{r}
 datatable(data = imp, class = "display", extensions = "Buttons", options = list(dom="Bfrtip", buttons = list(list(extend = "colvis", text = "Exclude/Include Columns"))))
@@ -238,10 +241,9 @@ Actually, when we look at the column names of export trade data, it can be noted
 :::
 
 ## Heatmap
+
 ::: panel-tabset
-
 Now before we continue our analysis, firstly let us check the overview of the trade data based on country using interactive heatmaps supported by *Heatmaply.*
-
 
 ### Import data
 
@@ -265,7 +267,7 @@ p <- heatmaply(mat,
         scale = "column",
         margins = c(60,50,40,20),
         scale_fill_gradient_fun = scale_fill_gradient(low = "light sky blue", high = "dark blue"),
-        subplot_widths = c(1.5),
+        subplot_widths = c(1),
         subplot_heights = c(0.6),
         titleX = FALSE,
         hide_colorbar = TRUE,
@@ -304,7 +306,7 @@ p <- heatmaply(matexp,
         scale = "column",
         margins = c(60,50,40,20),
         scale_fill_gradient_fun = scale_fill_gradient(low = "sky blue", high = "dark blue"),
-        subplot_widths = c(1.5),
+        subplot_widths = c(1),
         subplot_heights = c(0.6),
         titleX = FALSE,
         hide_colorbar = TRUE,
@@ -330,10 +332,9 @@ exp<-exp[,!names(exp)%in%c("Germany, Democratic Republic Of","Yemen Democratic")
 ```
 :::
 
-
 ## Animate plot
-:::panel-subset
 
+::: panel-subset
 ### Country level
 
 To fit in the data frame easy to plot, we need to transform all the countries into column. We can customize the function below to achieve that.
@@ -425,6 +426,7 @@ animate(graph1_animation,renderer = gifski_renderer())
 From the animation above, we see that generally, the trade activity for each country is stable, changing in a small scope. Trades with few of the country have an imbalance in import and export。
 
 ### Continent level
+
 ```{r}
 cimport<-subdf(select(imp,c(`Month`,`Africa `,`America `,`Asia `,`Europe `,`European Union `,`Oceania `)))%>%
   rename(`Import` = "Volume")
@@ -435,6 +437,7 @@ cexport<-subdf(select(exp,c(`Month`,`Africa `,`America `,`Asia `,`Europe `,`Euro
 kable(head(cimport,5))
 kable(head(cexport,5))
 ```
+
 ```{r}
 ctrade<-full_join(cimport,cexport,by = c("Month","Country"))%>%
   replace(is.na(.),0)%>%
@@ -472,14 +475,13 @@ graph2_animation <- graph2 +
 #display the graph
 animate(graph2_animation,renderer = gifski_renderer())
 ```
-Noted that import and export trades within Asia are the highest among other continents, while those with Africa are the least. The waving scopes are also stable.Obviously, trades of export with Oceania are more than those of import, though trades of import with Africa are more than those of export.
 
+Noted that import and export trades within Asia are the highest among other continents, while those with Africa are the least. The waving scopes are also stable.Obviously, trades of export with Oceania are more than those of import, though trades of import with Africa are more than those of export.
 :::
 
-
 ## Dumbell plot
-:::panel-subset
 
+::: panel-subset
 To obviously compare the import trade amounts and export trade amounts among countries, we can plot a line chart which mark import and export amounts in differed colors.
 
 ```{r}
@@ -506,7 +508,9 @@ fig
 
 
 ```
+
 ### Continent level
+
 ```{r}
 fig<-ctrade%>%
   mutate(Month = factor(Month, levels = month.abb))%>%
