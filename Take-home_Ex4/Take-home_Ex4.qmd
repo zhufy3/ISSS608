@@ -163,14 +163,13 @@ grep("Million", colnames(imp))
 
 ```
 
-Now we see column 3, 4, 7, 29, 30 and 80 are in million dollars, so that we can change values in these columns into *Thousand Dollars.*
+Now we see column 3, 4, 7, 29, 30 and 80 are in million dollars, so that we can check which columns they are.
 
 ```{r}
-col<-colnames(imp)
-for (i in c(3,4,7,29,30,80)){
-  imp[,i]<-imp[,i]*1000
-}
+colnames(imp)[c(3,4,7,29,30,80)]
 ```
+
+Noted that only data from continents are in Million dollars.
 
 #### Export Data
 
@@ -188,11 +187,10 @@ grep("Million", colnames(exp))
 Now we see column 3, 4, 6, 23, 24 and 60 are in million dollars, so that we can change values in these columns into *Thousand Dollars.*
 
 ```{r}
-col<-colnames(exp)
-for (i in c(3,4,6,23,24,60)){
-  exp[,i]<-exp[,i]*1000
-}
+colnames(exp)[c(3,4,6,23,24,60)]
 ```
+
+Noted that only data from continents are in Million dollars.
 :::
 
 ### Recode column names
@@ -219,28 +217,41 @@ colnames(exp)[-1]<-str_extract(colnames(exp)[-1],"(.+)\\(.+\\)$",group = 1)
 ::: panel-tabset
 ### Import data
 
+In this interactive data table, users can choose to include/exclude specific columns to show what they want.
+
 ```{r}
 datatable(data = imp, class = "display", extensions = "Buttons", options = list(dom="Bfrtip", buttons = list(list(extend = "colvis", text = "Exclude/Include Columns"))))
 
 ```
 
+Actually, when we look at the column names of import trade data, it can be noted that the *Country's* names include continent names, such as Africa, America, Asia, Europe and Australia. We need to be careful to segment the **country** and **continent** when we analyse the data.
+:::
+
+::: panel-tabset
 ### Export data
+
+In this interactive data table, users can choose to include/exclude specific columns to show what they want.
 
 ```{r}
 datatable(data = exp, class = "display", extensions = "Buttons", options = list(dom="Bfrtip", buttons = list(list(extend = "colvis", text = "Exclude/Include Columns"))))
 ```
+
+Actually, when we look at the column names of export trade data, it can be noted that the Country's names include continent names, such as Africa, America, Asia, Europe and Oceania.
 :::
 
 ## Heatmap
 
-Now before we continue our analysis, first let us check the statistic summary of the data.
+Now before we continue our analysis, firstly let us check the overview of the trade data based on country using interactive heatmaps supported by *Heatmaply.*
 
 ::: panel-tabset
 
 ### Import data
 
+In the heat map, we exclude continents which are *Africa, America, Asia, Europe, European Union* and *Oceania.*
+
 ```{r}
-mat<-imp
+mat<-imp%>%
+  select(c(-`Africa `,-`America `,-`Asia `,-`Europe `,-`European Union `,-`Oceania `))
 mat<-mat%>%
   select(-Month)
 rownames(mat)<-imp$Month
@@ -254,7 +265,7 @@ p <- heatmaply(mat,
         xlab = "", ylab = "", 
         main = "",
         scale = "column",
-        margins = c(60,100,40,20),
+        margins = c(60,50,40,20),
         scale_fill_gradient_fun = scale_fill_gradient(low = "light sky blue", high = "dark blue"),
         subplot_widths = c(1),
         subplot_heights = c(0.3),
@@ -272,12 +283,14 @@ p <- heatmaply(mat,
 p
 ```
 
-Noted that there are no values for *Germany, Democratic Republic Of* and for *Yemen Democratic.*
+Noted that there are no values for ***Germany, Democratic Republic Of***and for ***Yemen Democratic.***
 
 ### Export data
 
 ```{r}
-matexp<-exp
+matexp<-exp%>%
+  select(c(-`Africa `,-`America `,-`Asia `,-`Europe `,-`European Union `,-`Oceania `))
+
 matexp<-matexp%>%
   select(-Month)
 rownames(matexp)<-exp$Month
@@ -291,7 +304,7 @@ p <- heatmaply(matexp,
         xlab = "", ylab = "", 
         main = "",
         scale = "column",
-        margins = c(60,100,40,20),
+        margins = c(60,50,40,20),
         scale_fill_gradient_fun = scale_fill_gradient(low = "sky blue", high = "dark blue"),
         subplot_widths = c(1),
         subplot_heights = c(0.4),
@@ -309,7 +322,7 @@ p <- heatmaply(matexp,
 p
 ```
 
-Also noted that there are no values for *Germany, Democratic Republic Of* and for *Yemen Democratic.* Therefore, we can remove these two countries by using codes below.
+Also noted that there are no values for ***Germany, Democratic Republic Of*** and for ***Yemen Democratic**.* Therefore, we can remove these two countries by using codes below.
 
 ```{r}
 imp<-imp[,!names(imp)%in%c("Germany, Democratic Republic Of","Yemen Democratic")]
@@ -318,7 +331,10 @@ exp<-exp[,!names(exp)%in%c("Germany, Democratic Republic Of","Yemen Democratic")
 
 ```
 
+:::panel-subset
+
 ## Animate plot
+### Country level
 
 To fit in the data frame easy to plot, we need to transform all the countries into column. We can customize the function below to achieve that.
 
@@ -347,10 +363,12 @@ return(dt)
 Now we get new created data frames named *import* and *export* using function above.
 
 ```{r}
-import<-subdf(imp)%>%
+import<-subdf(select(imp,c(-`Africa `,-`America `,-`Asia `,-`Europe `,-`European Union `,-`Oceania `)))%>%
   rename(`Import` = "Volume")
-export<-subdf(exp)%>%
+
+export<-subdf(select(exp,c(-`Africa `,-`America `,-`Asia `,-`Europe `,-`European Union `,-`Oceania `)))%>%
   rename(`Export` = "Volume")
+
 kable(head(import,5))
 kable(head(export,5))
 ```
@@ -373,26 +391,27 @@ Now we can plot scatter plot to show the relationship between import volume and 
 
 ```{r}
 
-
 graph1 <- trade %>%
-  ggplot(aes(Import, Export, color = Country,size = exp(Ratio))) +
-  geom_point() +
+  mutate(Month = factor(Month, levels = month.abb))%>%
+  group_by(Month)%>%
+  ggplot(aes(Import, Export, color = Country,size = exp(Ratio+1)))+
+  geom_point(alpha = 0.4, border = "dark grey") +
   scale_x_log10()+
   scale_y_log10()+
   theme_bw()+
   theme(legend.position = "none",
         panel.grid = element_blank(),
         panel.border = element_blank())+
-  labs(x = "Import (Million Dollars)",
-       y = "Export (Million Dollars)",
-       title = "Country's Import and Export Sales in SG (2022)",
+  labs(x = "Import (Thousand Dollars)",
+       y = "Export (Thousand Dollars)",
+       title = "Import and Export Sales to Countries - SG (2022)",
        subtitle = "Totally 119 countries in 12 months")
 graph1
 graph1_animation <- graph1 +
                       geom_text(aes(x = min(Import),
                                     y = min(Export),
                                     label = as.factor(Month)),
-                                hjust=1,
+                                hjust=-1.5,
                                 vjust =-0.2,
                                 alpha = 0.2,
                                 col = "gray",
@@ -404,12 +423,71 @@ graph1_animation <- graph1 +
 animate(graph1_animation,renderer = gifski_renderer())
 ```
 
-## Line plot
+From the animation above, we see that generally, the trade activity for each country is stable, changing in a small scope. Trades with few of the country have an imbalance in import and export。
+
+### Continent level
+```{r}
+cimport<-subdf(select(imp,c(`Month`,`Africa `,`America `,`Asia `,`Europe `,`European Union `,`Oceania `)))%>%
+  rename(`Import` = "Volume")
+
+cexport<-subdf(select(exp,c(`Month`,`Africa `,`America `,`Asia `,`Europe `,`European Union `,`Oceania `)))%>%
+  rename(`Export` = "Volume")
+
+kable(head(cimport,5))
+kable(head(cexport,5))
+```
+```{r}
+ctrade<-full_join(cimport,cexport,by = c("Month","Country"))%>%
+  replace(is.na(.),0)%>%
+  mutate(`Ratio` = Export/(Import+1))%>%
+  rename(`Continent` = "Country")
+```
+
+```{r}
+graph2 <- ctrade %>%
+  mutate(Month = factor(Month, levels = month.abb))%>%
+  group_by(Month)%>%
+  ggplot(aes(Import, Export, color = Continent,size = Ratio+1)) +
+  geom_point(alpha = 0.4, border = "dark grey") +
+  scale_x_log10()+
+  scale_y_log10()+
+  theme_bw()+
+  theme(panel.grid = element_blank(),
+        panel.border = element_blank())+
+  labs(x = "Import (Million Dollars)",
+       y = "Export (Million Dollars)",
+       title = "Import and Export Sales to Continents - SG (2022)",
+       subtitle = "Totally 5 continents in 12 months")
+graph2
+graph2_animation <- graph2 +
+                      geom_text(aes(x = min(Import),
+                                    y = min(Export),
+                                    label = as.factor(Month)),
+                                hjust=-1.5,
+                                vjust =-0.2,
+                                alpha = 0.2,
+                                col = "gray",
+                                size = 20) +
+                      transition_states(as.factor(Month),
+                                        state_length = 0)+
+                      shadow_wake(wake_length = 0.1, alpha = FALSE)
+#display the graph
+animate(graph2_animation,renderer = gifski_renderer())
+```
+Noted that import and export trades within Asia are the highest among other continents, while those with Africa are the least. The waving scopes are also stable.Obviously, trades of export with Oceania are more than those of import, though trades of import with Africa are more than those of export.
+
+:::
+
+:::panel-subset
+
+## Dumbell plot
 
 To obviously compare the import trade amounts and export trade amounts among countries, we can plot a line chart which mark import and export amounts in differed colors.
 
 ```{r}
-p<-trade%>%
+fig<-trade%>%
+  mutate(Month = factor(Month, levels = month.abb))%>%
+  group_by(Month)%>%
   plot_ly(frame = ~Month) %>%
   add_segments(
     x = ~Import, y = ~Country,
@@ -427,19 +505,35 @@ p<-trade%>%
     name  = "Export (Million Dollars)"
   ) %>%
   layout(xaxis = list(title = "Trades per Country"))
+fig
 
-graph1_animation_2 <- p +
-                      geom_text(aes(x = min(Import),
-                                    y = min(Export),
-                                    label = as.factor(Month)),
-                                hjust=1,
-                                vjust =-0.2,
-                                alpha = 0.2,
-                                col = "gray",
-                                size = 20) +
-                      transition_states(as.factor(Month),
-                                        state_length = 0)+
-                      shadow_wake(wake_length = 0.1, alpha = FALSE)
-#display the graph
 
 ```
+### Continent level
+```{r}
+fig<-ctrade%>%
+  mutate(Month = factor(Month, levels = month.abb))%>%
+  group_by(Month)%>%
+  plot_ly(frame = ~Month,
+          color = I("gray")) %>%
+  add_segments(
+    x = ~Import, y = ~Continent,
+    xend = ~Export, yend = ~Continent,
+    showlegend = FALSE
+  ) %>%
+  add_markers(
+    x = ~Import, y = ~Continent, 
+    color = I("blue"), 
+    name = "Import (Million Dollars)"
+  ) %>%
+  add_markers(
+    x = ~Export, y = ~Continent, 
+    color = I("red"),
+    name  = "Export (Million Dollars)"
+  ) %>%
+  layout(xaxis = list(title = "Trades per Continent"))
+fig
+
+
+```
+
