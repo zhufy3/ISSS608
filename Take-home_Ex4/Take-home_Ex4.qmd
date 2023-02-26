@@ -500,7 +500,9 @@ To obviously compare the import trade amounts and export trade amounts among cou
 ```{r}
 fig<-trade%>%
   mutate(Month = factor(Month, levels = month.name))%>%
-  plot_ly(frame = ~Month) %>%
+  plot_ly(frame = ~Month,
+          text = ~Country,
+          hoverinfo = "text") %>%
   add_segments(
     x = ~Import, y = ~Country,
     xend = ~Export, yend = ~Country, 
@@ -532,7 +534,9 @@ Noted obviously the most import and export trade with each country.
 fig<-ctrade%>%
   mutate(Month = factor(Month, levels = month.name))%>%
   plot_ly(frame = ~Month,
-          color = I("gray")) %>%
+          color = I("gray"),
+          text = ~Continent,
+          hoverinfo = "text") %>%
   add_segments(
     x = ~Import, y = ~Continent,
     xend = ~Export, yend = ~Continent,
