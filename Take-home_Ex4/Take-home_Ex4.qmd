@@ -326,9 +326,9 @@ p
 Also noted that there are no values for ***Germany, Democratic Republic Of*** and for ***Yemen Democratic**.* Therefore, we can remove these two countries by using codes below.
 
 ```{r}
-imp<-imp[,!names(imp)%in%c("Germany, Democratic Republic Of","Yemen Democratic")]
+imp<-imp[,!names(imp)%in%c("Germany, Democratic Republic Of","Yemen Democratic","Total Merchandise Imports ")]
 
-exp<-exp[,!names(exp)%in%c("Germany, Democratic Republic Of","Yemen Democratic")]
+exp<-exp[,!names(exp)%in%c("Germany, Democratic Republic Of","Yemen Democratic","Total Merchandise Exports ")]
 
 ```
 :::
@@ -362,7 +362,7 @@ return(dt)
 }
 ```
 
-Now we get new created data frames named *import* and *export* using function above.
+Now we get new created data frames named ***import*** and ***export*** using function above.
 
 ```{r}
 import<-subdf(select(imp,c(-`Africa `,-`America `,-`Asia `,-`Europe `,-`European Union `,-`Oceania `)))%>%
@@ -382,7 +382,7 @@ trade<-full_join(import,export,by = c("Month","Country"))%>%
   replace(is.na(.),0)
 ```
 
-We can create a new column to show the ratio of *import/export* to show the what **type** of trade takes the **majority** in each country.
+We can create a new column to show the ratio of ***import**/**export*** to show the what **type** of trade takes the **majority** in each country.
 
 ```{r}
 trade<-trade%>%
@@ -393,38 +393,50 @@ Now we can plot scatter plot to show the relationship between import volume and 
 
 ```{r}
 
-graph1 <- trade %>%
-  mutate(Month = factor(Month, levels = month.abb))%>%
-  ggplot(aes(Import, Export, color = Country,size = exp(Ratio+1)))+
-  geom_point(alpha = 0.4, border = "dark grey") +
-  scale_x_log10()+
-  scale_y_log10()+
-  theme_bw()+
-  theme(legend.position = "none",
-        panel.grid = element_blank(),
-        panel.border = element_blank())+
-  labs(x = "Import (Thousand Dollars)",
-       y = "Export (Thousand Dollars)",
-       title = "Import and Export Sales to Countries - SG (2022)",
-       subtitle = "Totally 119 countries in 12 months")
+fig <- trade %>%
+    mutate(Month = factor(Month, levels = month.name))%>%
 
-graph1_animation <- graph1 +
-                      geom_text(aes(x = min(Import),
-                                    y = min(Export),
-                                    label = as.factor(Month)),
-                                hjust=-1.5,
-                                vjust =-0.2,
-                                alpha = 0.2,
-                                col = "gray",
-                                size = 20) +
-                      transition_states(as.factor(Month),
-                                        state_length = 0)+
-                      shadow_wake(wake_length = 0.1, alpha = FALSE)
-#display the graph
-animate(graph1_animation,renderer = gifski_renderer())
+  group_by(Month)%>%
+
+  plot_ly(
+
+    x = ~Import, 
+
+    y = ~Export, 
+
+    size = ~Ratio, 
+
+    color = ~Country, 
+
+    frame = ~Month, 
+
+    text = ~Country, 
+
+    hoverinfo = "text",
+
+    type = 'scatter',
+
+    mode = 'markers'
+
+  )
+
+fig <- fig %>% layout(
+    xaxis = list(
+    type = "log"
+    ),
+    yaxis = list(
+    type = "log"
+    )
+  )%>%
+  animation_opts(
+    1000, easing = "elastic", redraw = FALSE
+  )
+
+
+fig
 ```
 
-From the animation above, we see that generally, the trade activity for each country is stable, changing in a small scope. Trades with few of the country have an imbalance in import and export。
+From the animation above, we see that generally, the trade activity for each country is **stable**, **changing** in a small **scope**. Trades with few of the country have an imbalance in import and export, such as the yellow point, which is ***other countries*** in oceania.
 
 ### Continent level
 
@@ -447,34 +459,34 @@ ctrade<-full_join(cimport,cexport,by = c("Month","Country"))%>%
 ```
 
 ```{r}
-graph2 <- ctrade %>%
-  mutate(Month = factor(Month, levels = month.abb))%>%
-  ggplot(aes(Import, Export, color = Continent,size = Ratio+1)) +
-  geom_point(alpha = 0.4, border = "dark grey") +
-  scale_x_log10()+
-  scale_y_log10()+
-  theme_bw()+
-  theme(panel.grid = element_blank(),
-        panel.border = element_blank())+
-  labs(x = "Import (Million Dollars)",
-       y = "Export (Million Dollars)",
-       title = "Import and Export Sales to Continents - SG (2022)",
-       subtitle = "Totally 5 continents in 12 months")
+fig <- ctrade %>%
+    mutate(Month = factor(Month, levels = month.name))%>%
+  plot_ly(
+    x = ~Import, 
+    y = ~Export, 
+    size = ~Ratio, 
+    color = ~Continent, 
+    frame = ~Month, 
+    text = ~Continent, 
+    hoverinfo = "text",
+    type = 'scatter',
+    mode = 'markers'
+  )
 
-graph2_animation <- graph2 +
-                      geom_text(aes(x = min(Import),
-                                    y = min(Export),
-                                    label = as.factor(Month)),
-                                hjust=-1.5,
-                                vjust =-0.2,
-                                alpha = 0.2,
-                                col = "gray",
-                                size = 20) +
-                      transition_states(as.factor(Month),
-                                        state_length = 0)+
-                      shadow_wake(wake_length = 0.1, alpha = FALSE)
-#display the graph
-animate(graph2_animation,renderer = gifski_renderer())
+fig <- fig %>% layout(
+  xaxis = list(
+    type = "log"
+    ),
+    yaxis = list(
+    type = "log"
+    )  
+  )%>%
+  animation_opts(
+    1000, easing = "elastic", redraw = FALSE
+  )
+
+
+fig
 ```
 
 Noted that import and export trades within Asia are the highest among other continents, while those with Africa are the least. The waving scopes are also stable.Obviously, trades of export with Oceania are more than those of import, though trades of import with Africa are more than those of export.
@@ -487,7 +499,7 @@ To obviously compare the import trade amounts and export trade amounts among cou
 
 ```{r}
 fig<-trade%>%
-  mutate(Month = factor(Month, levels = month.abb))%>%
+  mutate(Month = factor(Month, levels = month.name))%>%
   plot_ly(frame = ~Month) %>%
   add_segments(
     x = ~Import, y = ~Country,
@@ -495,26 +507,30 @@ fig<-trade%>%
     color = I("gray"), showlegend = FALSE
   ) %>%
   add_markers(
-    x = ~Import, y = ~Country, 
-    color = I("blue"), 
-    name = "Import (Million Dollars)"
+    x = ~Export, y = ~Country, 
+    color = I("blue"),
+    name  = "Export (Million Dollars)",
+    size = 0.3
   ) %>%
   add_markers(
-    x = ~Export, y = ~Country, 
-    color = I("red"),
-    name  = "Export (Million Dollars)"
+    x = ~Import, y = ~Country, 
+    color = I("red"), 
+    name = "Import (Million Dollars)"
   ) %>%
+  
   layout(xaxis = list(title = "Trades per Country"))
 fig
 
 
 ```
 
+Noted obviously the most import and export trade with each country.
+
 ### Continent level
 
 ```{r}
 fig<-ctrade%>%
-  mutate(Month = factor(Month, levels = month.abb))%>%
+  mutate(Month = factor(Month, levels = month.name))%>%
   plot_ly(frame = ~Month,
           color = I("gray")) %>%
   add_segments(
@@ -523,18 +539,21 @@ fig<-ctrade%>%
     showlegend = FALSE
   ) %>%
   add_markers(
-    x = ~Import, y = ~Continent, 
-    color = I("blue"), 
-    name = "Import (Million Dollars)"
+    x = ~Export, y = ~Continent, 
+    color = I("blue"),
+    name  = "Export (Million Dollars)",
+    size = 0.3
   ) %>%
   add_markers(
-    x = ~Export, y = ~Continent, 
-    color = I("red"),
-    name  = "Export (Million Dollars)"
-  ) %>%
+    x = ~Import, y = ~Continent, 
+    color = I("red"), 
+    name = "Import (Million Dollars)"
+  )%>%
   layout(xaxis = list(title = "Trades per Continent"))
 fig
 
 
 ```
+
+We see that the **most** import and export trades are within **Asia**, far more than those with other continents. In the whole year, bi-trade within Asia has the **biggest** **changes**, while that with **other** **continents** are relatively **stable**.
 :::
