@@ -1,0 +1,198 @@
+---
+title: "Network Data Visualisation and Analysing"
+date: 11 Mar 2023
+date-modified: "`r Sys.Date()`"
+execute: 
+  echo: true
+  eval: true
+  warning: false
+page-layout: full
+format: html
+editor: visual
+---
+
+## Packages used
+
+```{r}
+pacman::p_load(igraph, tidygraph, ggraph, 
+               visNetwork, lubridate, clock,
+               tidyverse, graphlayouts)
+```
+
+## Data used
+
+### Edges data
+
+*GAStech-email_edges.csv* which consists of two weeks of 9063 emails correspondances between 55 employees.
+
+### Nodes data
+
+*GAStech_email_nodes.csv* which consist of the names, department and title of the 55 employees.
+
+## Importing data
+
+```{r}
+GAStech_nodes <- read_csv("data/GAStech_email_node.csv")
+GAStech_edges <- read_csv("data/GAStech_email_edge-v2.csv")
+```
+
+## Wrangling data
+
+### Wrangling time
+
+We format the time data into date type of data.
+
+```{r}
+GAStech_edges <- GAStech_edges %>%
+  mutate(SendDate = dmy(SentDate)) %>%
+  mutate(Weekday = wday(SentDate,
+                        label = TRUE,
+                        abbr = FALSE))
+```
+
+### Wrangling attribute
+
+```{r}
+GAStech_edges_aggregated <- GAStech_edges %>%
+  filter(MainSubject == "Work related") %>%
+  group_by(source, target, Weekday) %>%
+    summarise(Weight = n()) %>%
+  filter(source!=target) %>%
+  filter(Weight > 1) %>%
+  ungroup()
+```
+
+## Creating network with *tidygraph* package
+
+In this section we use `tidygraph::tbl_graph()`to create a network.
+
+```{r}
+GAStech_graph <- tbl_graph(nodes = GAStech_nodes,
+                           edges = GAStech_edges_aggregated, 
+                           directed = TRUE)
+GAStech_graph
+```
+
+### Changing the active object
+
+```{r}
+GAStech_graph %>%
+  activate(edges) %>%
+  arrange(desc(Weight))
+```
+
+## Plotting network data
+
+### Plotting network data with *ggraph* package
+
+*ggraph* is an extension of *ggplot2* package.
+
+```{r}
+ggraph(GAStech_graph) +
+  geom_edge_link() +
+  geom_node_point()
+```
+
+#### Changing theme settings
+
+For a better aesthetics, we can use `theme_graph()` function to reset the defauts.
+
+```{r}
+g <- ggraph(GAStech_graph) + 
+  geom_edge_link(aes(colour = 'grey50')) +
+  geom_node_point(aes(colour = 'grey40'))
+
+g + theme_graph(background = 'grey10',
+                text_colour = 'white')
+```
+
+#### Coloring the nodes according to their departments
+
+```{r}
+g <- ggraph(GAStech_graph, 
+            layout = "circle") + 
+  geom_edge_link(aes()) +
+  geom_node_point(aes(colour = Department, 
+                      size = 2))
+
+g + theme_graph()
+```
+
+```{r}
+g <- ggraph(GAStech_graph, 
+            layout = "nicely") +
+  geom_edge_link(aes(width=Weight), 
+                 alpha=0.2) +
+  scale_edge_width(range = c(0.1, 5)) +
+  geom_node_point(aes(colour = Department), 
+                  size = 3)
+
+g + theme_graph()
+```
+
+#### Working with *facet_edges()*
+
+```{r}
+set_graph_style()
+
+g <- ggraph(GAStech_graph, 
+            layout = "nicely") + 
+  geom_edge_link(aes(width=Weight), 
+                 alpha=0.2) +
+  scale_edge_width(range = c(0.1, 5)) +
+  geom_node_point(aes(colour = Department), 
+                  size = 2)+
+  theme(legend.position = "bottom")
+
+g + facet_edges(~Weekday)+
+  th_foreground(foreground = "grey80",
+                border = TRUE)
+```
+
+#### Working with *facet_nodes()*
+
+```{r}
+g<-ggraph(GAStech_graph,
+          layout = "nicely")+
+  geom_edge_link(aes(width = Weight),
+                 alpha=0.2)+
+  scale_edge_width(range = c(0.1,5))+
+  geom_node_point(aes(color = Department),
+                  size=2)
+
+g+facet_nodes(~Department)+
+  theme(legend.position = "bottom")+
+  th_foreground(foreground = "grey80",
+                border = TRUE)
+  
+```
+
+### Analysis to network data
+
+#### Centrality computing
+
+```{r}
+g <- GAStech_graph %>%
+  mutate(betweenness_centrality = centrality_betweenness()) %>%
+  ggraph(layout = "fr") + 
+  geom_edge_link(aes(width=Weight), 
+                 alpha=0.2) +
+  scale_edge_width(range = c(0.1, 5)) +
+  geom_node_point(aes(colour = Department,
+            size=betweenness_centrality))
+g + theme_graph()
+```
+
+#### Visualising community
+
+```{r}
+g <- GAStech_graph %>%
+  mutate(community = as.factor(group_edge_betweenness(weights = Weight, directed = TRUE))) %>%
+  ggraph(layout = "fr") + 
+  geom_edge_link(aes(width=Weight), 
+                 alpha=0.2) +
+  scale_edge_width(range = c(0.1, 5)) +
+  geom_node_point(aes(colour = community))  
+
+g + theme_graph()
+```
